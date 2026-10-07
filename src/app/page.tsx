@@ -29,33 +29,37 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ═══ Hero ═══ */}
-        <section className="border-b-2 border-ink/10">
-          <div className="mx-auto max-w-[1280px] xl:max-w-[1440px] 2xl:max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-[1180px] px-6 py-14 sm:py-20 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
               {/* Left: headline + CTAs */}
               <div>
-                <div className="mb-4 flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary-line bg-primary-soft px-3 py-1.5 font-sans text-[0.74rem] font-semibold uppercase tracking-[0.13em] text-primary">
                   <span>Vol. I &amp; II</span>
-                  <span className="h-3 w-px bg-border" />
+                  <span className="h-3 w-px bg-primary-line" />
                   <span>Edexcel IAL</span>
-                  <span className="h-3 w-px bg-border" />
-                  <span className="hidden sm:inline">A revision companion</span>
                 </div>
-                <h1 className="font-sans text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+                <h1
+                  className="font-display text-ink"
+                  style={{ fontSize: "clamp(2.3rem, 5.4vw, 3.5rem)", lineHeight: 1.2, letterSpacing: "-0.018em" }}
+                >
                   Chemistry,
                   <br />
                   <span className="italic text-primary">read properly.</span>
                 </h1>
-                <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed text-ink/75 sm:text-xl">
+                <p
+                  className="mt-5 max-w-xl text-ink/75"
+                  style={{ fontSize: "1.11rem", lineHeight: 1.62 }}
+                >
                   Every specification point in Units I and II, written out
                   step by step — with worked examples, diagrams, key-takeaway
                   boxes, and the kind of margin notes a good teacher leaves.
                 </p>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-7 flex flex-wrap items-center gap-4">
                   <Link
                     href={featuredTopic ? `/topic/${featuredTopic.slug}` : "/#index"}
-                    className="group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-sans text-sm font-semibold text-primary-foreground shadow-card transition-all hover:bg-primary/90 hover:shadow-raised"
+                    className="group inline-flex items-center gap-2 rounded-[10px] bg-primary px-5 py-2.5 font-sans text-[0.875rem] font-semibold text-on-primary shadow-card transition-all hover:bg-primary/90 hover:shadow-raised"
                   >
                     {featuredTopic
                       ? `Start with Topic ${String(featuredTopic.number).padStart(2, "0")}`
@@ -64,7 +68,7 @@ export default function Home() {
                   </Link>
                   <a
                     href="#index"
-                    className="font-sans text-sm text-muted-foreground underline-offset-4 hover:text-ink hover:underline"
+                    className="font-sans text-[0.875rem] text-muted-foreground underline-offset-4 hover:text-ink hover:underline"
                   >
                     or browse the full index
                   </a>
@@ -133,7 +137,7 @@ export default function Home() {
                 All topics, in order
               </h2>
             </div>
-            <p className="hidden max-w-xs text-right font-serif text-sm italic text-muted-foreground sm:block">
+            <p className="hidden max-w-xs text-right text-[0.875rem] italic text-muted-foreground sm:block">
               From the mole to mass spectrometry — follow the course end to end.
             </p>
           </div>
@@ -210,11 +214,11 @@ function FeaturedTopicCard({ topic }: { topic: (typeof topics)[number] }) {
       <h3 className="font-sans text-2xl font-bold leading-tight tracking-tight text-ink group-hover:text-primary sm:text-3xl">
         {topic.title}
       </h3>
-      <p className="mt-3 font-serif text-[15px] leading-relaxed text-ink/70">
+      <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/70">
         {topic.summary}
       </p>
       {topic.intro && (
-        <p className="mt-4 border-l-2 border-primary/30 pl-4 font-serif text-sm italic leading-relaxed text-ink/60">
+        <p className="mt-4 border-l-2 border-primary/30 pl-4 text-[0.875rem] italic leading-relaxed text-ink/60">
           {topic.intro.length > 140 ? topic.intro.slice(0, 140) + "…" : topic.intro}
         </p>
       )}

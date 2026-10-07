@@ -8,8 +8,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  /* NOTE: --font-serif intentionally resolves to the same sans-serif font as
+     --font-sans (Outfit). This keeps existing `font-serif` Tailwind classes
+     rendering as sans-serif so we never fall back to Times/Georgia. */
+  --font-serif: var(--font-sans);
   --font-display: var(--font-display);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -64,142 +67,172 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 16px;  /* matches reference --radius */
 
   /* ═══════════════════════════════════════════════════════════════════
-     THE PALETTE — ink, paper, oxblood
-     A committed editorial palette inspired by old chemistry textbooks:
-     deep blue-black ink on warm aged paper, with oxblood as the single
-     sharp accent. No teal-on-cream "tasteful generic" here.
+     PALETTE — copied verbatim from the reference index.html
+     Warm cream paper, deep teal primary, copper accent,
+     copper/slate-blue polarity pair. No oxblood, no Times.
      ═══════════════════════════════════════════════════════════════════ */
+  --bg: #f7f5f0;
+  --bg-tint: #f1eee6;
+  --surface: #ffffff;
+  --surface-2: #fbf9f5;
+  --line: #e9e3d6;
+  --line-soft: #f0ebe0;
+  --ink: #14171e;
+  --ink-2: #3a4256;
+  --ink-3: #6e6c65;
+  --primary: #2f6f5e;
+  --primary-soft: rgba(47, 111, 94, 0.09);
+  --primary-line: rgba(47, 111, 94, 0.24);
+  --accent: #a05f28;
+  --accent-deep: #8a5228;
+  --accent-soft: rgba(201, 123, 63, 0.10);
+  --neg: #9a4d51;
+  --neg-soft: rgba(176, 99, 103, 0.12);
+  --pos: #3d6489;
+  --pos-soft: rgba(61, 100, 137, 0.12);
+  --on-primary: #ffffff;
 
-  /* Paper — warm, slightly aged, NOT pure white. Like a 1970s textbook page. */
-  --background: oklch(0.965 0.012 85);          /* warm aged paper */
-  --paper: oklch(0.965 0.012 85);
+  /* Map to the shadcn-style tokens used throughout the app */
+  --background: var(--bg);
+  --paper: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--bg-tint);
+  --secondary-foreground: var(--ink-2);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-3);
+  --accent-foreground: var(--accent-deep);
+  --destructive: var(--neg);
+  --border: var(--line);
+  --input: var(--bg-tint);
+  --ring: var(--primary);
 
-  /* Ink — deep blue-black, not pure black. Slightly cooler than the paper
-     for a printed-on-paper feel. */
-  --foreground: oklch(0.22 0.035 255);          /* ink blue-black */
-  --ink: oklch(0.22 0.035 255);
+  /* Semantic accents — kept compatible with existing class names */
+  --oxblood: var(--primary);
+  --ochre: var(--accent);
+  --moss: var(--primary);
+  --teal: var(--primary);
+  --amber: var(--accent);
+  --emerald: var(--primary);
+  --rose: var(--neg);
 
-  /* Card surface — a hair lighter than the paper, like a tipped-in plate */
-  --card: oklch(0.985 0.008 85);
-  --card-foreground: oklch(0.22 0.035 255);
-  --popover: oklch(0.985 0.008 85);
-  --popover-foreground: oklch(0.22 0.035 255);
+  --teal-soft: var(--primary-soft);
+  --amber-soft: var(--accent-soft);
+  --emerald-soft: var(--primary-soft);
+  --rose-soft: var(--neg-soft);
 
-  /* Primary — oxblood. The single sharp accent. Used for links, key terms,
-     section numbers, the wordmark. Deliberately NOT teal. */
-  --primary: oklch(0.40 0.13 25);               /* oxblood / burgundy */
-  --primary-foreground: oklch(0.97 0.008 85);
-
-  --secondary: oklch(0.93 0.015 85);
-  --secondary-foreground: oklch(0.28 0.035 255);
-  --muted: oklch(0.94 0.01 85);
-  --muted-foreground: oklch(0.42 0.02 255);
-  --accent: oklch(0.88 0.04 75);                /* muted ochre */
-  --accent-foreground: oklch(0.30 0.06 60);
-  --destructive: oklch(0.50 0.18 25);
-  --border: oklch(0.84 0.015 85);               /* visible rule, like a printed border */
-  --input: oklch(0.92 0.01 85);
-  --ring: oklch(0.40 0.13 25);
-
-  /* Semantic accents — desaturated, earthy. No neon. */
-  --oxblood: oklch(0.40 0.13 25);
-  --ochre: oklch(0.62 0.10 75);
-  --moss: oklch(0.50 0.08 145);
-  --teal: oklch(0.48 0.07 200);
-  --amber: oklch(0.62 0.11 70);
-  --emerald: oklch(0.52 0.10 155);
-  --rose: oklch(0.55 0.16 15);
-
-  /* Polarity pair — copper for δ⁻, slate blue for δ⁺.
-     Used consistently in diagrams and inline text so the two charges
-     are instantly distinguishable by colour. */
-  --neg: oklch(0.52 0.12 25);           /* copper — δ⁻ */
-  --neg-soft: oklch(0.93 0.04 25);
-  --pos: oklch(0.45 0.08 255);          /* slate blue — δ⁺ */
-  --pos-soft: oklch(0.93 0.03 255);
-
-  --teal-soft: oklch(0.93 0.03 200);
-  --amber-soft: oklch(0.93 0.04 75);
-  --emerald-soft: oklch(0.93 0.03 155);
-  --rose-soft: oklch(0.94 0.03 15);
-
-  --chart-1: oklch(0.40 0.13 25);
-  --chart-2: oklch(0.50 0.08 145);
-  --chart-3: oklch(0.62 0.10 75);
-  --chart-4: oklch(0.48 0.07 200);
-  --chart-5: oklch(0.55 0.16 15);
+  --chart-1: var(--primary);
+  --chart-2: var(--accent);
+  --chart-3: var(--pos);
+  --chart-4: var(--primary);
+  --chart-5: var(--neg);
 
   --sidebar: var(--background);
-  --sidebar-foreground: oklch(0.28 0.035 255);
-  --sidebar-primary: oklch(0.40 0.13 25);
-  --sidebar-primary-foreground: oklch(0.97 0.008 85);
-  --sidebar-accent: oklch(0.93 0.015 85);
-  --sidebar-accent-foreground: oklch(0.28 0.035 255);
-  --sidebar-border: oklch(0.84 0.015 85);
-  --sidebar-ring: oklch(0.40 0.13 25);
+  --sidebar-foreground: var(--ink-2);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--bg-tint);
+  --sidebar-accent-foreground: var(--ink-2);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--primary);
 
-  /* Layered shadow system — warm-toned, not grey */
-  --shadow-card: 0 1px 2px oklch(0.22 0.035 255 / 0.06), 0 1px 1px oklch(0.22 0.035 255 / 0.04);
-  --shadow-raised: 0 4px 14px oklch(0.22 0.035 255 / 0.09), 0 2px 4px oklch(0.22 0.035 255 / 0.05);
-  --shadow-floating: 0 14px 32px oklch(0.22 0.035 255 / 0.13), 0 4px 8px oklch(0.22 0.035 255 / 0.06);
+  /* Reference shadows */
+  --shadow-1: 0 2px 8px rgba(20, 23, 30, 0.04);
+  --shadow-2: 0 4px 16px -2px rgba(20, 23, 30, 0.06);
+  --shadow-3: 0 12px 32px -8px rgba(20, 23, 30, 0.14);
+  --shadow-card: var(--shadow-1);
+  --shadow-raised: var(--shadow-2);
+  --shadow-floating: var(--shadow-3);
+
+  /* Font stacks — Outfit (sans) for body, DM Serif Display for headings,
+     JetBrains Mono for code. NO Times, NO Georgia, NO generic serif. */
+  --font-sans: 'Outfit', ui-sans-serif, 'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'Outfit', ui-sans-serif, 'Segoe UI', system-ui, sans-serif; /* serif var = sans, never fall back to Times */
+  --font-display: 'DM Serif Display', 'Outfit', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Topic-page font aliases (kept for backward compat with existing CSS) */
+  --font-topic-display: var(--font-display);
+  --font-topic-sans: var(--font-sans);
+  --font-topic-mono: var(--font-mono);
 }
 
 .dark {
-  /* Dark mode — tinted black, not neutral grey. Faint warm undertone. */
-  --background: oklch(0.16 0.012 255);
-  --paper: oklch(0.16 0.012 255);
-  --foreground: oklch(0.92 0.008 85);
-  --ink: oklch(0.92 0.008 85);
-  --card: oklch(0.20 0.014 255);
-  --card-foreground: oklch(0.92 0.008 85);
-  --popover: oklch(0.20 0.014 255);
-  --popover-foreground: oklch(0.92 0.008 85);
-  --primary: oklch(0.68 0.14 25);
-  --primary-foreground: oklch(0.16 0.012 255);
-  --secondary: oklch(0.25 0.016 255);
-  --secondary-foreground: oklch(0.92 0.008 85);
-  --muted: oklch(0.25 0.016 255);
-  --muted-foreground: oklch(0.68 0.012 85);
-  --accent: oklch(0.38 0.08 75);
-  --accent-foreground: oklch(0.88 0.06 75);
-  --destructive: oklch(0.65 0.20 25);
-  --border: oklch(1 0 0 / 16%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.68 0.14 25);
+  /* Dark mode — copied from reference index.html `:root[data-theme="dark"]` */
+  --bg: #15171b;
+  --bg-tint: #191c21;
+  --surface: #1d2026;
+  --surface-2: #22262d;
+  --line: #2b3038;
+  --line-soft: #262a31;
+  --ink: #eceae5;
+  --ink-2: #b9bdc5;
+  --ink-3: #8b9099;
+  --primary: #63bf9f;
+  --primary-soft: rgba(99, 191, 159, 0.11);
+  --primary-line: rgba(99, 191, 159, 0.28);
+  --on-primary: #0d1a16;
+  --accent: #dda06a;
+  --accent-deep: #dda06a;
+  --accent-soft: rgba(221, 160, 106, 0.12);
+  --neg: #d38d90;
+  --neg-soft: rgba(211, 141, 144, 0.14);
+  --pos: #7ba6cc;
+  --pos-soft: rgba(123, 166, 204, 0.14);
 
-  --oxblood: oklch(0.68 0.14 25);
-  --ochre: oklch(0.75 0.11 70);
-  --moss: oklch(0.68 0.09 145);
-  --teal: oklch(0.70 0.09 200);
-  --amber: oklch(0.75 0.12 70);
-  --emerald: oklch(0.70 0.11 155);
-  --rose: oklch(0.70 0.17 15);
-  --teal-soft: oklch(0.28 0.05 200);
-  --amber-soft: oklch(0.28 0.06 75);
-  --emerald-soft: oklch(0.28 0.05 155);
-  --rose-soft: oklch(0.28 0.06 15);
+  --background: var(--bg);
+  --paper: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink-2);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-3);
+  --accent-foreground: var(--accent);
+  --destructive: var(--neg);
+  --border: var(--line);
+  --input: var(--surface-2);
+  --ring: var(--primary);
 
-  /* Polarity pair — dark mode */
-  --neg: oklch(0.72 0.13 25);
-  --neg-soft: oklch(0.28 0.06 25);
-  --pos: oklch(0.68 0.09 255);
-  --pos-soft: oklch(0.28 0.05 255);
+  --oxblood: var(--primary);
+  --ochre: var(--accent);
+  --moss: var(--primary);
+  --teal: var(--primary);
+  --amber: var(--accent);
+  --emerald: var(--primary);
+  --rose: var(--neg);
 
-  --sidebar: oklch(0.20 0.014 255);
-  --sidebar-foreground: oklch(0.92 0.008 85);
-  --sidebar-primary: oklch(0.68 0.14 25);
-  --sidebar-primary-foreground: oklch(0.16 0.012 255);
-  --sidebar-accent: oklch(0.28 0.05 200);
-  --sidebar-accent-foreground: oklch(0.92 0.008 85);
-  --sidebar-border: oklch(1 0 0 / 16%);
-  --sidebar-ring: oklch(0.68 0.14 25);
+  --teal-soft: var(--primary-soft);
+  --amber-soft: var(--accent-soft);
+  --emerald-soft: var(--primary-soft);
+  --rose-soft: var(--neg-soft);
 
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
-  --shadow-raised: 0 4px 14px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-floating: 0 14px 32px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.4);
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--ink-2);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--surface-2);
+  --sidebar-accent-foreground: var(--ink-2);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--primary);
+
+  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.30);
+  --shadow-2: 0 4px 16px -2px rgba(0, 0, 0, 0.36);
+  --shadow-3: 0 12px 32px -8px rgba(0, 0, 0, 0.55);
+  --shadow-card: var(--shadow-1);
+  --shadow-raised: var(--shadow-2);
+  --shadow-floating: var(--shadow-3);
 }
 
 @layer base {
@@ -209,26 +242,41 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv11", "kern", "liga", "calt";
+    /* Match reference index.html: Outfit, 17px, line-height 1.72 */
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.72;
+    font-weight: 400;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-
-    /* Subtle paper grain — barely visible noise that makes the background
-       feel like paper instead of a flat color fill. This is the #1 thing
-       that breaks the "AI flat-color" look. */
-    background-image:
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.15 0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    background-attachment: fixed;
   }
+  /* Headings — DM Serif Display (display face, not body serif) */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.012em;
+  }
+  p { margin: 0 0 1em; }
+  code, .chem {
+    font-family: var(--font-mono);
+  }
+  sub, sup { line-height: 0; }
 
-  /* Links — ink-style underline, not the default browser blue.
-     Thicker, slightly offset, like a hand-drawn rule. */
+  /* Links — ink-style underline, not the default browser blue. */
   a {
+    color: var(--primary);
     text-underline-offset: 0.18em;
     text-decoration-thickness: 1px;
+  }
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--ink);
   }
 }
 
@@ -238,50 +286,52 @@
 .shadow-floating{ box-shadow: var(--shadow-floating); }
 
 /* ═══════════════════════════════════════════════════════════════════
-   DISPLAY TYPOGRAPHY — Fraunces for headlines, with character
+   DISPLAY TYPOGRAPHY — DM Serif Display (display face only)
+   All h1–h4 use this. Body text uses Outfit (sans-serif).
    ═══════════════════════════════════════════════════════════════════ */
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 50, "WONK" 0;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.012em;
 }
-/* The wonk axis gives occasional letters a slightly hand-drawn quality —
-   use sparingly on display-sized headlines for character. */
 .font-display-wonk {
-  font-family: var(--font-display), Georgia, serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 100, "WONK" 1;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.012em;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   PROSE — body serif, fluid, optimal line length
+   PROSE — Outfit (sans-serif), 17px body, line-height 1.72
+   Fluid sizing on headings using clamp() (matches reference).
    ═══════════════════════════════════════════════════════════════════ */
 .prose-chem {
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
-  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.125rem);
-  line-height: 1.75;
-  letter-spacing: 0.001em;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.72;
+  letter-spacing: 0;
   color: var(--foreground);
+}
+@media (max-width: 640px) {
+  .prose-chem { font-size: 16px; }
 }
 .prose-chem p,
 .prose-chem li {
   max-width: 72ch;
 }
-.prose-chem p { margin: 0 0 1.15em; }
+.prose-chem p { margin: 0 0 1em; }
 .prose-chem strong {
-  color: var(--foreground);
-  font-weight: 700;
-  /* Bold terms get a subtle ink-style underline-ish tint, not a color change */
+  color: var(--ink);
+  font-weight: 600;
 }
-/* Italic emphasis in serif body — use real italics, not just slanted */
 .prose-chem em { font-style: italic; }
 .prose-chem h2,
 .prose-chem h3,
 .prose-chem h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
   text-wrap: balance;
   overflow-wrap: break-word;
+  line-height: 1.2;
 }
 .prose-chem :is(p, li, dd, dt) {
   overflow-wrap: break-word;
@@ -289,15 +339,15 @@
   hyphenate-limit-chars: 6 3 2;
 }
 
-/* KaTeX — fluid sizing, ink color */
-.katex { font-size: 1.04em; color: var(--foreground); }
+/* KaTeX — render at body size, no oversizing */
+.katex { font-size: 1em; color: var(--foreground); }
 .katex-display {
-  margin: 1.2em 0;
+  margin: 0.6em 0;
   overflow-x: auto;
   overflow-y: hidden;
-  font-size: clamp(1em, 0.95em + 0.2vw, 1.15em);
+  font-size: 1em;
 }
-.prose-chem .katex { font-size: 1.06em; }
+.prose-chem .katex { font-size: 1em; }
 
 /* ═══════════════════════════════════════════════════════════════════
    EDITORIAL ELEMENTS — section rules, drop caps, marginalia
@@ -330,23 +380,21 @@
 
 /* Drop cap — for the first paragraph of a topic intro */
 .drop-cap::first-letter {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 400;
   float: left;
   font-size: 3.4em;
   line-height: 0.85;
   padding: 0.08em 0.12em 0 0;
   color: var(--primary);
-  font-variation-settings: "SOFT" 100, "WONK" 1;
 }
 
-/* Marginalia — small annotation-style notes. Italic, oxblood, slightly
-   indented. Use for "editor's notes" and key-term glosses. */
+/* Marginalia — small annotation-style notes. Italic, primary color. */
 .marginalia {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-sans);
   font-style: italic;
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--primary);
   border-left: 2px solid var(--primary);
   padding-left: 0.75rem;
@@ -368,7 +416,7 @@
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-.mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.94em; }
+.mono { font-family: var(--font-mono); font-size: 0.94em; }
 
 /* ═══════════════════════════════════════════════════════════════════
    RAIL LIST — vertical line instead of bullet dots.
@@ -398,279 +446,169 @@
 .diagram-svg { width: 100%; height: auto; display: block; }
 
 /* ═══════════════════════════════════════════════════════════════════
-   TOPIC PAGE OVERRIDE — uses the reference file's palette + fonts
-   Deep teal primary, copper accent, copper/slate-blue polarity,
-   DM Serif Display headings, Outfit body, JetBrains Mono code.
+   TOPIC PAGE — class hook for topic-specific tweaks.
+   All theme tokens (palette, fonts, shadows) now come from :root / .dark,
+   so this block only contains topic-page-specific overrides.
    ═══════════════════════════════════════════════════════════════════ */
 .topic-page {
-  --background: #f7f5f0;
-  --paper: #f7f5f0;
-  --foreground: #14171e;
-  --ink: #14171e;
-  --card: #ffffff;
-  --card-foreground: #14171e;
-  --popover: #ffffff;
-  --popover-foreground: #14171e;
-  --primary: #2f6f5e;
-  --primary-foreground: #ffffff;
-  --secondary: #f1eee6;
-  --secondary-foreground: #3a4256;
-  --muted: #fbf9f5;
-  --muted-foreground: #6e6c65;
-  --accent: #a05f28;
-  --accent-foreground: #8a5228;
-  --destructive: #9a4d51;
-  --border: #e9e3d6;
-  --input: #f1eee6;
-  --ring: #2f6f5e;
-
-  /* Reference file's surface tokens */
-  --bg-tint: #f1eee6;
-  --surface: #ffffff;
-  --surface-2: #fbf9f5;
-  --line: #e9e3d6;
-  --line-soft: #f0ebe0;
-  --ink-2: #3a4256;
-  --ink-3: #6e6c65;
-
-  /* Polarity pair — reference file's exact values */
-  --neg: #9a4d51;
-  --neg-soft: rgba(176, 99, 103, 0.12);
-  --pos: #3d6489;
-  --pos-soft: rgba(61, 100, 137, 0.12);
-
-  /* Accent soft */
-  --accent-soft: rgba(201, 123, 63, 0.10);
-  --primary-soft: rgba(47, 111, 94, 0.09);
-  --primary-line: rgba(47, 111, 94, 0.24);
-
-  /* Semantic accents — keep compatible */
-  --oxblood: #2f6f5e;
-  --ochre: #a05f28;
-  --moss: #2f6f5e;
-  --teal: #2f6f5e;
-  --amber: #a05f28;
-  --emerald: #2f6f5e;
-  --rose: #9a4d51;
-
-  /* Font families for topic pages */
-  --font-display: var(--font-topic-display), Georgia, serif;
-  --font-serif: var(--font-topic-sans), 'Outfit', sans-serif;
-  --font-sans: var(--font-topic-sans), 'Outfit', sans-serif;
-  --font-mono: var(--font-topic-mono), 'JetBrains Mono', monospace;
-
-  /* Reference file's shadows */
-  --shadow-card: 0 2px 8px rgba(20, 23, 30, 0.04);
-  --shadow-raised: 0 4px 16px -2px rgba(20, 23, 30, 0.06);
-  --shadow-floating: 0 12px 32px -8px rgba(20, 23, 30, 0.14);
+  /* inherits all tokens from :root */
 }
 
-/* Dark mode override for topic pages — matches reference file's dark theme */
-.dark .topic-page {
-  --background: #15171b;
-  --paper: #15171b;
-  --foreground: #eceae5;
-  --ink: #eceae5;
-  --card: #1d2026;
-  --card-foreground: #eceae5;
-  --popover: #1d2026;
-  --popover-foreground: #eceae5;
-  --primary: #63bf9f;
-  --primary-foreground: #0d1a16;
-  --secondary: #22262d;
-  --secondary-foreground: #b9bdc5;
-  --muted: #22262d;
-  --muted-foreground: #8b9099;
-  --accent: #dda06a;
-  --accent-foreground: #dda06a;
-  --destructive: #d38d90;
-  --border: #2b3038;
-  --input: #262a31;
-  --ring: #63bf9f;
-
-  --bg-tint: #191c21;
-  --surface: #1d2026;
-  --surface-2: #22262d;
-  --line: #2b3038;
-  --line-soft: #262a31;
-  --ink-2: #b9bdc5;
-  --ink-3: #8b9099;
-
-  --neg: #d38d90;
-  --neg-soft: rgba(211, 141, 144, 0.14);
-  --pos: #7ba6cc;
-  --pos-soft: rgba(123, 166, 204, 0.14);
-
-  --accent-soft: rgba(221, 160, 106, 0.12);
-  --primary-soft: rgba(99, 191, 159, 0.11);
-  --primary-line: rgba(99, 191, 159, 0.28);
-
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.30);
-  --shadow-raised: 0 4px 16px -2px rgba(0, 0, 0, 0.36);
-  --shadow-floating: 0 12px 32px -8px rgba(0, 0, 0, 0.55);
-}
-
-/* Topic page body text uses Outfit (sans) for readability */
+/* Topic page body text — same Outfit as the rest of the site */
 .topic-page .prose-chem {
-  font-family: var(--font-topic-sans), 'Outfit', sans-serif;
-  font-size: 15.5px;
-  line-height: 1.7;
-  letter-spacing: 0.005em;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.72;
+  letter-spacing: 0;
   hyphens: none;
   -webkit-hyphens: none;
 }
-@media (min-width: 768px) {
+@media (max-width: 640px) {
   .topic-page .prose-chem {
-    font-size: 16.5px;
+    font-size: 16px;
   }
 }
-/* Topic page headings use DM Serif Display */
+/* Topic page headings use DM Serif Display (already set globally on h1–h4) */
 .topic-page h1, .topic-page h2, .topic-page h3, .topic-page h4,
 .topic-page .font-display {
-  font-family: var(--font-topic-display), Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
 }
 /* Topic page code/chem uses JetBrains Mono */
 .topic-page code, .topic-page .mono, .topic-page .chem {
-  font-family: var(--font-topic-mono), 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
 }
 
 /* ── Topic page block-level typography overrides ── */
+/* Sizes match the reference index.html exactly. Fluid sizing via clamp()
+   where the reference uses it; fixed rem otherwise. */
 
-/* Section H2 — spec section titles */
+/* Section H2 — spec section titles.
+   Reference: clamp(1.6rem, 3.3vw, 2.15rem) */
 .topic-page .prose-chem section > header h2 {
-  font-size: 1.25rem !important; /* 20px */
-  line-height: 1.25;
+  font-size: clamp(1.6rem, 3.3vw, 2.15rem) !important;
+  line-height: 1.2;
   margin-top: 0;
-}
-@media (max-width: 640px) {
-  .topic-page .prose-chem section > header h2 {
-    font-size: 1.125rem !important; /* 18px */
-  }
+  letter-spacing: -0.012em;
 }
 
-/* Sub-headings (H3) — 7.1(i), etc. */
+/* Sub-headings (H3) — 7.1(i), etc.
+   Reference: 1.24rem */
 .topic-page .prose-chem h3 {
-  font-size: 1.0625rem !important; /* 17px */
-  line-height: 1.3;
-  margin-top: 1.75rem;
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 640px) {
-  .topic-page .prose-chem h3 {
-    font-size: 1.1875rem !important; /* 19px */
-  }
+  font-size: 1.24rem !important;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 0.875rem;
+  letter-spacing: -0.006em;
 }
 
-/* H4 sub-sub-headings */
+/* H4 sub-sub-headings. Reference mol h4: 1.05rem */
 .topic-page .prose-chem h4 {
-  font-size: 1rem !important; /* 16px */
-  line-height: 1.3;
+  font-size: 1.05rem !important;
+  line-height: 1.25;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-/* Definition-list term labels */
+/* Definition-list term labels. Reference kv dt: 0.85rem */
 .topic-page .prose-chem dt span:last-child {
-  font-size: 0.875rem !important; /* 14px */
+  font-size: 0.85rem !important;
   font-weight: 600;
 }
 
-/* Definition-list body text */
+/* Definition-list body text. Reference kv dd: 0.85rem */
 .topic-page .prose-chem dd {
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.65;
+  font-size: 0.875rem;
+  line-height: 1.62;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem dd {
-    font-size: 0.9375rem; /* 15px */
+    font-size: 0.9375rem;
   }
 }
 
-/* Rail list items (sub-items, forced bullets) */
+/* Rail list items. Reference sub-list: 0.875rem-ish */
 .topic-page .rail-list,
 .topic-page .prose-chem .rail-list {
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.65;
+  font-size: 0.875rem;
+  line-height: 1.62;
 }
 @media (min-width: 768px) {
   .topic-page .rail-list,
   .topic-page .prose-chem .rail-list {
-    font-size: 0.9375rem; /* 15px */
+    font-size: 0.9375rem;
   }
 }
 
-/* Table cells */
+/* Table cells. Reference table: 0.89rem */
 .topic-page .prose-chem table {
-  font-size: 0.8125rem !important; /* 13px */
+  font-size: 0.875rem !important;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem table {
-    font-size: 0.875rem !important; /* 14px */
+    font-size: 0.89rem !important;
   }
 }
 .topic-page .prose-chem th {
-  font-size: 0.6875rem !important; /* 11px */
-  letter-spacing: 0.06em;
+  font-size: 0.73rem !important;  /* matches reference thead th */
+  letter-spacing: 0.09em;
+  font-weight: 700;
 }
 .topic-page .prose-chem td {
-  padding: 0.625rem 0.875rem;
+  padding: 0.875rem 1.125rem;     /* matches reference th,td */
 }
 
-/* Table captions */
+/* Table captions. Reference caption: 0.82rem */
 .topic-page .prose-chem table caption {
-  font-size: 0.75rem !important; /* 12px */
-  padding: 0.625rem 1rem;
+  font-size: 0.82rem !important;
+  padding: 0.875rem 1.25rem;
 }
 
-/* Image captions */
+/* Image captions. Reference figcaption: 0.8rem */
 .topic-page .prose-chem figcaption {
-  font-size: 0.75rem !important; /* 12px */
+  font-size: 0.8rem !important;
   line-height: 1.55;
-  padding: 0.625rem 1rem;
+  padding: 0.75rem 1.25rem;
 }
 
-/* Callout text */
+/* Callout text. Reference callout body: inherits body */
 .topic-page .prose-chem aside[role="note"] p {
-  font-size: 0.875rem !important; /* 14px */
-  line-height: 1.65;
+  font-size: 0.9375rem !important;
+  line-height: 1.62;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem aside[role="note"] p {
-    font-size: 0.9375rem !important; /* 15px */
+    font-size: 1rem !important;
   }
 }
 
-/* Callout labels */
+/* Callout labels. Reference next-label: 0.7rem */
 .topic-page .prose-chem aside[role="note"] p:first-child {
-  font-size: 0.6875rem !important; /* 11px */
-  letter-spacing: 0.08em;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em;
+  font-weight: 700;
 }
 
-/* At-a-glance strip */
+/* At-a-glance strip. Reference kv dt/dd: 0.85rem */
 .topic-page .at-a-glance-grid dt {
-  font-size: 0.625rem !important; /* 10px */
-  letter-spacing: 0.06em;
+  font-size: 0.74rem !important;  /* matches reference glass h2 */
+  letter-spacing: 0.12em;
+  font-weight: 600;
 }
 .topic-page .at-a-glance-grid dd {
-  font-size: 0.75rem !important; /* 12px */
-  line-height: 1.5;
-}
-@media (min-width: 768px) {
-  .topic-page .at-a-glance-grid dd {
-    font-size: 0.8125rem !important; /* 13px */
-  }
-}
-
-/* Equation captions */
-.topic-page .prose-chem figure figcaption,
-.topic-page .prose-chem figure p[class*="italic"] {
-  font-size: 0.75rem !important; /* 12px */
+  font-size: 0.85rem !important;
   line-height: 1.55;
 }
 
-/* Equation/KaTeX display — keep it close to body text size, not oversized */
+/* Equation captions. Reference figcaption: 0.8rem */
+.topic-page .prose-chem figure figcaption,
+.topic-page .prose-chem figure p[class*="italic"] {
+  font-size: 0.8rem !important;
+  line-height: 1.55;
+}
+
+/* Equation/KaTeX display — render at body size, never oversized */
 .topic-page .prose-chem figure .katex-display,
 .topic-page .prose-chem .katex-display {
   font-size: 1em !important;
@@ -681,90 +619,96 @@
   font-size: 1em !important;
 }
 
-/* Fact-box */
+/* Fact-box. Reference fam p: 0.89rem */
 .topic-page .prose-chem aside[aria-label],
 .topic-page .prose-chem .fact-box {
-  font-size: 0.875rem !important; /* 14px */
+  font-size: 0.875rem !important;
 }
 .topic-page .prose-chem aside[aria-label] dt,
 .topic-page .prose-chem .fact-box dt {
-  font-size: 0.75rem !important; /* 12px */
+  font-size: 0.85rem !important;
 }
 .topic-page .prose-chem aside[aria-label] dd,
 .topic-page .prose-chem .fact-box dd {
-  font-size: 0.8125rem !important; /* 13px */
+  font-size: 0.85rem !important;
   line-height: 1.55;
 }
 
 /* ── Spacing fixes ── */
 
-/* Section spacing */
+/* Section spacing. Reference section: padding-top 72px (mobile 52px) */
 .topic-page .prose-chem > section {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+}
+@media (max-width: 640px) {
+  .topic-page .prose-chem > section {
+    padding-top: 2rem;
+  }
 }
 .topic-page .prose-chem > section:first-child {
   padding-top: 0;
 }
 
-/* Block margins — consistent vertical rhythm */
+/* Block margins — consistent vertical rhythm.
+   Reference .figure margin-top: 22px; .card default 22-24px gaps. */
 .topic-page .prose-chem > section > div,
 .topic-page .prose-chem > section > dl,
 .topic-page .prose-chem > section > figure,
 .topic-page .prose-chem > section > aside,
 .topic-page .prose-chem > section > ol,
 .topic-page .prose-chem > section > p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.375rem;
+  margin-bottom: 1.375rem;
 }
 
-/* Definition-list card padding */
+/* Definition-list card padding. Reference .card: 24px 26px */
 .topic-page .prose-chem dl > div > div.rounded-lg {
-  padding: 1rem 1.25rem !important;
+  padding: 1.25rem 1.5rem !important;
 }
 @media (max-width: 640px) {
   .topic-page .prose-chem dl > div > div.rounded-lg {
-    padding: 0.875rem 1rem !important;
+    padding: 1rem 1.125rem !important;
   }
 }
 
-/* Steps card padding */
+/* Steps card padding. Reference .card: 24px 26px */
 .topic-page .prose-chem ol.space-y-4,
 .topic-page .prose-chem ol.space-y-5 {
-  padding: 1rem 1.25rem !important;
+  padding: 1.25rem 1.5rem !important;
 }
 @media (max-width: 640px) {
   .topic-page .prose-chem ol.space-y-4,
   .topic-page .prose-chem ol.space-y-5 {
-    padding: 0.875rem 1rem !important;
+    padding: 1rem 1.125rem !important;
   }
 }
 
 /* Objectives panel */
 .topic-page .prose-chem aside[aria-label="What you'll learn"] li,
 .topic-page .prose-chem aside[aria-label="In this topic"] li {
-  font-size: 0.875rem !important; /* 14px */
-  line-height: 1.55;
+  font-size: 0.9375rem !important;
+  line-height: 1.62;
   margin-bottom: 0.375rem;
 }
 .topic-page .prose-chem aside[aria-label="What you'll learn"] h3,
 .topic-page .prose-chem aside[aria-label="In this topic"] h3 {
-  font-size: 1.0625rem !important; /* 17px */
-  margin-bottom: 0.5rem;
+  font-size: 1.24rem !important;
+  margin-bottom: 0.625rem;
 }
 
 /* Key takeaways panel */
 .topic-page .prose-chem aside[aria-label="Key takeaways"] h3 {
-  font-size: 1.1875rem !important; /* 19px */
+  font-size: 1.5rem !important;
 }
 .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-  font-size: 0.8125rem !important; /* 13px */
+  font-size: 0.875rem !important;
   line-height: 1.55;
-  padding: 0.625rem;
+  padding: 0.75rem;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-    font-size: 0.875rem !important; /* 14px */
+    font-size: 0.9375rem !important;
   }
 }
 
@@ -801,10 +745,10 @@
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
   }
-  /* Shrink intro paragraph */
+  /* Shrink intro paragraph — keep readable on short landscape phones */
   .topic-page .prose-chem {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
   }
   /* At-a-glance: 4 columns on phone landscape (wide enough, short height) */
   .topic-page .at-a-glance-grid {
@@ -855,9 +799,9 @@
   .topic-page .xl\:grid-cols-\[260px_minmax\(0\,1fr\)_260px\] {
     grid-template-columns: 280px minmax(0, 1fr) 280px !important;
   }
-  /* Slightly larger body type for wide screens */
+  /* Slightly larger body type for wide screens (matches reference feel) */
   .topic-page .prose-chem {
-    font-size: 17.5px !important;
+    font-size: 18px !important;
   }
 }
 
@@ -871,7 +815,7 @@
     grid-template-columns: 300px minmax(0, 1fr) 300px !important;
   }
   .topic-page .prose-chem {
-    font-size: 18px !important;
+    font-size: 19px !important;
     max-width: 78ch !important;
   }
 }

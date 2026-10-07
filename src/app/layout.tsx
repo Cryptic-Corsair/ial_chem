@@ -1,45 +1,34 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Source_Serif_4, DM_Serif_Display, Outfit, JetBrains_Mono } from "next/font/google";
+import { DM_Serif_Display, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/site/theme-provider";
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Topic-page fonts — match the reference file's visual language
-const dmSerifDisplay = DM_Serif_Display({
-  variable: "--font-topic-display",
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
+// ── Font strategy (matches the reference index.html exactly) ──
+// Body / UI  : Outfit (sans-serif) — never serif, never Times
+// Headings   : DM Serif Display (display face only, not body serif)
+// Code / chem: JetBrains Mono
+//
+// All Tailwind `font-sans` and `font-serif` classes resolve to Outfit so
+// existing component code keeps working without edits. `font-display`
+// resolves to DM Serif Display.
 
 const outfit = Outfit({
-  variable: "--font-topic-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-topic-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500"],
@@ -98,7 +87,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${fraunces.variable} ${sourceSerif.variable} ${dmSerifDisplay.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
+        className={`${outfit.variable} ${dmSerifDisplay.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />

@@ -97,11 +97,11 @@ export default async function TopicPage({
             <span className="font-medium text-ink">Topic {String(topic.number).padStart(2, "0")}</span>
           </nav>
 
-          <div className="grid gap-6 py-6 sm:py-8 lg:grid-cols-[auto_1fr] lg:gap-10">
+          <div className="grid gap-6 py-8 sm:py-10 lg:grid-cols-[auto_1fr] lg:gap-12">
             {/* Huge typographic topic number — like a book chapter number */}
             <div className="flex items-start lg:block">
               <span
-                className="font-display text-6xl font-semibold italic leading-[0.85] text-primary/80 sm:text-7xl lg:text-8xl"
+                className="font-display text-7xl italic leading-[0.85] text-primary/80 sm:text-8xl lg:text-9xl"
                 aria-hidden="true"
               >
                 {String(topic.number).padStart(2, "0")}
@@ -110,7 +110,7 @@ export default async function TopicPage({
 
             <div className="min-w-0 lg:border-l lg:border-ink/15 lg:pl-10">
               {/* Metadata line — small caps, editorial */}
-              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[0.74rem] uppercase tracking-[0.13em] text-muted-foreground">
                 <span className="text-primary">Topic {String(topic.number).padStart(2, "0")}</span>
                 <span className="h-3 w-px bg-border" aria-hidden="true" />
                 <span>Unit {topic.unit === 1 ? "I" : "II"}</span>
@@ -143,23 +143,29 @@ export default async function TopicPage({
                 )}
               </div>
 
-              <h1 className="font-display text-2xl font-semibold leading-[1.15] tracking-tight text-balance text-ink sm:text-3xl lg:text-4xl">
+              <h1
+                className="font-display text-balance text-ink"
+                style={{ fontSize: "clamp(2.3rem, 5.4vw, 3.5rem)", letterSpacing: "-0.018em", lineHeight: 1.2 }}
+              >
                 <RichText>{topic.title}</RichText>
               </h1>
-              <p className="mt-3 max-w-2xl font-serif text-[0.9375rem] leading-relaxed text-ink/75 sm:text-base">
+              <p
+                className="mt-4 max-w-2xl text-ink/75"
+                style={{ fontSize: "1.11rem", lineHeight: 1.62 }}
+              >
                 <RichText>{topic.intro}</RichText>
               </p>
 
               {/* At a glance — the reference file's signature key-value strip.
                   Shows 4 essential facts in a glass card right in the hero. */}
               {topic.atAGlance && topic.atAGlance.length > 0 && (
-                <dl className="at-a-glance-grid mt-5 grid grid-cols-1 gap-x-6 gap-y-3 rounded-lg border border-border bg-card p-4 shadow-card sm:grid-cols-2 sm:p-5 lg:grid-cols-4">
+                <dl className="at-a-glance-grid mt-6 grid grid-cols-1 gap-x-6 gap-y-4 rounded-2xl border border-border bg-card p-5 shadow-card sm:grid-cols-2 sm:p-6 lg:grid-cols-4">
                   {topic.atAGlance.map((item, i) => (
-                    <div key={i} className="border-t border-dashed border-border pt-2.5 sm:border-t-0 sm:pt-0">
-                      <dt className="font-sans text-[10px] font-semibold uppercase tracking-[0.08em] text-primary">
+                    <div key={i} className="border-t border-dashed border-border pt-3 sm:border-t-0 sm:pt-0">
+                      <dt className="font-sans text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                         {item.label}
                       </dt>
-                      <dd className="mt-0.5 font-serif text-[0.8125rem] leading-relaxed text-ink/80">
+                      <dd className="mt-1 text-[0.85rem] leading-[1.55] text-ink/80">
                         {item.value}
                       </dd>
                     </div>
@@ -220,22 +226,24 @@ export default async function TopicPage({
                     <section
                       key={section.id}
                       id={section.id}
-                      className="scroll-mt-24 border-b border-border pb-10 pt-6 first:pt-0 last:border-b-0"
+                      className="scroll-mt-24 border-b border-border pb-12 first:border-b-0"
                       aria-labelledby={`${section.id}-title`}
                     >
                       {/* Section header — matches the reference file's .sec-head pattern:
                           spec-num with a horizontal line before it, h2 title, dek subtitle,
                           all in a border-bottom container. */}
-                      <header className="mb-5 border-b border-border pb-3">
-                        <div className="mb-1.5 flex items-center gap-2.5">
-                          <span className="h-0.5 w-5 rounded bg-primary" aria-hidden="true" />
-                          <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
-                            Specification Point {section.code}
-                          </span>
+                      <header className="mb-6 border-b border-border pb-4">
+                        <div
+                          className="mb-3 flex items-center gap-2.5 font-sans text-[0.73rem] font-semibold uppercase tracking-[0.14em] text-primary"
+                          style={{ gap: "9px" }}
+                        >
+                          <span className="inline-block h-0.5 w-[22px] rounded bg-primary" aria-hidden="true" />
+                          <span>Specification Point {section.code}</span>
                         </div>
                         <h2
                           id={`${section.id}-title`}
-                          className="font-display text-xl font-normal leading-tight tracking-tight text-ink sm:text-2xl"
+                          className="font-display text-ink"
+                          style={{ fontSize: "clamp(1.6rem, 3.3vw, 2.15rem)", lineHeight: 1.2, letterSpacing: "-0.012em" }}
                         >
                           <RichText>{section.title}</RichText>
                         </h2>
