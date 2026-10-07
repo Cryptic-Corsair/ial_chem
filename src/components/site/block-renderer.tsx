@@ -78,12 +78,12 @@ export function BlockRenderer({ block }: { block: Block }) {
                 {/* Body on a rail — always split into sentences, each on its own line */}
                 <dd className="ml-4">
                   {item.body && (
-                    <div className="rail-list text-[15px] leading-relaxed sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                    <div className="rail-list " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
                       <ForcedBullets>{item.body}</ForcedBullets>
                     </div>
                   )}
                   {item.children && item.children.length > 0 && (
-                    <ul className="rail-list mt-2 text-[15px] sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                    <ul className="rail-list mt-2 " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
                       {item.children.map((c, j) => (
                         <li key={j}>
                           <RichText>{c}</RichText>
@@ -122,12 +122,12 @@ export function BlockRenderer({ block }: { block: Block }) {
               )}
               <div className="ml-4">
                 {item.body && (
-                  <div className="rail-list text-[15px] leading-relaxed sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                  <div className="rail-list " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
                     <ForcedBullets>{item.body}</ForcedBullets>
                   </div>
                 )}
                 {item.children && item.children.length > 0 && (
-                  <ul className="rail-list mt-2 text-[15px] sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                  <ul className="rail-list mt-2 " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
                     {item.children.map((c, j) => (
                       <li key={j}>
                         <RichText>{c}</RichText>
@@ -353,7 +353,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                   dangerouslySetInnerHTML={{ __html: card.svg }}
                 />
               )}
-              <div className="space-y-2 text-[14.5px] leading-relaxed text-ink/80">
+              <div className="space-y-2 leading-relaxed text-ink/80">
                 {card.lines.map((line, j) => (
                   <p key={j}>
                     <RichText>{line}</RichText>
@@ -446,7 +446,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                     {item.label}
                   </p>
                 )}
-                <p className="font-serif text-[14.5px] leading-relaxed text-ink/90">
+                <p className="font-serif leading-relaxed text-ink/90">
                   <RichText>{item.body}</RichText>
                 </p>
               </li>
@@ -467,7 +467,7 @@ export function BlockRenderer({ block }: { block: Block }) {
             <MathExpr display>{block.math}</MathExpr>
           </div>
           {block.caption && (
-            <figcaption className="mt-3 text-[13px] italic text-muted-foreground">
+            <figcaption className="mt-3 italic text-muted-foreground">
               {block.caption}
             </figcaption>
           )}
@@ -523,7 +523,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                 {row.values.map((val, j) => (
                   <div
                     key={j}
-                    className="border-l border-border px-3 py-2.5 text-center text-[13px] text-foreground/90 sm:text-[14px]"
+                    className="border-l border-border px-3 py-2.5 text-center text-[13px] text-foreground/90 sm:text-sm"
                   >
                     <RichText>{val}</RichText>
                   </div>
@@ -568,7 +568,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                 <dt className="font-sans text-sm font-semibold text-foreground">
                   <RichText>{fact.term}</RichText>
                 </dt>
-                <dd className="text-[14px] leading-relaxed text-foreground/85">
+                <dd className="leading-relaxed text-foreground/85">
                   <RichText>{fact.value}</RichText>
                 </dd>
               </div>
@@ -647,7 +647,7 @@ function QABlock({
         <RichText>{question}</RichText>
       </p>
       {hint && !revealed && (
-        <p className="mt-2 text-[13px] italic text-muted-foreground">
+        <p className="mt-2 italic text-muted-foreground">
           💡 {hint}
         </p>
       )}
@@ -669,7 +669,7 @@ function QABlock({
       </button>
       {revealed && (
         <div className="mt-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
-          <p className="text-[14.5px] leading-relaxed text-foreground/90">
+          <p className="leading-relaxed text-foreground/90">
             <RichText>{answer}</RichText>
           </p>
         </div>
@@ -798,7 +798,7 @@ function StrengthLadderBlock({
         ))}
       </div>
       {note && (
-        <div className="mt-4 border-t border-border pt-3 font-serif text-[13px] italic leading-relaxed text-ink/70">
+        <div className="mt-4 border-t border-border pt-3 font-serif italic leading-relaxed text-ink/70">
           <RichText>{note}</RichText>
         </div>
       )}
@@ -907,7 +907,7 @@ function DivergingChartBlock({
         </div>
       )}
       {caption && (
-        <p className="mt-3 border-t border-border pt-3 font-serif text-[13px] italic leading-relaxed text-muted-foreground">
+        <p className="mt-3 border-t border-border pt-3 font-serif italic leading-relaxed text-muted-foreground">
           <RichText>{caption}</RichText>
         </p>
       )}
@@ -958,7 +958,7 @@ function DecisionFlowBlock({
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6 9 17l-5-5" /></svg>
             {yes.label}
           </span>
-          <p className="font-serif text-[14px] leading-relaxed text-ink/85">
+          <p className="font-serif leading-relaxed text-ink/85">
             <RichText>{yes.body}</RichText>
           </p>
         </div>
@@ -967,7 +967,7 @@ function DecisionFlowBlock({
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
             {no.label}
           </span>
-          <p className="font-serif text-[14px] leading-relaxed text-ink/70">
+          <p className="font-serif leading-relaxed text-ink/70">
             <RichText>{no.body}</RichText>
           </p>
         </div>
