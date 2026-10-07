@@ -97,11 +97,11 @@ export default async function TopicPage({
             <span className="font-medium text-ink">Topic {String(topic.number).padStart(2, "0")}</span>
           </nav>
 
-          <div className="grid gap-6 py-8 sm:py-10 lg:grid-cols-[auto_1fr] lg:gap-10">
+          <div className="grid gap-6 py-6 sm:py-8 lg:grid-cols-[auto_1fr] lg:gap-10">
             {/* Huge typographic topic number — like a book chapter number */}
             <div className="flex items-start lg:block">
               <span
-                className="font-display text-7xl font-semibold italic leading-[0.85] text-primary/80 sm:text-8xl lg:text-9xl"
+                className="font-display text-6xl font-semibold italic leading-[0.85] text-primary/80 sm:text-7xl lg:text-8xl"
                 aria-hidden="true"
               >
                 {String(topic.number).padStart(2, "0")}
@@ -110,7 +110,7 @@ export default async function TopicPage({
 
             <div className="min-w-0 lg:border-l lg:border-ink/15 lg:pl-10">
               {/* Metadata line — small caps, editorial */}
-              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
                 <span className="text-primary">Topic {String(topic.number).padStart(2, "0")}</span>
                 <span className="h-3 w-px bg-border" aria-hidden="true" />
                 <span>Unit {topic.unit === 1 ? "I" : "II"}</span>
@@ -143,23 +143,23 @@ export default async function TopicPage({
                 )}
               </div>
 
-              <h1 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance text-ink sm:text-4xl lg:text-5xl">
+              <h1 className="font-display text-2xl font-semibold leading-[1.15] tracking-tight text-balance text-ink sm:text-3xl lg:text-4xl">
                 <RichText>{topic.title}</RichText>
               </h1>
-              <p className="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-ink/75">
+              <p className="mt-3 max-w-2xl font-serif text-[0.9375rem] leading-relaxed text-ink/75 sm:text-base">
                 <RichText>{topic.intro}</RichText>
               </p>
 
               {/* At a glance — the reference file's signature key-value strip.
                   Shows 4 essential facts in a glass card right in the hero. */}
               {topic.atAGlance && topic.atAGlance.length > 0 && (
-                <dl className="at-a-glance-grid mt-6 grid grid-cols-1 gap-x-6 gap-y-4 rounded-lg border border-border bg-card p-5 shadow-card sm:grid-cols-2 lg:grid-cols-4">
+                <dl className="at-a-glance-grid mt-5 grid grid-cols-1 gap-x-6 gap-y-3 rounded-lg border border-border bg-card p-4 shadow-card sm:grid-cols-2 sm:p-5 lg:grid-cols-4">
                   {topic.atAGlance.map((item, i) => (
-                    <div key={i} className="border-t border-dashed border-border pt-3 sm:border-t-0 sm:pt-0">
-                      <dt className="font-sans text-[11px] font-semibold uppercase tracking-[0.08em] text-primary">
+                    <div key={i} className="border-t border-dashed border-border pt-2.5 sm:border-t-0 sm:pt-0">
+                      <dt className="font-sans text-[10px] font-semibold uppercase tracking-[0.08em] text-primary">
                         {item.label}
                       </dt>
-                      <dd className="mt-1 font-serif text-[14px] leading-relaxed text-ink/80">
+                      <dd className="mt-0.5 font-serif text-[0.8125rem] leading-relaxed text-ink/80">
                         {item.value}
                       </dd>
                     </div>
@@ -220,22 +220,22 @@ export default async function TopicPage({
                     <section
                       key={section.id}
                       id={section.id}
-                      className="scroll-mt-24 border-b border-border pb-12 pt-8 first:pt-0 last:border-b-0"
+                      className="scroll-mt-24 border-b border-border pb-10 pt-6 first:pt-0 last:border-b-0"
                       aria-labelledby={`${section.id}-title`}
                     >
                       {/* Section header — matches the reference file's .sec-head pattern:
                           spec-num with a horizontal line before it, h2 title, dek subtitle,
                           all in a border-bottom container. */}
-                      <header className="mb-6 border-b border-border pb-4">
-                        <div className="mb-2 flex items-center gap-2.5">
+                      <header className="mb-5 border-b border-border pb-3">
+                        <div className="mb-1.5 flex items-center gap-2.5">
                           <span className="h-0.5 w-5 rounded bg-primary" aria-hidden="true" />
-                          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                          <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
                             Specification Point {section.code}
                           </span>
                         </div>
                         <h2
                           id={`${section.id}-title`}
-                          className="font-display text-2xl font-normal leading-tight tracking-tight text-ink sm:text-[1.75rem]"
+                          className="font-display text-xl font-normal leading-tight tracking-tight text-ink sm:text-2xl"
                         >
                           <RichText>{section.title}</RichText>
                         </h2>
@@ -261,7 +261,7 @@ export default async function TopicPage({
               {/* Mode 2: Spec-list (verbatim spec points) */}
               {topic.specGroups && topic.specGroups.length > 0 && (
                 <>
-                  <header className="mb-8">
+                  <header className="mb-6">
                     <div className="flex items-baseline gap-3">
                       <span className="font-display text-sm font-semibold italic text-primary">
                         §
@@ -271,10 +271,10 @@ export default async function TopicPage({
                         Specification
                       </span>
                     </div>
-                    <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                    <h2 className="mt-2.5 font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                       What you need to know
                     </h2>
-                    <p className="mt-2 max-w-2xl font-serif text-sm italic leading-relaxed text-ink/60">
+                    <p className="mt-1.5 max-w-2xl font-serif text-[0.8125rem] italic leading-relaxed text-ink/60">
                       Verbatim from the Edexcel International A-Level Chemistry
                       specification. Spec codes are kept exactly as printed.
                     </p>
@@ -298,12 +298,12 @@ export default async function TopicPage({
             )}
 
             {/* Mark complete CTA */}
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-card p-5 shadow-card">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-card p-4 shadow-card sm:p-5">
               <div>
-                <p className="font-sans text-sm font-bold text-foreground">
+                <p className="font-sans text-[0.875rem] font-bold text-foreground">
                   Finished with Topic {topic.number}?
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-[0.75rem] text-muted-foreground">
                   Mark it complete so you can track your revision progress.
                 </p>
               </div>
@@ -313,19 +313,19 @@ export default async function TopicPage({
             {/* Prev / Next */}
             <nav
               aria-label="Topic navigation"
-              className="prev-next-nav mt-6 grid gap-3 border-t border-border pt-6 sm:grid-cols-2"
+              className="prev-next-nav mt-5 grid gap-3 border-t border-border pt-5 sm:grid-cols-2"
             >
               {prev ? (
                 <Link
                   href={`/topic/${prev.slug}`}
-                  className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 shadow-card transition-colors hover:border-primary/40 hover:bg-accent/30"
+                  className="group flex items-center gap-3 rounded-lg border border-border bg-card p-3.5 shadow-card transition-colors hover:border-primary/40 hover:bg-accent/30"
                 >
-                  <ArrowLeft className="h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-x-0.5" />
+                  <ArrowLeft className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-x-0.5" />
                   <span className="min-w-0">
-                    <span className="block font-sans text-xs text-muted-foreground">
+                    <span className="block font-sans text-[0.6875rem] text-muted-foreground">
                       Previous topic
                     </span>
-                    <span className="block truncate font-sans text-sm font-semibold text-foreground">
+                    <span className="block truncate font-sans text-[0.8125rem] font-semibold text-foreground">
                       Topic {prev.number}: {prev.title}
                     </span>
                   </span>
@@ -336,17 +336,17 @@ export default async function TopicPage({
               {next ? (
                 <Link
                   href={`/topic/${next.slug}`}
-                  className="group flex items-center justify-end gap-3 rounded-lg border border-border bg-card p-4 text-right shadow-card transition-colors hover:border-primary/40 hover:bg-accent/30"
+                  className="group flex items-center justify-end gap-3 rounded-lg border border-border bg-card p-3.5 text-right shadow-card transition-colors hover:border-primary/40 hover:bg-accent/30"
                 >
                   <span className="min-w-0">
-                    <span className="block font-sans text-xs text-muted-foreground">
+                    <span className="block font-sans text-[0.6875rem] text-muted-foreground">
                       Next topic
                     </span>
-                    <span className="block truncate font-sans text-sm font-semibold text-foreground">
+                    <span className="block truncate font-sans text-[0.8125rem] font-semibold text-foreground">
                       Topic {next.number}: {next.title}
                     </span>
                   </span>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
                 </Link>
               ) : (
                 <span />

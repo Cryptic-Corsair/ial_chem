@@ -513,15 +513,15 @@
 /* Topic page body text uses Outfit (sans) for readability */
 .topic-page .prose-chem {
   font-family: var(--font-topic-sans), 'Outfit', sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15.5px;
+  line-height: 1.7;
   letter-spacing: 0.005em;
   hyphens: none;
   -webkit-hyphens: none;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem {
-    font-size: 17px;
+    font-size: 16.5px;
   }
 }
 /* Topic page headings use DM Serif Display */
@@ -540,140 +540,159 @@
 
 /* Section H2 — spec section titles */
 .topic-page .prose-chem section > header h2 {
-  font-size: 1.625rem; /* 26px */
+  font-size: 1.25rem !important; /* 20px */
   line-height: 1.25;
   margin-top: 0;
 }
 @media (max-width: 640px) {
   .topic-page .prose-chem section > header h2 {
-    font-size: 1.375rem; /* 22px */
+    font-size: 1.125rem !important; /* 18px */
   }
 }
 
 /* Sub-headings (H3) — 7.1(i), etc. */
 .topic-page .prose-chem h3 {
-  font-size: 1.1875rem; /* 19px */
+  font-size: 1.0625rem !important; /* 17px */
   line-height: 1.3;
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
 }
-@media (max-width: 640px) {
+@media (min-width: 640px) {
   .topic-page .prose-chem h3 {
-    font-size: 1.0625rem; /* 17px */
+    font-size: 1.1875rem !important; /* 19px */
   }
+}
+
+/* H4 sub-sub-headings */
+.topic-page .prose-chem h4 {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Definition-list term labels */
 .topic-page .prose-chem dt span:last-child {
-  font-size: 0.9375rem; /* 15px */
+  font-size: 0.875rem !important; /* 14px */
   font-weight: 600;
 }
 
 /* Definition-list body text */
 .topic-page .prose-chem dd {
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.7;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.65;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem dd {
-    font-size: 1rem; /* 16px */
+    font-size: 0.9375rem; /* 15px */
   }
 }
 
 /* Rail list items (sub-items, forced bullets) */
 .topic-page .rail-list,
 .topic-page .prose-chem .rail-list {
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.7;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.65;
 }
 @media (min-width: 768px) {
   .topic-page .rail-list,
   .topic-page .prose-chem .rail-list {
-    font-size: 1rem; /* 16px */
+    font-size: 0.9375rem; /* 15px */
   }
 }
 
 /* Table cells */
 .topic-page .prose-chem table {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.8125rem !important; /* 13px */
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem table {
-    font-size: 0.9375rem; /* 15px */
+    font-size: 0.875rem !important; /* 14px */
   }
 }
 .topic-page .prose-chem th {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.6875rem !important; /* 11px */
   letter-spacing: 0.06em;
 }
 .topic-page .prose-chem td {
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 0.875rem;
 }
 
 /* Table captions */
 .topic-page .prose-chem table caption {
-  font-size: 0.8125rem; /* 13px */
-  padding: 0.75rem 1rem;
+  font-size: 0.75rem !important; /* 12px */
+  padding: 0.625rem 1rem;
 }
 
 /* Image captions */
 .topic-page .prose-chem figcaption {
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.6;
-  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem !important; /* 12px */
+  line-height: 1.55;
+  padding: 0.625rem 1rem;
 }
 
 /* Callout text */
 .topic-page .prose-chem aside[role="note"] p {
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.7;
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.65;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem aside[role="note"] p {
-    font-size: 1rem; /* 16px */
+    font-size: 0.9375rem !important; /* 15px */
   }
 }
 
 /* Callout labels */
 .topic-page .prose-chem aside[role="note"] p:first-child {
-  font-size: 0.6875rem; /* 11px */
+  font-size: 0.6875rem !important; /* 11px */
   letter-spacing: 0.08em;
 }
 
 /* At-a-glance strip */
 .topic-page .at-a-glance-grid dt {
-  font-size: 0.6875rem; /* 11px */
+  font-size: 0.625rem !important; /* 10px */
   letter-spacing: 0.06em;
 }
 .topic-page .at-a-glance-grid dd {
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.75rem !important; /* 12px */
   line-height: 1.5;
 }
 @media (min-width: 768px) {
   .topic-page .at-a-glance-grid dd {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.8125rem !important; /* 13px */
   }
 }
 
 /* Equation captions */
 .topic-page .prose-chem figure figcaption,
 .topic-page .prose-chem figure p[class*="italic"] {
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.6;
+  font-size: 0.75rem !important; /* 12px */
+  line-height: 1.55;
+}
+
+/* Equation/KaTeX display — keep it close to body text size, not oversized */
+.topic-page .prose-chem figure .katex-display,
+.topic-page .prose-chem .katex-display {
+  font-size: 1em !important;
+  margin: 0.4em 0 !important;
+}
+.topic-page .prose-chem figure .katex,
+.topic-page .prose-chem .katex {
+  font-size: 1em !important;
 }
 
 /* Fact-box */
 .topic-page .prose-chem aside[aria-label],
 .topic-page .prose-chem .fact-box {
-  font-size: 0.9375rem; /* 15px */
+  font-size: 0.875rem !important; /* 14px */
 }
 .topic-page .prose-chem aside[aria-label] dt,
 .topic-page .prose-chem .fact-box dt {
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.75rem !important; /* 12px */
 }
 .topic-page .prose-chem aside[aria-label] dd,
 .topic-page .prose-chem .fact-box dd {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.8125rem !important; /* 13px */
   line-height: 1.55;
 }
 
@@ -681,8 +700,8 @@
 
 /* Section spacing */
 .topic-page .prose-chem > section {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 .topic-page .prose-chem > section:first-child {
   padding-top: 0;
@@ -695,55 +714,57 @@
 .topic-page .prose-chem > section > aside,
 .topic-page .prose-chem > section > ol,
 .topic-page .prose-chem > section > p {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Definition-list card padding */
 .topic-page .prose-chem dl > div > div.rounded-lg {
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem !important;
 }
 @media (max-width: 640px) {
   .topic-page .prose-chem dl > div > div.rounded-lg {
-    padding: 1rem;
+    padding: 0.875rem 1rem !important;
   }
 }
 
 /* Steps card padding */
-.topic-page .prose-chem ol.space-y-4 {
-  padding: 1.25rem 1.5rem;
+.topic-page .prose-chem ol.space-y-4,
+.topic-page .prose-chem ol.space-y-5 {
+  padding: 1rem 1.25rem !important;
 }
 @media (max-width: 640px) {
-  .topic-page .prose-chem ol.space-y-4 {
-    padding: 1rem;
+  .topic-page .prose-chem ol.space-y-4,
+  .topic-page .prose-chem ol.space-y-5 {
+    padding: 0.875rem 1rem !important;
   }
 }
 
 /* Objectives panel */
 .topic-page .prose-chem aside[aria-label="What you'll learn"] li,
 .topic-page .prose-chem aside[aria-label="In this topic"] li {
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.65;
-  margin-bottom: 0.5rem;
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.55;
+  margin-bottom: 0.375rem;
 }
 .topic-page .prose-chem aside[aria-label="What you'll learn"] h3,
 .topic-page .prose-chem aside[aria-label="In this topic"] h3 {
-  font-size: 1.0625rem; /* 17px */
-  margin-bottom: 0.75rem;
+  font-size: 1.0625rem !important; /* 17px */
+  margin-bottom: 0.5rem;
 }
 
 /* Key takeaways panel */
 .topic-page .prose-chem aside[aria-label="Key takeaways"] h3 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.1875rem !important; /* 19px */
 }
 .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.6;
-  padding: 0.75rem;
+  font-size: 0.8125rem !important; /* 13px */
+  line-height: 1.55;
+  padding: 0.625rem;
 }
 @media (min-width: 768px) {
   .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-    font-size: 0.9375rem; /* 15px */
+    font-size: 0.875rem !important; /* 14px */
   }
 }
 
@@ -769,7 +790,7 @@
   .topic-page .text-7xl,
   .topic-page .text-8xl,
   .topic-page .text-9xl {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
     line-height: 1 !important;
   }
   /* Compact the hero */
@@ -782,20 +803,20 @@
   }
   /* Shrink intro paragraph */
   .topic-page .prose-chem {
-    font-size: 14px !important;
+    font-size: 13px !important;
     line-height: 1.5 !important;
   }
   /* At-a-glance: 4 columns on phone landscape (wide enough, short height) */
   .topic-page .at-a-glance-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 0.5rem !important;
-    padding: 0.75rem !important;
+    padding: 0.5rem !important;
   }
   .topic-page .at-a-glance-grid dt {
-    font-size: 9px !important;
+    font-size: 8px !important;
   }
   .topic-page .at-a-glance-grid dd {
-    font-size: 11px !important;
+    font-size: 10px !important;
     line-height: 1.3 !important;
   }
   /* Compact header */
@@ -812,7 +833,10 @@
 @media (min-width: 1024px) and (max-height: 900px) and (orientation: landscape) {
   /* Slightly smaller topic number for landscape tablets */
   .topic-page .text-9xl {
-    font-size: 6rem !important;
+    font-size: 5rem !important;
+  }
+  .topic-page .text-8xl {
+    font-size: 4.5rem !important;
   }
   /* Tighter hero padding */
   .topic-masthead > div {
@@ -833,7 +857,7 @@
   }
   /* Slightly larger body type for wide screens */
   .topic-page .prose-chem {
-    font-size: 18px !important;
+    font-size: 17.5px !important;
   }
 }
 
@@ -847,7 +871,7 @@
     grid-template-columns: 300px minmax(0, 1fr) 300px !important;
   }
   .topic-page .prose-chem {
-    font-size: 19px !important;
+    font-size: 18px !important;
     max-width: 78ch !important;
   }
 }
@@ -868,8 +892,9 @@
     grid-template-columns: 1fr !important;
   }
   /* Topic number: slightly smaller on phone */
-  .topic-page .text-7xl {
-    font-size: 4rem !important;
+  .topic-page .text-7xl,
+  .topic-page .text-6xl {
+    font-size: 3.25rem !important;
   }
 }
 

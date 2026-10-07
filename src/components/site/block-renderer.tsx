@@ -28,7 +28,7 @@ export function BlockRenderer({ block }: { block: Block }) {
     // ─────────────────────────────────────────────────────────────────────
     case "lead":
       return (
-        <div className="lead-block mb-6 border-l-2 border-primary/60 bg-card px-5 py-4 font-serif text-lg leading-relaxed text-ink/85 shadow-card sm:px-6 sm:py-5 sm:text-xl">
+        <div className="lead-block mb-4 border-l-2 border-primary/60 bg-card px-4 py-3 font-serif text-[0.9375rem] leading-relaxed text-ink/85 shadow-card sm:px-5 sm:py-4 sm:text-base">
           <ParagraphOrBullets>{block.text}</ParagraphOrBullets>
         </div>
       );
@@ -45,8 +45,8 @@ export function BlockRenderer({ block }: { block: Block }) {
           id={block.id}
           className={
             block.level === 3
-              ? "mt-10 mb-4 scroll-mt-24 font-display text-xl font-semibold tracking-tight text-balance text-ink sm:text-2xl"
-              : "mt-8 mb-3 scroll-mt-24 font-display text-lg font-semibold tracking-tight text-balance text-ink sm:text-xl"
+              ? "mt-8 mb-3 scroll-mt-24 font-display text-lg font-semibold tracking-tight text-balance text-ink sm:text-xl"
+              : "mt-6 mb-2 scroll-mt-24 font-display text-base font-semibold tracking-tight text-balance text-ink sm:text-lg"
           }
         >
           {block.tag && (
@@ -61,17 +61,17 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "definition-list":
       return (
-        <div className="my-5 rounded-lg border border-border bg-card p-5 shadow-card sm:p-6">
+        <div className="my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5">
           <dl>
             {block.items.map((item, i) => (
               <div
                 key={i}
-                className={i === 0 ? "" : "mt-4 border-t border-border pt-4"}
+                className={i === 0 ? "" : "mt-3 border-t border-border pt-3"}
               >
                 {/* Term with a bullet dot — like a heading marker */}
-                <dt className="mb-2 flex items-baseline gap-2.5">
-                  <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                  <span className="font-sans text-sm font-semibold text-ink">
+                <dt className="mb-1.5 flex items-baseline gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                  <span className="font-sans text-[0.875rem] font-semibold text-ink">
                     <RichText>{item.term}</RichText>
                   </span>
                 </dt>
@@ -100,27 +100,27 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "steps":
       return (
-        <div className="my-5 rounded-lg border border-border bg-card p-5 shadow-card sm:p-6">
-          <ol className="space-y-4">
+        <div className="my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5">
+          <ol className="space-y-5">
           {block.title && (
-            <p className="mb-1 font-sans text-sm font-semibold text-muted-foreground">
+            <p className="mb-2 font-sans text-[0.8125rem] font-semibold uppercase tracking-wide text-muted-foreground">
               {block.title}
             </p>
           )}
           {block.items.map((item, i) => (
             <li
               key={i}
-              className="relative pl-12"
+              className="relative pl-10"
             >
-              <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full border-2 border-primary/30 bg-primary-soft font-sans text-xs font-bold text-primary">
+              <span className="absolute left-0 top-0 grid h-7 w-7 place-items-center rounded-full border border-primary/30 bg-primary-soft font-sans text-[0.6875rem] font-bold text-primary">
                 {i + 1}
               </span>
               {item.term && (
-                <p className="mb-2 font-sans text-sm font-semibold text-ink">
+                <p className="mb-1.5 font-sans text-[0.8125rem] font-semibold text-ink">
                   <RichText>{item.term}</RichText>
                 </p>
               )}
-              <div className="ml-4">
+              <div className="ml-3">
                 {item.body && (
                   <div className="rail-list " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
                     <ForcedBullets>{item.body}</ForcedBullets>
@@ -144,10 +144,10 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "table":
       return (
-        <figure className="my-6 overflow-x-auto rounded-lg border border-border shadow-card">
-          <table className="w-full border-collapse text-sm">
+        <figure className="my-4 overflow-x-auto rounded-lg border border-border shadow-card">
+          <table className="w-full border-collapse text-[0.8125rem]">
             {block.caption && (
-              <caption className="border-b border-border bg-muted/40 px-4 py-2.5 text-left font-sans text-xs font-medium text-muted-foreground">
+              <caption className="border-b border-border bg-muted/40 px-3.5 py-2 text-left font-sans text-[0.6875rem] font-medium text-muted-foreground">
                 {block.caption}
               </caption>
             )}
@@ -157,7 +157,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                   <th
                     key={col.key}
                     scope="col"
-                    className="px-4 py-2.5 text-left font-sans text-xs font-semibold uppercase tracking-wide text-foreground/80"
+                    className="px-3.5 py-2 text-left font-sans text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground/80"
                   >
                     {col.header}
                   </th>
@@ -183,7 +183,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                         <Tag
                           key={col.key}
                           scope={isRowHeader ? "row" : undefined}
-                          className={`px-4 py-2.5 align-top ${
+                          className={`px-3.5 py-2 align-top ${
                             isRowHeader
                               ? "font-sans font-medium text-foreground"
                               : "text-foreground/80"
@@ -250,21 +250,21 @@ export function BlockRenderer({ block }: { block: Block }) {
       return (
         <aside
           role="note"
-          className={`my-6 flex flex-col gap-3 rounded-sm border-l-2 ${config.border} ${config.bg} p-4 shadow-card sm:flex-row sm:gap-4 sm:p-5`}
+          className={`my-4 flex flex-col gap-2.5 rounded-sm border-l-2 ${config.border} ${config.bg} p-3.5 shadow-card sm:flex-row sm:gap-3.5 sm:p-4`}
         >
           <span
-            className={`grid h-8 w-8 flex-shrink-0 place-items-center rounded-sm ${config.iconBg} shadow-card`}
+            className={`grid h-7 w-7 flex-shrink-0 place-items-center rounded-sm ${config.iconBg} shadow-card`}
             aria-hidden="true"
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-3.5 w-3.5" />
           </span>
           <div className="min-w-0 flex-1">
             <p
-              className={`mb-1 font-display text-sm font-semibold italic ${config.label}`}
+              className={`mb-1 font-display text-[0.8125rem] font-semibold italic ${config.label}`}
             >
               <RichText>{block.title}</RichText>
             </p>
-            <p className="text-[15px] leading-relaxed text-ink/90 sm:text-base">
+            <p className="text-[0.875rem] leading-relaxed text-ink/90 sm:text-[0.9375rem]">
               <RichText>{block.body}</RichText>
             </p>
           </div>
@@ -274,11 +274,11 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "strength-chart":
       return (
-        <figure className="my-6 rounded-sm border border-border bg-card p-4 shadow-card sm:p-6">
-          <figcaption className="mb-4 font-sans text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+        <figure className="my-4 rounded-sm border border-border bg-card p-4 shadow-card sm:p-5">
+          <figcaption className="mb-3 font-sans text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground">
             {block.title}
           </figcaption>
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {block.bars.map((bar, i) => {
               const fills = [
                 "from-primary to-primary/80",
@@ -292,11 +292,11 @@ export function BlockRenderer({ block }: { block: Block }) {
                   key={i}
                   className="grid grid-cols-[100px_1fr_auto] items-center gap-2 sm:grid-cols-[180px_1fr_110px] sm:gap-3 lg:grid-cols-[200px_1fr_120px]"
                 >
-                  <span className="font-sans text-xs font-medium text-foreground sm:text-sm">
+                  <span className="font-sans text-[0.75rem] font-medium text-foreground sm:text-[0.8125rem]">
                     <RichText>{bar.label}</RichText>
                   </span>
                   <div
-                    className="h-3 overflow-hidden rounded-full border border-border bg-muted sm:h-3.5"
+                    className="h-2.5 overflow-hidden rounded-full border border-border bg-muted sm:h-3"
                     role="img"
                     aria-label={`${bar.label}: ${bar.value}`}
                   >
@@ -307,7 +307,7 @@ export function BlockRenderer({ block }: { block: Block }) {
                       style={{ width: `${bar.width}%` }}
                     />
                   </div>
-                  <span className="text-right font-mono text-[11px] text-muted-foreground sm:text-xs">
+                  <span className="text-right font-mono text-[0.6875rem] text-muted-foreground sm:text-[0.75rem]">
                     {bar.value}
                   </span>
                 </div>
@@ -326,34 +326,34 @@ export function BlockRenderer({ block }: { block: Block }) {
             ? "sm:grid-cols-2 lg:grid-cols-3"
             : "sm:grid-cols-2 lg:grid-cols-4";
       return (
-        <div className={`my-6 grid gap-4 ${gridClass}`}>
+        <div className={`my-4 grid gap-3 ${gridClass}`}>
           {block.cards.map((card, i) => (
             <article
               key={i}
-              className={`relative flex flex-col rounded-sm border bg-card p-5 shadow-card transition-all hover:shadow-raised ${
+              className={`relative flex flex-col rounded-sm border bg-card p-4 shadow-card transition-all hover:shadow-raised ${
                 card.highlight ? "border-primary/50 border-l-2 border-l-primary" : "border-border"
               }`}
             >
               {card.badge && (
-                <span className="absolute -top-2.5 right-4 inline-flex items-center bg-primary px-2 py-0.5 font-display text-[11px] font-semibold italic text-primary-foreground shadow-card">
+                <span className="absolute -top-2 right-3 inline-flex items-center bg-primary px-1.5 py-0.5 font-display text-[0.625rem] font-semibold italic text-primary-foreground shadow-card">
                   {card.badge}
                 </span>
               )}
-              <h4 className="mb-1 flex items-baseline gap-2 font-display text-lg font-semibold text-ink">
+              <h4 className="mb-1 flex items-baseline gap-2 font-display text-base font-semibold text-ink">
                 <RichText>{card.title}</RichText>
                 {card.formula && (
-                  <span className="font-mono text-xs font-normal text-ink/60">
+                  <span className="font-mono text-[0.6875rem] font-normal text-ink/60">
                     <RichText>{card.formula}</RichText>
                   </span>
                 )}
               </h4>
               {card.svg && (
                 <div
-                  className="diagram-svg my-3 rounded-md bg-muted/30 p-2"
+                  className="diagram-svg my-2.5 rounded-md bg-muted/30 p-2"
                   dangerouslySetInnerHTML={{ __html: card.svg }}
                 />
               )}
-              <div className="space-y-2 leading-relaxed text-ink/80">
+              <div className="space-y-1.5 text-[0.8125rem] leading-relaxed text-ink/80">
                 {card.lines.map((line, j) => (
                   <p key={j}>
                     <RichText>{line}</RichText>
@@ -361,11 +361,11 @@ export function BlockRenderer({ block }: { block: Block }) {
                 ))}
               </div>
               {card.stats && card.stats.length > 0 && (
-                <dl className="mt-auto border-t border-border pt-3">
+                <dl className="mt-auto border-t border-border pt-2.5">
                   {card.stats.map((stat, j) => (
                     <div
                       key={j}
-                      className="flex items-baseline justify-between gap-2 py-1 text-[13px]"
+                      className="flex items-baseline justify-between gap-2 py-0.5 text-[0.75rem]"
                     >
                       <dt className="text-muted-foreground">{stat.term}</dt>
                       <dd
@@ -392,23 +392,23 @@ export function BlockRenderer({ block }: { block: Block }) {
       return (
         <aside
           aria-label={block.title ?? "What you'll learn"}
-          className="my-6 border-l-2 border-primary/40 bg-card/50 p-5 sm:p-6"
+          className="my-4 border-l-2 border-primary/40 bg-card/50 p-4 sm:p-5"
         >
-          <header className="mb-3">
-            <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+          <header className="mb-2.5">
+            <p className="font-sans text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
               In this topic
             </p>
-            <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
+            <h3 className="font-display text-lg font-semibold tracking-tight text-ink">
               {block.title ?? "What you'll learn"}
             </h3>
           </header>
-          <ul className="grid gap-2 sm:grid-cols-2">
+          <ul className="grid gap-1.5 sm:grid-cols-2">
             {block.items.map((item, i) => (
               <li
                 key={i}
-                className="flex items-start gap-2.5 font-serif text-[15px] leading-relaxed text-ink/85"
+                className="flex items-start gap-2 font-serif text-[0.875rem] leading-relaxed text-ink/85"
               >
-                <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary" aria-hidden="true" />
                 <span>
                   <RichText>{item}</RichText>
                 </span>
@@ -422,31 +422,31 @@ export function BlockRenderer({ block }: { block: Block }) {
       return (
         <aside
           aria-label={block.title ?? "Key takeaways"}
-          className="my-10 border-t-2 border-ink pt-6"
+          className="my-8 border-t-2 border-ink pt-5"
         >
-          <header className="mb-5">
-            <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-primary">
+          <header className="mb-4">
+            <p className="font-sans text-[0.625rem] uppercase tracking-[0.15em] text-primary">
               Quick recall
             </p>
-            <h3 className="font-display text-2xl font-semibold italic tracking-tight text-ink">
+            <h3 className="font-display text-xl font-semibold italic tracking-tight text-ink">
               {block.title ?? "Key takeaways"}
             </h3>
-            <p className="mt-1 font-serif text-sm italic text-ink/60">
+            <p className="mt-1 font-serif text-[0.8125rem] italic text-ink/60">
               Scan these before your exam.
             </p>
           </header>
-          <ul className="grid gap-3 sm:grid-cols-2">
+          <ul className="grid gap-2.5 sm:grid-cols-2">
             {block.items.map((item, i) => (
               <li
                 key={i}
-                className="border-l border-border bg-card/50 p-4 shadow-card"
+                className="border-l border-border bg-card/50 p-3.5 shadow-card"
               >
                 {item.label && (
-                  <p className="mb-1 font-display text-xs font-semibold uppercase tracking-[0.08em] text-primary">
+                  <p className="mb-1 font-display text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-primary">
                     {item.label}
                   </p>
                 )}
-                <p className="font-serif leading-relaxed text-ink/90">
+                <p className="font-serif text-[0.875rem] leading-relaxed text-ink/90">
                   <RichText>{item.body}</RichText>
                 </p>
               </li>
@@ -457,17 +457,17 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "equation":
       return (
-        <figure className="my-6 overflow-x-auto rounded-sm border border-border bg-card p-5 text-center shadow-card sm:p-7">
+        <figure className="my-4 overflow-x-auto rounded-sm border border-border bg-card px-4 py-3 text-center shadow-card sm:px-5 sm:py-4">
           {block.label && (
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+            <p className="mb-2 font-sans text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
               {block.label}
             </p>
           )}
-          <div className="text-[1.15rem] sm:text-[1.25rem]">
+          <div className="text-[0.9375rem] leading-snug sm:text-[1rem]">
             <MathExpr display>{block.math}</MathExpr>
           </div>
           {block.caption && (
-            <figcaption className="mt-3 italic text-muted-foreground">
+            <figcaption className="mt-2 text-[0.8125rem] italic leading-relaxed text-muted-foreground">
               {block.caption}
             </figcaption>
           )}
@@ -477,9 +477,9 @@ export function BlockRenderer({ block }: { block: Block }) {
     case "compare": {
       const cols = block.columns.length;
       return (
-        <figure className="my-6 overflow-x-auto rounded-xl border border-border shadow-card scrollbar-chem">
+        <figure className="my-4 overflow-x-auto rounded-xl border border-border shadow-card scrollbar-chem">
           {block.label && (
-            <figcaption className="border-b border-border bg-muted/40 px-4 py-2.5 text-left font-sans text-xs font-medium text-muted-foreground">
+            <figcaption className="border-b border-border bg-muted/40 px-3.5 py-2 text-left font-sans text-[0.6875rem] font-medium text-muted-foreground">
               {block.label}
             </figcaption>
           )}
@@ -487,22 +487,22 @@ export function BlockRenderer({ block }: { block: Block }) {
             <div className="grid border-b border-border bg-muted/30"
               style={{ gridTemplateColumns: `120px repeat(${cols}, minmax(0, 1fr))` }}
             >
-              <div className="px-3 py-2.5" aria-hidden="true" />
+              <div className="px-3 py-2" aria-hidden="true" />
               {block.columns.map((col, i) => (
                 <div
                   key={i}
-                  className="border-l border-border px-3 py-2.5 text-center"
+                  className="border-l border-border px-3 py-2 text-center"
                 >
-                  <p className="font-sans text-sm font-bold text-foreground">
+                  <p className="font-sans text-[0.8125rem] font-bold text-foreground">
                     <RichText>{col.title}</RichText>
                   </p>
                   {col.subtitle && (
-                    <p className="mt-0.5 font-mono text-[11px] text-muted-foreground">
+                    <p className="mt-0.5 font-mono text-[0.6875rem] text-muted-foreground">
                       <RichText>{col.subtitle}</RichText>
                     </p>
                   )}
                   {col.badge && (
-                    <span className="mt-1.5 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 font-sans text-[10px] font-bold uppercase tracking-wide text-primary">
+                    <span className="mt-1.5 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 font-sans text-[0.625rem] font-bold uppercase tracking-wide text-primary">
                       {col.badge}
                     </span>
                   )}
@@ -517,13 +517,13 @@ export function BlockRenderer({ block }: { block: Block }) {
                 }`}
                 style={{ gridTemplateColumns: `120px repeat(${cols}, minmax(0, 1fr))` }}
               >
-                <div className="px-3 py-2.5 font-sans text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <div className="px-3 py-2 font-sans text-[0.6875rem] font-semibold uppercase tracking-wide text-muted-foreground">
                   {row.label}
                 </div>
                 {row.values.map((val, j) => (
                   <div
                     key={j}
-                    className="border-l border-border px-3 py-2.5 text-center text-[13px] text-foreground/90 sm:text-sm"
+                    className="border-l border-border px-3 py-2 text-center text-[0.75rem] text-foreground/90 sm:text-[0.8125rem]"
                   >
                     <RichText>{val}</RichText>
                   </div>
@@ -552,23 +552,23 @@ export function BlockRenderer({ block }: { block: Block }) {
       }[block.tone ?? "default"];
       return (
         <aside
-          className={`my-5 rounded-xl border ${toneConfig.wrap} p-4 shadow-card sm:p-5`}
+          className={`my-4 rounded-xl border ${toneConfig.wrap} p-3.5 shadow-card sm:p-4`}
           aria-label={block.label ?? "Key facts"}
         >
           {block.label && (
             <p
-              className={`mb-3 font-sans text-xs font-bold uppercase tracking-wider ${toneConfig.label}`}
+              className={`mb-2.5 font-sans text-[0.6875rem] font-bold uppercase tracking-wider ${toneConfig.label}`}
             >
               {block.label}
             </p>
           )}
-          <dl className="grid gap-2.5 sm:grid-cols-[auto_1fr] sm:gap-x-4">
+          <dl className="grid gap-2 sm:grid-cols-[auto_1fr] sm:gap-x-4">
             {block.facts.map((fact, i) => (
               <div key={i} className="contents">
-                <dt className="font-sans text-sm font-semibold text-foreground">
+                <dt className="font-sans text-[0.8125rem] font-semibold text-foreground">
                   <RichText>{fact.term}</RichText>
                 </dt>
-                <dd className="leading-relaxed text-foreground/85">
+                <dd className="text-[0.8125rem] leading-relaxed text-foreground/85">
                   <RichText>{fact.value}</RichText>
                 </dd>
               </div>
@@ -598,14 +598,14 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "image":
       return (
-        <figure className="my-6 overflow-hidden rounded-lg border border-border bg-card shadow-card">
+        <figure className="my-4 overflow-hidden rounded-lg border border-border bg-card shadow-card">
           <img
             src={block.src}
             alt={block.alt}
             className="w-full h-auto"
           />
           {block.caption && (
-            <figcaption className="border-t border-dashed border-border px-5 py-3 text-[13px] leading-relaxed text-muted-foreground">
+            <figcaption className="border-t border-dashed border-border px-4 py-2.5 text-[0.8125rem] leading-relaxed text-muted-foreground">
               <RichText>{block.caption}</RichText>
             </figcaption>
           )}
@@ -633,21 +633,21 @@ function QABlock({
   return (
     <aside
       aria-label="Check your understanding"
-      className="my-6 rounded-xl border-2 border-dashed border-primary/30 bg-card p-5 shadow-card sm:p-6"
+      className="my-4 rounded-xl border-2 border-dashed border-primary/30 bg-card p-4 shadow-card sm:p-5"
     >
-      <header className="mb-3 flex items-center gap-2">
-        <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground shadow-card">
-          <HelpCircle className="h-4 w-4" />
+      <header className="mb-2.5 flex items-center gap-2">
+        <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary text-primary-foreground shadow-card">
+          <HelpCircle className="h-3.5 w-3.5" />
         </span>
-        <p className="font-sans text-xs font-bold uppercase tracking-wider text-primary">
+        <p className="font-sans text-[0.6875rem] font-bold uppercase tracking-wider text-primary">
           Check your understanding
         </p>
       </header>
-      <p className="text-[15.5px] font-medium leading-relaxed text-foreground">
+      <p className="text-[0.9375rem] font-medium leading-relaxed text-foreground">
         <RichText>{question}</RichText>
       </p>
       {hint && !revealed && (
-        <p className="mt-2 italic text-muted-foreground">
+        <p className="mt-2 text-[0.8125rem] italic text-muted-foreground">
           💡 {hint}
         </p>
       )}
@@ -655,21 +655,21 @@ function QABlock({
         type="button"
         onClick={() => setRevealed((r) => !r)}
         aria-expanded={revealed}
-        className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-3 py-1.5 font-sans text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
+        className="mt-2.5 inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2.5 py-1 font-sans text-[0.6875rem] font-semibold text-primary transition-colors hover:bg-primary/20"
       >
         {revealed ? (
           <>
-            <EyeOff className="h-3.5 w-3.5" /> Hide answer
+            <EyeOff className="h-3 w-3" /> Hide answer
           </>
         ) : (
           <>
-            <Eye className="h-3.5 w-3.5" /> Reveal answer
+            <Eye className="h-3 w-3" /> Reveal answer
           </>
         )}
       </button>
       {revealed && (
-        <div className="mt-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
-          <p className="leading-relaxed text-foreground/90">
+        <div className="mt-2.5 rounded-lg border border-border bg-muted/30 px-3.5 py-2.5">
+          <p className="text-[0.875rem] leading-relaxed text-foreground/90">
             <RichText>{answer}</RichText>
           </p>
         </div>
@@ -703,7 +703,7 @@ function DiagramBlock({
 
   return (
     <figure
-      className={`my-6 rounded-lg border border-border bg-card p-5 shadow-card sm:p-6 ${
+      className={`my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5 ${
         variant === "soft" ? "bg-surface-2" : ""
       }`}
       style={variant === "soft" ? { background: "var(--surface-2, var(--muted))" } : undefined}
@@ -713,7 +713,7 @@ function DiagramBlock({
         dangerouslySetInnerHTML={{ __html: accessibleSvg }}
       />
       {caption && (
-        <figcaption className="mt-4 border-t border-dashed border-border pt-3 text-[13px] leading-relaxed text-muted-foreground">
+        <figcaption className="mt-3 border-t border-dashed border-border pt-2.5 text-[0.8125rem] leading-relaxed text-muted-foreground">
           <RichText>{caption}</RichText>
         </figcaption>
       )}
@@ -750,9 +750,9 @@ function StrengthLadderBlock({
   const showBreak = rungs.length > 1 && rungs[0].width >= 90;
 
   return (
-    <figure className="my-6 rounded-sm border border-border bg-card p-4 shadow-card sm:p-6">
+    <figure className="my-4 rounded-sm border border-border bg-card p-4 shadow-card sm:p-5">
       {title && (
-        <figcaption className="mb-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+        <figcaption className="mb-3 font-sans text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
           {title}
         </figcaption>
       )}
@@ -761,33 +761,33 @@ function StrengthLadderBlock({
           <div key={i}>
             {showBreak && i === 1 && (
               <div
-                className="relative my-2 h-6"
+                className="relative my-2 h-5"
                 aria-hidden="true"
               >
                 <div
                   className="absolute inset-x-0 top-1/2 border-t-2 border-dashed border-border"
                 />
-                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 font-sans text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 font-sans text-[0.625rem] uppercase tracking-[0.1em] text-muted-foreground">
                   scale break
                 </span>
               </div>
             )}
             <div className="grid grid-cols-[100px_1fr] items-center gap-2 sm:grid-cols-[180px_1fr] sm:gap-4 lg:grid-cols-[200px_1fr]">
-              <div className="text-right text-xs text-ink sm:text-sm">
+              <div className="text-right text-[0.75rem] text-ink sm:text-[0.8125rem]">
                 <span className="font-medium">{rung.label}</span>
                 {rung.sublabel && (
-                  <span className="mt-0.5 block text-[10px] text-muted-foreground sm:text-[11px]">
+                  <span className="mt-0.5 block text-[0.625rem] text-muted-foreground sm:text-[0.6875rem]">
                     {rung.sublabel}
                   </span>
                 )}
               </div>
-              <div className="h-6 overflow-hidden rounded bg-muted sm:h-7">
+              <div className="h-5 overflow-hidden rounded bg-muted sm:h-6">
                 <div
                   className={`flex h-full items-center rounded px-2 ${colorMap[rung.color]}`}
                   style={{ width: `${rung.width}%`, minWidth: "34px" }}
                 >
                   {rung.barLabel && (
-                    <span className="truncate text-[10px] font-semibold text-primary-foreground sm:text-[11px]">
+                    <span className="truncate text-[0.625rem] font-semibold text-primary-foreground sm:text-[0.6875rem]">
                       {rung.barLabel}
                     </span>
                   )}
@@ -798,7 +798,7 @@ function StrengthLadderBlock({
         ))}
       </div>
       {note && (
-        <div className="mt-4 border-t border-border pt-3 font-serif italic leading-relaxed text-ink/70">
+        <div className="mt-3 border-t border-border pt-2.5 font-serif text-[0.8125rem] italic leading-relaxed text-ink/70">
           <RichText>{note}</RichText>
         </div>
       )}
@@ -834,9 +834,9 @@ function DivergingChartBlock({
   const maxAbs = Math.max(...rows.map((r) => Math.abs(r.value)), 1);
 
   return (
-    <figure className="my-6 rounded-sm border border-border bg-card p-4 shadow-card sm:p-6">
+    <figure className="my-4 rounded-sm border border-border bg-card p-4 shadow-card sm:p-5">
       {title && (
-        <figcaption className="mb-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+        <figcaption className="mb-3 font-sans text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
           {title}
         </figcaption>
       )}
@@ -849,16 +849,16 @@ function DivergingChartBlock({
               className="grid grid-cols-[100px_1fr_60px] items-center gap-2 sm:grid-cols-[150px_1fr_80px] sm:gap-4"
             >
               {/* Label */}
-              <div className="text-right text-xs text-ink sm:text-sm">
+              <div className="text-right text-[0.75rem] text-ink sm:text-[0.8125rem]">
                 <span className="font-medium">{row.label}</span>
                 {row.sublabel && (
-                  <span className="mt-0.5 block text-[10px] text-muted-foreground sm:text-[11px]">
+                  <span className="mt-0.5 block text-[0.625rem] text-muted-foreground sm:text-[0.6875rem]">
                     {row.sublabel}
                   </span>
                 )}
               </div>
               {/* Track with zero line */}
-              <div className="relative h-6 overflow-hidden rounded bg-muted sm:h-7">
+              <div className="relative h-5 overflow-hidden rounded bg-muted sm:h-6">
                 {/* Zero line */}
                 <div
                   className="absolute inset-y-0 w-0.5 bg-ink/40"
@@ -885,7 +885,7 @@ function DivergingChartBlock({
               </div>
               {/* Value */}
               <span
-                className={`text-right font-mono text-[11px] font-medium sm:text-xs ${
+                className={`text-right font-mono text-[0.6875rem] font-medium sm:text-[0.75rem] ${
                   row.side === "pos" ? "text-primary" : "text-pos"
                 }`}
               >
@@ -899,7 +899,7 @@ function DivergingChartBlock({
       {(leftAxis || rightAxis) && (
         <div className="mt-2 grid grid-cols-[100px_1fr_60px] gap-2 border-t border-border pt-2 sm:grid-cols-[150px_1fr_80px] sm:gap-4">
           <span />
-          <div className="flex justify-between text-[10px] uppercase tracking-[0.1em] text-muted-foreground sm:text-[11px]">
+          <div className="flex justify-between text-[0.625rem] uppercase tracking-[0.1em] text-muted-foreground sm:text-[0.6875rem]">
             {leftAxis && <span>{leftAxis}</span>}
             {rightAxis && <span>{rightAxis}</span>}
           </div>
@@ -907,7 +907,7 @@ function DivergingChartBlock({
         </div>
       )}
       {caption && (
-        <p className="mt-3 border-t border-border pt-3 font-serif italic leading-relaxed text-muted-foreground">
+        <p className="mt-2.5 border-t border-border pt-2.5 font-serif text-[0.8125rem] italic leading-relaxed text-muted-foreground">
           <RichText>{caption}</RichText>
         </p>
       )}
@@ -930,44 +930,44 @@ function DecisionFlowBlock({
   no: { label: string; body: string };
 }) {
   return (
-    <div className="my-6">
+    <div className="my-4">
       {title && (
-        <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+        <p className="mb-2.5 font-sans text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
           {title}
         </p>
       )}
       {/* Question box */}
-      <div className="flex items-center gap-3 rounded-sm border border-primary/30 bg-card p-4 shadow-card sm:p-5">
-        <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-primary font-sans text-xs font-bold text-primary-foreground sm:h-8 sm:w-8">
+      <div className="flex items-center gap-3 rounded-sm border border-primary/30 bg-card p-3.5 shadow-card sm:p-4">
+        <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-primary font-sans text-[0.6875rem] font-bold text-primary-foreground sm:h-7 sm:w-7">
           ?
         </span>
-        <p className="font-serif text-[15px] font-medium text-ink">
+        <p className="font-serif text-[0.875rem] font-medium text-ink">
           <RichText>{question}</RichText>
         </p>
       </div>
       {/* Arrow down */}
-      <div className="flex justify-center py-2" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary/40">
+      <div className="flex justify-center py-1.5" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary/40">
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
       </div>
       {/* Two branches */}
-      <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-sm border border-primary/30 bg-primary-soft/30 p-4">
-          <span className="mb-1.5 inline-flex items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.08em] text-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6 9 17l-5-5" /></svg>
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        <div className="rounded-sm border border-primary/30 bg-primary-soft/30 p-3.5">
+          <span className="mb-1.5 inline-flex items-center gap-1.5 font-display text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-primary">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6 9 17l-5-5" /></svg>
             {yes.label}
           </span>
-          <p className="font-serif leading-relaxed text-ink/85">
+          <p className="font-serif text-[0.8125rem] leading-relaxed text-ink/85">
             <RichText>{yes.body}</RichText>
           </p>
         </div>
-        <div className="rounded-sm border border-border bg-muted/20 p-4">
-          <span className="mb-1.5 inline-flex items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        <div className="rounded-sm border border-border bg-muted/20 p-3.5">
+          <span className="mb-1.5 inline-flex items-center gap-1.5 font-display text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
             {no.label}
           </span>
-          <p className="font-serif leading-relaxed text-ink/70">
+          <p className="font-serif text-[0.8125rem] leading-relaxed text-ink/70">
             <RichText>{no.body}</RichText>
           </p>
         </div>
