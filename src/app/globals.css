@@ -1,0 +1,888 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-oxblood: var(--oxblood);
+  --color-ochre: var(--ochre);
+  --color-moss: var(--moss);
+  --color-teal: var(--teal);
+  --color-amber: var(--amber);
+  --color-emerald: var(--emerald);
+  --color-rose: var(--rose);
+  --color-teal-soft: var(--teal-soft);
+  --color-amber-soft: var(--amber-soft);
+  --color-emerald-soft: var(--emerald-soft);
+  --color-rose-soft: var(--rose-soft);
+  --color-neg: var(--neg);
+  --color-neg-soft: var(--neg-soft);
+  --color-pos: var(--pos);
+  --color-pos-soft: var(--pos-soft);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* ═══════════════════════════════════════════════════════════════════
+     THE PALETTE — ink, paper, oxblood
+     A committed editorial palette inspired by old chemistry textbooks:
+     deep blue-black ink on warm aged paper, with oxblood as the single
+     sharp accent. No teal-on-cream "tasteful generic" here.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* Paper — warm, slightly aged, NOT pure white. Like a 1970s textbook page. */
+  --background: oklch(0.965 0.012 85);          /* warm aged paper */
+  --paper: oklch(0.965 0.012 85);
+
+  /* Ink — deep blue-black, not pure black. Slightly cooler than the paper
+     for a printed-on-paper feel. */
+  --foreground: oklch(0.22 0.035 255);          /* ink blue-black */
+  --ink: oklch(0.22 0.035 255);
+
+  /* Card surface — a hair lighter than the paper, like a tipped-in plate */
+  --card: oklch(0.985 0.008 85);
+  --card-foreground: oklch(0.22 0.035 255);
+  --popover: oklch(0.985 0.008 85);
+  --popover-foreground: oklch(0.22 0.035 255);
+
+  /* Primary — oxblood. The single sharp accent. Used for links, key terms,
+     section numbers, the wordmark. Deliberately NOT teal. */
+  --primary: oklch(0.40 0.13 25);               /* oxblood / burgundy */
+  --primary-foreground: oklch(0.97 0.008 85);
+
+  --secondary: oklch(0.93 0.015 85);
+  --secondary-foreground: oklch(0.28 0.035 255);
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: oklch(0.42 0.02 255);
+  --accent: oklch(0.88 0.04 75);                /* muted ochre */
+  --accent-foreground: oklch(0.30 0.06 60);
+  --destructive: oklch(0.50 0.18 25);
+  --border: oklch(0.84 0.015 85);               /* visible rule, like a printed border */
+  --input: oklch(0.92 0.01 85);
+  --ring: oklch(0.40 0.13 25);
+
+  /* Semantic accents — desaturated, earthy. No neon. */
+  --oxblood: oklch(0.40 0.13 25);
+  --ochre: oklch(0.62 0.10 75);
+  --moss: oklch(0.50 0.08 145);
+  --teal: oklch(0.48 0.07 200);
+  --amber: oklch(0.62 0.11 70);
+  --emerald: oklch(0.52 0.10 155);
+  --rose: oklch(0.55 0.16 15);
+
+  /* Polarity pair — copper for δ⁻, slate blue for δ⁺.
+     Used consistently in diagrams and inline text so the two charges
+     are instantly distinguishable by colour. */
+  --neg: oklch(0.52 0.12 25);           /* copper — δ⁻ */
+  --neg-soft: oklch(0.93 0.04 25);
+  --pos: oklch(0.45 0.08 255);          /* slate blue — δ⁺ */
+  --pos-soft: oklch(0.93 0.03 255);
+
+  --teal-soft: oklch(0.93 0.03 200);
+  --amber-soft: oklch(0.93 0.04 75);
+  --emerald-soft: oklch(0.93 0.03 155);
+  --rose-soft: oklch(0.94 0.03 15);
+
+  --chart-1: oklch(0.40 0.13 25);
+  --chart-2: oklch(0.50 0.08 145);
+  --chart-3: oklch(0.62 0.10 75);
+  --chart-4: oklch(0.48 0.07 200);
+  --chart-5: oklch(0.55 0.16 15);
+
+  --sidebar: var(--background);
+  --sidebar-foreground: oklch(0.28 0.035 255);
+  --sidebar-primary: oklch(0.40 0.13 25);
+  --sidebar-primary-foreground: oklch(0.97 0.008 85);
+  --sidebar-accent: oklch(0.93 0.015 85);
+  --sidebar-accent-foreground: oklch(0.28 0.035 255);
+  --sidebar-border: oklch(0.84 0.015 85);
+  --sidebar-ring: oklch(0.40 0.13 25);
+
+  /* Layered shadow system — warm-toned, not grey */
+  --shadow-card: 0 1px 2px oklch(0.22 0.035 255 / 0.06), 0 1px 1px oklch(0.22 0.035 255 / 0.04);
+  --shadow-raised: 0 4px 14px oklch(0.22 0.035 255 / 0.09), 0 2px 4px oklch(0.22 0.035 255 / 0.05);
+  --shadow-floating: 0 14px 32px oklch(0.22 0.035 255 / 0.13), 0 4px 8px oklch(0.22 0.035 255 / 0.06);
+}
+
+.dark {
+  /* Dark mode — tinted black, not neutral grey. Faint warm undertone. */
+  --background: oklch(0.16 0.012 255);
+  --paper: oklch(0.16 0.012 255);
+  --foreground: oklch(0.92 0.008 85);
+  --ink: oklch(0.92 0.008 85);
+  --card: oklch(0.20 0.014 255);
+  --card-foreground: oklch(0.92 0.008 85);
+  --popover: oklch(0.20 0.014 255);
+  --popover-foreground: oklch(0.92 0.008 85);
+  --primary: oklch(0.68 0.14 25);
+  --primary-foreground: oklch(0.16 0.012 255);
+  --secondary: oklch(0.25 0.016 255);
+  --secondary-foreground: oklch(0.92 0.008 85);
+  --muted: oklch(0.25 0.016 255);
+  --muted-foreground: oklch(0.68 0.012 85);
+  --accent: oklch(0.38 0.08 75);
+  --accent-foreground: oklch(0.88 0.06 75);
+  --destructive: oklch(0.65 0.20 25);
+  --border: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.68 0.14 25);
+
+  --oxblood: oklch(0.68 0.14 25);
+  --ochre: oklch(0.75 0.11 70);
+  --moss: oklch(0.68 0.09 145);
+  --teal: oklch(0.70 0.09 200);
+  --amber: oklch(0.75 0.12 70);
+  --emerald: oklch(0.70 0.11 155);
+  --rose: oklch(0.70 0.17 15);
+  --teal-soft: oklch(0.28 0.05 200);
+  --amber-soft: oklch(0.28 0.06 75);
+  --emerald-soft: oklch(0.28 0.05 155);
+  --rose-soft: oklch(0.28 0.06 15);
+
+  /* Polarity pair — dark mode */
+  --neg: oklch(0.72 0.13 25);
+  --neg-soft: oklch(0.28 0.06 25);
+  --pos: oklch(0.68 0.09 255);
+  --pos-soft: oklch(0.28 0.05 255);
+
+  --sidebar: oklch(0.20 0.014 255);
+  --sidebar-foreground: oklch(0.92 0.008 85);
+  --sidebar-primary: oklch(0.68 0.14 25);
+  --sidebar-primary-foreground: oklch(0.16 0.012 255);
+  --sidebar-accent: oklch(0.28 0.05 200);
+  --sidebar-accent-foreground: oklch(0.92 0.008 85);
+  --sidebar-border: oklch(1 0 0 / 16%);
+  --sidebar-ring: oklch(0.68 0.14 25);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-raised: 0 4px 14px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-floating: 0 14px 32px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11", "kern", "liga", "calt";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    /* Subtle paper grain — barely visible noise that makes the background
+       feel like paper instead of a flat color fill. This is the #1 thing
+       that breaks the "AI flat-color" look. */
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.15 0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-attachment: fixed;
+  }
+
+  /* Links — ink-style underline, not the default browser blue.
+     Thicker, slightly offset, like a hand-drawn rule. */
+  a {
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+}
+
+/* Shadow utility classes */
+.shadow-card    { box-shadow: var(--shadow-card); }
+.shadow-raised  { box-shadow: var(--shadow-raised); }
+.shadow-floating{ box-shadow: var(--shadow-floating); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DISPLAY TYPOGRAPHY — Fraunces for headlines, with character
+   ═══════════════════════════════════════════════════════════════════ */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.015em;
+}
+/* The wonk axis gives occasional letters a slightly hand-drawn quality —
+   use sparingly on display-sized headlines for character. */
+.font-display-wonk {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.015em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROSE — body serif, fluid, optimal line length
+   ═══════════════════════════════════════════════════════════════════ */
+.prose-chem {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.125rem);
+  line-height: 1.75;
+  letter-spacing: 0.001em;
+  color: var(--foreground);
+}
+.prose-chem p,
+.prose-chem li {
+  max-width: 72ch;
+}
+.prose-chem p { margin: 0 0 1.15em; }
+.prose-chem strong {
+  color: var(--foreground);
+  font-weight: 700;
+  /* Bold terms get a subtle ink-style underline-ish tint, not a color change */
+}
+/* Italic emphasis in serif body — use real italics, not just slanted */
+.prose-chem em { font-style: italic; }
+.prose-chem h2,
+.prose-chem h3,
+.prose-chem h4 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+.prose-chem :is(p, li, dd, dt) {
+  overflow-wrap: break-word;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+}
+
+/* KaTeX — fluid sizing, ink color */
+.katex { font-size: 1.04em; color: var(--foreground); }
+.katex-display {
+  margin: 1.2em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: clamp(1em, 0.95em + 0.2vw, 1.15em);
+}
+.prose-chem .katex { font-size: 1.06em; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   EDITORIAL ELEMENTS — section rules, drop caps, marginalia
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* A section divider with a centered ornament — like a book chapter break.
+   Use: <hr class="rule-ornament" /> */
+.rule-ornament {
+  border: 0;
+  border-top: 1px solid var(--border);
+  display: block;
+  margin: 3rem auto;
+  width: 60%;
+  max-width: 320px;
+  position: relative;
+  height: 13px;
+}
+.rule-ornament::after {
+  content: "❧";
+  position: absolute;
+  top: -0.65em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background);
+  color: var(--primary);
+  padding: 0 0.75rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Drop cap — for the first paragraph of a topic intro */
+.drop-cap::first-letter {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.85;
+  padding: 0.08em 0.12em 0 0;
+  color: var(--primary);
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+
+/* Marginalia — small annotation-style notes. Italic, oxblood, slightly
+   indented. Use for "editor's notes" and key-term glosses. */
+.marginalia {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--primary);
+  border-left: 2px solid var(--primary);
+  padding-left: 0.75rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   POLARITY UTILITY CLASSES — for inline δ⁺/δ⁻ mentions in prose
+   ═══════════════════════════════════════════════════════════════════ */
+.neg { color: var(--neg); font-weight: 600; }
+.pos { color: var(--pos); font-weight: 600; }
+.hl  { color: var(--primary); font-weight: 600; }
+.hl-a { color: var(--accent); font-weight: 600; }
+.term {
+  background: var(--primary-soft);
+  color: var(--ink);
+  font-weight: 500;
+  padding: 0.06em 0.3em;
+  border-radius: 5px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.94em; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RAIL LIST — vertical line instead of bullet dots.
+   A continuous 2px line runs down the left side of the list; each item
+   is indented from it. Used for sub-lists, objectives, and bullet mode.
+   ═══════════════════════════════════════════════════════════════════ */
+.rail-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0 0 0 16px;
+  border-left: 2px solid var(--line-soft, var(--border));
+}
+.rail-list > li {
+  padding: 7px 0;
+  color: var(--ink-2, var(--muted-foreground));
+}
+.rail-list > li::marker { content: none; }
+.rail-list > li:first-child { padding-top: 0; }
+.rail-list > li:last-child { padding-bottom: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SVG DIAGRAM DEFAULTS — text inside diagrams uses the sans font
+   ═══════════════════════════════════════════════════════════════════ */
+.diagram-svg text { font-family: var(--font-topic-sans), var(--font-sans), sans-serif; }
+.diagram-svg .lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.02em; }
+.diagram-svg .lbl-s { font-size: 9.5px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+.diagram-svg { width: 100%; height: auto; display: block; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   TOPIC PAGE OVERRIDE — uses the reference file's palette + fonts
+   Deep teal primary, copper accent, copper/slate-blue polarity,
+   DM Serif Display headings, Outfit body, JetBrains Mono code.
+   ═══════════════════════════════════════════════════════════════════ */
+.topic-page {
+  --background: #f7f5f0;
+  --paper: #f7f5f0;
+  --foreground: #14171e;
+  --ink: #14171e;
+  --card: #ffffff;
+  --card-foreground: #14171e;
+  --popover: #ffffff;
+  --popover-foreground: #14171e;
+  --primary: #2f6f5e;
+  --primary-foreground: #ffffff;
+  --secondary: #f1eee6;
+  --secondary-foreground: #3a4256;
+  --muted: #fbf9f5;
+  --muted-foreground: #6e6c65;
+  --accent: #a05f28;
+  --accent-foreground: #8a5228;
+  --destructive: #9a4d51;
+  --border: #e9e3d6;
+  --input: #f1eee6;
+  --ring: #2f6f5e;
+
+  /* Reference file's surface tokens */
+  --bg-tint: #f1eee6;
+  --surface: #ffffff;
+  --surface-2: #fbf9f5;
+  --line: #e9e3d6;
+  --line-soft: #f0ebe0;
+  --ink-2: #3a4256;
+  --ink-3: #6e6c65;
+
+  /* Polarity pair — reference file's exact values */
+  --neg: #9a4d51;
+  --neg-soft: rgba(176, 99, 103, 0.12);
+  --pos: #3d6489;
+  --pos-soft: rgba(61, 100, 137, 0.12);
+
+  /* Accent soft */
+  --accent-soft: rgba(201, 123, 63, 0.10);
+  --primary-soft: rgba(47, 111, 94, 0.09);
+  --primary-line: rgba(47, 111, 94, 0.24);
+
+  /* Semantic accents — keep compatible */
+  --oxblood: #2f6f5e;
+  --ochre: #a05f28;
+  --moss: #2f6f5e;
+  --teal: #2f6f5e;
+  --amber: #a05f28;
+  --emerald: #2f6f5e;
+  --rose: #9a4d51;
+
+  /* Font families for topic pages */
+  --font-display: var(--font-topic-display), Georgia, serif;
+  --font-serif: var(--font-topic-sans), 'Outfit', sans-serif;
+  --font-sans: var(--font-topic-sans), 'Outfit', sans-serif;
+  --font-mono: var(--font-topic-mono), 'JetBrains Mono', monospace;
+
+  /* Reference file's shadows */
+  --shadow-card: 0 2px 8px rgba(20, 23, 30, 0.04);
+  --shadow-raised: 0 4px 16px -2px rgba(20, 23, 30, 0.06);
+  --shadow-floating: 0 12px 32px -8px rgba(20, 23, 30, 0.14);
+}
+
+/* Dark mode override for topic pages — matches reference file's dark theme */
+.dark .topic-page {
+  --background: #15171b;
+  --paper: #15171b;
+  --foreground: #eceae5;
+  --ink: #eceae5;
+  --card: #1d2026;
+  --card-foreground: #eceae5;
+  --popover: #1d2026;
+  --popover-foreground: #eceae5;
+  --primary: #63bf9f;
+  --primary-foreground: #0d1a16;
+  --secondary: #22262d;
+  --secondary-foreground: #b9bdc5;
+  --muted: #22262d;
+  --muted-foreground: #8b9099;
+  --accent: #dda06a;
+  --accent-foreground: #dda06a;
+  --destructive: #d38d90;
+  --border: #2b3038;
+  --input: #262a31;
+  --ring: #63bf9f;
+
+  --bg-tint: #191c21;
+  --surface: #1d2026;
+  --surface-2: #22262d;
+  --line: #2b3038;
+  --line-soft: #262a31;
+  --ink-2: #b9bdc5;
+  --ink-3: #8b9099;
+
+  --neg: #d38d90;
+  --neg-soft: rgba(211, 141, 144, 0.14);
+  --pos: #7ba6cc;
+  --pos-soft: rgba(123, 166, 204, 0.14);
+
+  --accent-soft: rgba(221, 160, 106, 0.12);
+  --primary-soft: rgba(99, 191, 159, 0.11);
+  --primary-line: rgba(99, 191, 159, 0.28);
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.30);
+  --shadow-raised: 0 4px 16px -2px rgba(0, 0, 0, 0.36);
+  --shadow-floating: 0 12px 32px -8px rgba(0, 0, 0, 0.55);
+}
+
+/* Topic page body text uses Outfit (sans) for readability at small sizes */
+.topic-page .prose-chem {
+  font-family: var(--font-topic-sans), 'Outfit', sans-serif;
+  font-size: 17px;
+  line-height: 1.72;
+}
+/* Topic page headings use DM Serif Display */
+.topic-page h1, .topic-page h2, .topic-page h3, .topic-page h4,
+.topic-page .font-display {
+  font-family: var(--font-topic-display), Georgia, serif;
+  font-weight: 400;
+}
+/* Topic page code/chem uses JetBrains Mono */
+.topic-page code, .topic-page .mono, .topic-page .chem {
+  font-family: var(--font-topic-mono), 'JetBrains Mono', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE — custom layouts for every screen size and orientation
+
+   Breakpoint map:
+   <640px  phone portrait    — single column, no sidebars, FAB nav
+   640px  sm                 — minor padding/type bumps
+   768px  md                 — tablet portrait: 2-col (sidebar + content)
+   1024px lg                 — tablet landscape / small desktop: 3-col
+   1280px xl                 — desktop: 3-col with wider sidebars
+   1536px 2xl                — wide desktop: 3-col with max-width
+
+   Orientation overrides:
+   landscape phone (height ≤ 500px): compact hero, smaller topic number
+   landscape tablet (768px height):  3-col activates earlier
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Phone landscape (short height) — compact everything ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Shrink the topic number dramatically */
+  .topic-page .text-7xl,
+  .topic-page .text-8xl,
+  .topic-page .text-9xl {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+  /* Compact the hero */
+  .topic-masthead {
+    padding-top: 0 !important;
+  }
+  .topic-masthead > div > div > div {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  /* Shrink intro paragraph */
+  .topic-page .prose-chem {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* At-a-glance: 4 columns on phone landscape (wide enough, short height) */
+  .topic-page .at-a-glance-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem !important;
+  }
+  .topic-page .at-a-glance-grid dt {
+    font-size: 9px !important;
+  }
+  .topic-page .at-a-glance-grid dd {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+  /* Compact header */
+  .topbar, header.sticky {
+    height: 44px !important;
+  }
+  /* Hide the inline quick strip on landscape phone (not enough height) */
+  .inline-quick-strip {
+    display: none !important;
+  }
+}
+
+/* ── Tablet landscape (768px height, 1024px+ width) — 3-col early ── */
+@media (min-width: 1024px) and (max-height: 900px) and (orientation: landscape) {
+  /* Slightly smaller topic number for landscape tablets */
+  .topic-page .text-9xl {
+    font-size: 6rem !important;
+  }
+  /* Tighter hero padding */
+  .topic-masthead > div {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+/* ── Wide desktop (1536px+) — use the full width ── */
+@media (min-width: 1536px) {
+  .topic-page .max-w-\[1280px\],
+  .topic-page .max-w-\[1440px\] {
+    max-width: 1480px !important;
+  }
+  /* Wider sidebars on wide screens */
+  .topic-page .xl\:grid-cols-\[260px_minmax\(0\,1fr\)_260px\] {
+    grid-template-columns: 280px minmax(0, 1fr) 280px !important;
+  }
+  /* Slightly larger body type for wide screens */
+  .topic-page .prose-chem {
+    font-size: 18px !important;
+  }
+}
+
+/* ── Extra-wide desktop (1920px+) ── */
+@media (min-width: 1920px) {
+  .topic-page .max-w-\[1280px\],
+  .topic-page .max-w-\[1440px\] {
+    max-width: 1600px !important;
+  }
+  .topic-page .xl\:grid-cols-\[260px_minmax\(0\,1fr\)_260px\] {
+    grid-template-columns: 300px minmax(0, 1fr) 300px !important;
+  }
+  .topic-page .prose-chem {
+    font-size: 19px !important;
+    max-width: 78ch !important;
+  }
+}
+
+/* ── Phone portrait (≤640px) — ensure no overflow ── */
+@media (max-width: 640px) {
+  /* Ensure SVG diagrams don't overflow */
+  .diagram-svg svg {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Compare tables: minimum width to allow horizontal scroll */
+  .topic-page figure[class*="overflow-x-auto"] {
+    -webkit-overflow-scrolling: touch;
+  }
+  /* At-a-glance: single column on phone portrait */
+  .topic-page .at-a-glance-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Topic number: slightly smaller on phone */
+  .topic-page .text-7xl {
+    font-size: 4rem !important;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  /* ... existing print styles ... */
+}
+
+/* Custom scrollbar */
+.scrollbar-chem::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-chem::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-chem::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted-foreground) 30%, transparent);
+  border-radius: 999px;
+}
+.scrollbar-chem::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--muted-foreground) 50%, transparent);
+}
+
+/* Selection — oxblood tint */
+::selection {
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  color: var(--foreground);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRINT — optimised for "Save as PDF" from the browser print dialog.
+   Goal: a clean revision handout the student can print or save.
+   ═══════════════════════════════════════════════════════════════════ */
+@media print {
+  /* Hide all interactive chrome — keep only the content. */
+  header.sticky,                    /* site header */
+  .reading-progress,                /* progress bar */
+  aside,                            /* both sidebars */
+  .mobile-toc,                      /* mobile TOC trigger */
+  .mark-complete,                   /* mark-as-read buttons */
+  .prev-next-nav,                   /* prev/next topic nav */
+  footer.site,                      /* site footer */
+  .floating-toc-fab,                /* floating TOC button */
+  .reading-mode-toggle,             /* ¶/Auto/• toggle */
+  .group\/bullet button,            /* per-paragraph toggle icons */
+  .inline-quick-strip,              /* phone/tablet quick strip */
+  nav[aria-label="Breadcrumb"]      /* breadcrumb */
+  {
+    display: none !important;
+  }
+
+  /* Page setup — A4 with reasonable margins. Browsers let users change
+     this in the dialog, but we set sensible defaults. */
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    background-image: none !important;
+  }
+
+  /* Print-only masthead — shows the topic title, spec code, and source URL
+     at the top of the first page. Hidden on screen. */
+  .print-masthead {
+    display: block !important;
+    border-bottom: 2px solid #000;
+    padding-bottom: 8pt;
+    margin-bottom: 16pt;
+  }
+  .print-masthead .pm-title {
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 22pt;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 4pt 0;
+  }
+  .print-masthead .pm-meta {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 9pt;
+    color: #555;
+    margin: 0;
+  }
+  .print-masthead .pm-url {
+    font-family: var(--font-sans), sans-serif;
+    font-size: 8pt;
+    color: #777;
+    margin-top: 2pt;
+  }
+
+  /* Hide the on-screen topic masthead — we replace it with .print-masthead */
+  .topic-masthead { display: none !important; }
+
+  /* Content fills the page width */
+  .prose-chem {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    max-width: none;
+  }
+  .prose-chem p,
+  .prose-chem .lead-block,
+  .prose-chem .content-card,
+  .prose-chem li {
+    max-width: none;
+  }
+
+  /* Force paragraph view in print — bullets created by the reading-mode
+     toggle are fine, but the toggle UI itself is hidden above. */
+  .lead-block {
+    background: #f5f5f5 !important;
+    border-left: 3px solid #000 !important;
+    padding: 8pt 12pt !important;
+    margin-bottom: 12pt !important;
+  }
+
+  /* Cards keep their borders but drop shadows (printers don't render
+     shadows well and they consume toner). */
+  .content-card,
+  .spec-list-wrapper li,
+  .prose-chem figure {
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Section headers get a page-break-before on top-level sections so each
+     spec point starts on a fresh page (or at least doesn't get orphaned). */
+  .prose-chem > section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  .prose-chem > section > header {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Callouts print with a light tint and a left rule. */
+  aside[role="note"] {
+    background: #faf6f0 !important;
+    border-left: 3px solid #7a1f2b !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Tables: avoid breaking inside rows; repeat header on each page. */
+  table { font-size: 9.5pt; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+
+  /* The strength chart and compare blocks: keep together. */
+  figure { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Key-takeaways panel: keep together if possible. */
+  aside[aria-label="Key takeaways"] { break-inside: avoid; }
+
+  /* Links: black text, no underline. The URL is shown for external links
+     via the print masthead, not inline (keeps body text clean). */
+  a { color: #000 !important; text-decoration: none !important; }
+
+  /* KaTeX: slightly smaller for print. */
+  .katex { font-size: 0.95em; }
+  .katex-display { font-size: 1em; margin: 0.8em 0; }
+
+  /* Objectives panel: keep together. */
+  aside[aria-label="What you'll learn"],
+  aside[aria-label="In this topic"] {
+    break-inside: avoid;
+    background: #f8f4ec !important;
+    border-left: 3px solid #7a1f2b !important;
+  }
+
+  /* Spec-list cards: keep each card intact. */
+  .spec-list-wrapper ol > li { break-inside: avoid; }
+
+  /* Print footer with page numbers — uses the browser's @page counter. */
+  .print-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ccc;
+    padding-top: 4pt;
+    font-family: var(--font-sans), sans-serif;
+    font-size: 8pt;
+    color: #777;
+    text-align: center;
+  }
+
+  /* Print mini-TOC — appears under the masthead on the first page */
+  .print-toc {
+    margin-top: 12pt;
+  }
+  .print-toc-list {
+    list-style: decimal;
+    padding-left: 20pt;
+    margin: 0;
+    font-family: var(--font-sans), sans-serif;
+    font-size: 9pt;
+    color: #555;
+  }
+  .print-toc-list li {
+    padding: 2pt 0;
+  }
+
+  /* Color the oxblood accents to a darker, printer-friendly tone so they
+     don't wash out. */
+  .text-primary, .text-oxblood { color: #7a1f2b !important; }
+  .bg-primary { background: #7a1f2b !important; }
+}
+
+/* On screen, the print-only elements are hidden. */
+.print-masthead,
+.print-footer {
+  display: none;
+}
+
+/* Safe-area insets for phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-bottom-4 { padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}

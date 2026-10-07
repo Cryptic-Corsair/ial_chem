@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Topic 7: Intermolecular Forces — a comprehensive, accessible study guide for Edexcel IAL Chemistry Unit 2.">
+<meta name="author" content="Edexcel IAL Chemistry revision notes">
+<meta name="theme-color" content="#0e7490">
+<title>Topic 7 · Intermolecular Forces — Edexcel IAL Chemistry</title>
+
+<!-- KaTeX for accessible math rendering (no SRI to avoid hash-mismatch blocking) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      crossorigin="anonymous"
+      media="print" onload="this.media='all'">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"
+        onload="if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});}"></script>
+
+<style>
+  /* ---------- Design tokens ---------- */
+  :root {
+    --bg:            #f6f8fb;
+    --bg-soft:       #eef2f7;
+    --surface:       #ffffff;
+    --surface-2:     #f9fafb;
+    --ink:           #0f172a;
+    --ink-2:         #334155;
+    --muted:         #64748b;
+    --border:        #e2e8f0;
+    --border-strong: #cbd5e1;
+    --primary:       #0e7490;
+    --primary-dark:  #155e75;
+    --primary-soft:  #ecfeff;
+    --accent:        #b45309;
+    --accent-soft:   #fef3c7;
+    --green:         #15803d;
+    --green-soft:    #dcfce7;
+    --red:           #b91c1c;
+    --red-soft:      #fee2e2;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 1px 1px rgba(15,23,42,.03);
+    --shadow-md: 0 4px 12px rgba(15,23,42,.06), 0 2px 4px rgba(15,23,42,.04);
+    --shadow-lg: 0 12px 32px rgba(15,23,42,.08), 0 4px 8px rgba(15,23,42,.04);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --max-w: 1180px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #0f172a;
+      --surface: #131c2e;
+      --surface-2: #182238;
+      --ink: #e7edf6;
+      --ink-2: #c2cede;
+      --muted: #94a3b8;
+      --border: #243049;
+      --border-strong: #324264;
+      --primary: #22d3ee;
+      --primary-dark: #06b6d4;
+      --primary-soft: #082f49;
+      --accent: #fbbf24;
+      --accent-soft: #422006;
+      --green: #4ade80;
+      --green-soft: #052e16;
+      --red: #f87171;
+      --red-soft: #450a0a;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.4);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,.5);
+    }
+  }
+
+  /* ---------- Reset & base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, .toc-title, .topbar, .pill, .callout-label, table th, .legend {
+    font-family: var(--font-sans);
+  }
+
+  a { color: var(--primary); }
+  a:hover { color: var(--primary-dark); }
+
+  :focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Skip link ---------- */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    z-index: 1000;
+    transition: top .15s ease;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .brand-mark {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 8px;
+    display: grid; place-items: center;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .topbar .brand small { color: var(--muted); font-weight: 500; }
+  .topbar nav { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+  .topbar nav a {
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    transition: background .15s;
+  }
+  .topbar nav a:hover { background: var(--bg-soft); color: var(--ink); }
+  .menu-btn {
+    display: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      radial-gradient(1200px 400px at 80% -200px, color-mix(in srgb, var(--primary) 18%, transparent), transparent),
+      radial-gradient(900px 360px at 10% -150px, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
+      linear-gradient(180deg, var(--surface), var(--bg));
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px 40px;
+  }
+  .hero-inner { max-width: var(--max-w); margin: 0 auto; }
+  .hero .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+    border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    letter-spacing: .02em;
+  }
+  .hero .eyebrow::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    font-weight: 800;
+  }
+  .hero .lede {
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--ink-2);
+    max-width: 760px;
+    margin: 0 0 22px;
+  }
+  .hero .meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ---------- Layout: main grid ---------- */
+  .layout {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 36px 24px 80px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* ---------- TOC sidebar ---------- */
+  .toc-wrap {
+    position: sticky;
+    top: 84px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .toc-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 0 0 12px;
+    padding: 0 8px;
+  }
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+  .toc li { margin: 2px 0; }
+  .toc a {
+    display: block;
+    padding: 7px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--ink-2);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.4;
+    border-left: 3px solid transparent;
+    transition: background .12s, border-color .12s, color .12s;
+  }
+  .toc a:hover {
+    background: var(--bg-soft);
+    color: var(--ink);
+  }
+  .toc a[aria-current="true"] {
+    background: var(--primary-soft);
+    border-left-color: var(--primary);
+    color: var(--primary-dark);
+    font-weight: 600;
+  }
+  .toc .toc-sub a {
+    padding-left: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .toc .toc-sub a[aria-current="true"] { color: var(--primary-dark); }
+
+  /* ---------- Main content ---------- */
+  main { min-width: 0; }
+  .intro-card {
+    background: linear-gradient(135deg, var(--surface), var(--surface-2));
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+  .intro-card p { margin: 0; font-size: 18px; }
+
+  section.spec {
+    margin: 0 0 48px;
+    scroll-margin-top: 90px;
+  }
+  section.spec > header {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  .spec-num {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 6px;
+  }
+  section.spec > header h2 {
+    margin: 0;
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -.015em;
+    line-height: 1.2;
+  }
+
+  section.sub {
+    margin: 28px 0;
+    scroll-margin-top: 90px;
+  }
+  section.sub > h3 {
+    margin: 0 0 14px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .sub-tag {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+    border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: .03em;
+    flex-shrink: 0;
+  }
+
+  section.sub > h4 {
+    margin: 22px 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink-2);
+    font-family: var(--font-sans);
+  }
+
+  p { margin: 0 0 14px; }
+  p.lead { font-size: 18px; color: var(--ink-2); }
+
+  /* ---------- Definition / key list ---------- */
+  ul.defs {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+    display: grid;
+    gap: 12px;
+  }
+  ul.defs > li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px 14px 18px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: transform .12s, box-shadow .12s;
+  }
+  ul.defs > li:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  ul.defs > li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 12px; bottom: 12px;
+    width: 3px;
+    background: var(--primary);
+    border-radius: 0 3px 3px 0;
+  }
+  ul.defs .term {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-right: 6px;
+  }
+
+  /* nested list inside defs */
+  ul.defs ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    list-style: disc;
+    color: var(--ink-2);
+  }
+  ul.defs ul li { margin: 4px 0; }
+
+  /* ordered list of steps */
+  ol.steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+    display: grid;
+    gap: 14px;
+  }
+  ol.steps > li {
+    counter-increment: step;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px 16px 56px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px; top: 14px;
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  ol.steps .term {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-right: 6px;
+  }
+  ol.steps ul {
+    margin: 8px 0 0;
+    padding-left: 22px;
+    list-style: disc;
+    color: var(--ink-2);
+  }
+  ol.steps ul li { margin: 4px 0; }
+
+  /* ---------- Strength hierarchy visual ---------- */
+  .strength {
+    margin: 22px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .strength h4 {
+    margin: 0 0 14px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .bars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 80px;
+    gap: 12px;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+  .bar-label { color: var(--ink-2); font-weight: 600; }
+  .bar-track {
+    height: 14px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  }
+  .bar-row:nth-child(2) .bar-fill { background: linear-gradient(90deg, #0891b2, #0e7490); }
+  .bar-row:nth-child(3) .bar-fill { background: linear-gradient(90deg, #14b8a6, #0d9488); }
+  .bar-row:nth-child(4) .bar-fill { background: linear-gradient(90deg, #f59e0b, #d97706); }
+  .bar-row:nth-child(5) .bar-fill { background: linear-gradient(90deg, #94a3b8, #64748b); }
+  .bar-val {
+    text-align: right;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* ---------- Comparison table ---------- */
+  .table-wrap {
+    margin: 22px 0;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    background: var(--surface);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+  caption {
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 13px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  th, td {
+    padding: 11px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--surface-2);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg-soft); }
+  td .num {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--primary-dark);
+  }
+  td .compound { font-weight: 600; color: var(--ink); }
+
+  /* ---------- Callout ---------- */
+  .callout {
+    margin: 26px 0;
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    border: 1px solid;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .callout-icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    font-size: 18px;
+  }
+  .callout-body { flex: 1; }
+  .callout-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin: 0 0 4px;
+  }
+  .callout-body p { margin: 0; }
+
+  .callout.next {
+    background: linear-gradient(135deg, var(--accent-soft), color-mix(in srgb, var(--accent-soft) 60%, var(--surface)));
+    border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  .callout.next .callout-icon { background: var(--accent); color: #fff; }
+  .callout.next .callout-label { color: var(--accent); }
+  .callout.next strong { color: var(--accent); }
+
+  .callout.key {
+    background: linear-gradient(135deg, var(--primary-soft), color-mix(in srgb, var(--primary-soft) 60%, var(--surface)));
+    border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  .callout.key .callout-icon { background: var(--primary); color: #fff; }
+  .callout.key .callout-label { color: var(--primary-dark); }
+
+  /* ---------- Card grid (for 7.2 hydrides) ---------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card h4 {
+    margin: 0 0 6px;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card .formula {
+    font-family: var(--font-mono);
+    background: var(--bg-soft);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .card p { margin: 6px 0 0; font-size: 15px; color: var(--ink-2); }
+
+  /* ---------- Inline styles for code-like bits ---------- */
+  .ic {
+    font-family: var(--font-mono);
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: .92em;
+    color: var(--ink-2);
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    padding: 28px 24px;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer.site a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+  /* ---------- KaTeX tweaks ---------- */
+  .katex { font-size: 1.04em; }
+  .katex-display { margin: 14px 0; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; gap: 24px; }
+    .toc-wrap {
+      position: relative;
+      top: 0;
+      max-height: none;
+      overflow: visible;
+    }
+    .toc { display: none; }
+    .toc.open { display: block; }
+    .menu-btn { display: inline-flex; align-items: center; gap: 6px; }
+    .topbar nav { display: none; }
+    .topbar nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px;
+      gap: 2px;
+    }
+    .topbar nav.open a { padding: 10px 12px; }
+    .bar-row { grid-template-columns: 130px 1fr 60px; font-size: 13px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    .hero { padding: 36px 18px 28px; }
+    .layout { padding: 24px 16px 60px; }
+    .bar-row { grid-template-columns: 1fr; gap: 4px; }
+    .bar-val { text-align: left; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .topbar, .toc-wrap, .skip-link, .menu-btn { display: none !important; }
+    .layout { grid-template-columns: 1fr; }
+    body { background: #fff; color: #000; }
+    section.spec { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar" role="banner">
+  <a href="#top" class="brand" aria-label="Topic 7 home">
+    <span class="brand-mark" aria-hidden="true">7</span>
+    <span>Intermolecular Forces <small>· Edexcel IAL Chemistry Unit 2</small></span>
+  </a>
+  <button class="menu-btn" type="button" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
+    ☰ Menu
+  </button>
+  <nav id="topnav" aria-label="Primary">
+    <a href="#spec-7-1">7.1 Nature</a>
+    <a href="#spec-7-2">7.2 Hydrides</a>
+    <a href="#spec-7-3">7.3 Water</a>
+    <a href="#spec-7-4">7.4 Prediction</a>
+    <a href="#spec-7-5">7.5 Properties</a>
+    <a href="#spec-7-6">7.6 Solvents</a>
+  </nav>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <span class="eyebrow">Topic 7 · Edexcel IAL Chemistry · Unit 2</span>
+    <h1 id="hero-title">Intermolecular Forces</h1>
+    <p class="lede">This comprehensive guide covers every specification point in Topic 7 (Intermolecular Forces) for Edexcel IAL Chemistry Unit 2, detailed step by step.</p>
+    <div class="meta" aria-label="Document metadata">
+      <span class="meta-pill">📚 6 specification points</span>
+      <span class="meta-pill">⚗️ Chemistry</span>
+      <span class="meta-pill">🎓 A-Level / IAL</span>
+      <span class="meta-pill">♿ Accessible</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Main layout ===== -->
+<div class="layout">
+
+  <!-- TOC sidebar -->
+  <aside class="toc-wrap" aria-label="Table of contents">
+    <nav class="toc" id="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#spec-7-1">7.1 Nature of Intermolecular Forces</a></li>
+        <li class="toc-sub"><a href="#spec-7-1-i">London Forces</a></li>
+        <li class="toc-sub"><a href="#spec-7-1-ii">Permanent Dipole–Dipole</a></li>
+        <li class="toc-sub"><a href="#spec-7-1-iii">Hydrogen Bonds</a></li>
+        <li><a href="#spec-7-2">7.2 Hydrogen Bonding in Hydrides</a></li>
+        <li><a href="#spec-7-3">7.3 Anomalous Properties of Water</a></li>
+        <li class="toc-sub"><a href="#spec-7-3-i">High m.p. &amp; b.p.</a></li>
+        <li class="toc-sub"><a href="#spec-7-3-ii">Ice density</a></li>
+        <li><a href="#spec-7-4">7.4 Predicting H-Bonding</a></li>
+        <li><a href="#spec-7-5">7.5 Physical Properties</a></li>
+        <li class="toc-sub"><a href="#spec-7-5-i">Alkane chain length</a></li>
+        <li class="toc-sub"><a href="#spec-7-5-ii">Branching</a></li>
+        <li class="toc-sub"><a href="#spec-7-5-iii">Alcohols vs alkanes</a></li>
+        <li class="toc-sub"><a href="#spec-7-5-iv">Hydrogen halides</a></li>
+        <li><a href="#spec-7-6">7.6 Solvent Choice</a></li>
+        <li class="toc-sub"><a href="#spec-7-6-i">Water &amp; ionic</a></li>
+        <li class="toc-sub"><a href="#spec-7-6-ii">Water &amp; alcohols</a></li>
+        <li class="toc-sub"><a href="#spec-7-6-iii">Halogenoalkanes</a></li>
+        <li class="toc-sub"><a href="#spec-7-6-iv">Non-aqueous</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main id="main" tabindex="-1">
+
+    <div class="intro-card">
+      <p><strong>How to use this guide:</strong> Each specification point (7.1–7.6) is broken down into clear mechanisms, key definitions, worked examples, and visual aids. Use the table of contents on the left to jump between sections, or read straight through for the complete picture of how intermolecular forces shape the physical world.</p>
+    </div>
+
+    <!-- ============ 7.1 ============ -->
+    <section class="spec" id="spec-7-1" aria-labelledby="h-7-1">
+      <header>
+        <p class="spec-num">Specification Point 7.1</p>
+        <h2 id="h-7-1">Understand the Nature of Intermolecular Forces</h2>
+      </header>
+      <p class="lead">Intermolecular forces (non-bonded interactions) are weak attractive forces that exist between separate molecules or uncombined noble gas atoms, distinct from strong intramolecular ionic, metallic, or covalent bonds within molecules.</p>
+
+      <!-- 7.1(i) -->
+      <section class="sub" id="spec-7-1-i" aria-labelledby="h-7-1-i">
+        <h3 id="h-7-1-i"><span class="sub-tag">7.1(i)</span> London Forces (Instantaneous Dipole–Induced Dipole / Dispersion Forces)</h3>
+        <ul class="defs">
+          <li><span class="term">Mechanism:</span> Electrons within an atom or non-polar molecule are in continuous, random motion. At any given instant, the electron cloud density may fluctuate unevenly across the molecule, giving rise to an instantaneous (temporary) dipole.</li>
+          <li><span class="term">Induction:</span> This temporary dipole distorts the electron cloud of a neighbouring molecule, inducing an induced dipole of opposite charge.</li>
+          <li><span class="term">Attraction:</span> The \(\delta^+\) end of one temporary dipole attracts the \(\delta^-\) end of the neighbouring induced dipole.</li>
+          <li><span class="term">Occurrence:</span> London forces exist between all atoms and molecular species (whether polar or non-polar), as well as monatomic noble gases, but do not exist in giant ionic lattices.</li>
+        </ul>
+      </section>
+
+      <!-- 7.1(ii) -->
+      <section class="sub" id="spec-7-1-ii" aria-labelledby="h-7-1-ii">
+        <h3 id="h-7-1-ii"><span class="sub-tag">7.1(ii)</span> Permanent Dipole–Permanent Dipole Interactions</h3>
+        <ul class="defs">
+          <li><span class="term">Mechanism:</span> These forces occur between polar molecules that possess permanent dipoles resulting from differences in electronegativity across covalent bonds.</li>
+          <li><span class="term">Attraction:</span> Electrostatic attraction occurs between the permanent \(\delta^+\) region of one molecule and the permanent \(\delta^-\) region of an adjacent molecule.</li>
+          <li><span class="term">Relative Strength:</span> For small molecules containing similar numbers of total electrons, permanent dipole–dipole interactions are generally stronger than London forces. For instance, propanone (polar) has a higher boiling temperature (\(56^\circ\text{C}\)) than butane (non-polar, \(0^\circ\text{C}\)) because more energy is required to break permanent dipole forces.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Worked example · Boiling temperatures: propanone vs butane</caption>
+            <thead>
+              <tr><th scope="col">Compound</th><th scope="col">Polarity</th><th scope="col">Boiling temperature</th><th scope="col">Dominant IMF</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compound">Propanone <span class="ic">CH₃COCH₃</span></td>
+                <td>Polar</td>
+                <td><span class="num">56 °C</span></td>
+                <td>Permanent dipole–dipole + London</td>
+              </tr>
+              <tr>
+                <td class="compound">Butane <span class="ic">C₄H₁₀</span></td>
+                <td>Non-polar</td>
+                <td><span class="num">0 °C</span></td>
+                <td>London dispersion only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7.1(iii) -->
+      <section class="sub" id="spec-7-1-iii" aria-labelledby="h-7-1-iii">
+        <h3 id="h-7-1-iii"><span class="sub-tag">7.1(iii)</span> Hydrogen Bonds</h3>
+        <ol class="steps">
+          <li><span class="term">Mechanism:</span> Hydrogen bonding is a particularly strong, specialized form of permanent dipole–permanent dipole interaction.</li>
+          <li>
+            <span class="term">Requirements:</span>
+            <ul>
+              <li>A hydrogen atom covalently attached directly to one of the three most electronegative elements: Nitrogen (N), Oxygen (O), or Fluorine (F).</li>
+              <li>A lone pair of electrons on the N, O, or F atom of an adjacent molecule.</li>
+            </ul>
+          </li>
+          <li><span class="term">Explanation:</span> The high electronegativity difference strongly pulls shared electrons away from the hydrogen atom. Because hydrogen has no inner shell of shielding electrons, its positive nucleus is exposed, creating a high \(\delta^+\) charge density that strongly attracts the lone pair on a neighbouring N, O, or F atom.</li>
+          <li><span class="term">Relative Strength Hierarchy:</span> Covalent bonds \(\gg\) Hydrogen bonds \(>\) Permanent dipole–dipole forces \(>\) London dispersion forces.</li>
+        </ol>
+
+        <div class="strength" role="img" aria-label="Bar chart comparing relative strengths: Covalent bonds are strongest, then hydrogen bonds, then permanent dipole-dipole forces, then London dispersion forces which are weakest.">
+          <h4>Relative strength hierarchy (logarithmic feel)</h4>
+          <div class="bars">
+            <div class="bar-row">
+              <span class="bar-label">Covalent bonds</span>
+              <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+              <span class="bar-val">~ 400 kJ/mol</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Hydrogen bonds</span>
+              <div class="bar-track"><div class="bar-fill" style="width:62%"></div></div>
+              <span class="bar-val">~ 20–40 kJ/mol</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Permanent dipole–dipole</span>
+              <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+              <span class="bar-val">~ 5–25 kJ/mol</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">London dispersion</span>
+              <div class="bar-track"><div class="bar-fill" style="width:18%"></div></div>
+              <span class="bar-val">~ 1–10 kJ/mol</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ 7.2 ============ -->
+    <section class="spec" id="spec-7-2" aria-labelledby="h-7-2">
+      <header>
+        <p class="spec-num">Specification Point 7.2</p>
+        <h2 id="h-7-2">Hydrogen Bonding in \(H_2O\), Liquid \(NH_3\), and Liquid \(HF\)</h2>
+      </header>
+      <p class="lead">Hydrogen bonding significantly dictates the behaviour of simple hydrides containing N, O, and F 18, 20, 22:
+
+- Water (\(H_2O\)):
+- Each oxygen atom has two O–H bonds and two lone pairs of electrons.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h4>Water <span class="formula">\(H_2O\)</span></h4>
+          <p>Each oxygen atom has two O–H bonds and two lone pairs of electrons.</p>
+          <p>Water molecules can form an extensive 3D hydrogen-bonded network with up to <strong>four hydrogen bonds per molecule</strong>.</p>
+        </div>
+        <div class="card">
+          <h4>Ammonia <span class="formula">\(NH_3\)</span></h4>
+          <p>Nitrogen forms three N–H bonds and possesses one lone pair of electrons.</p>
+          <p>Because it has only one lone pair, ammonia forms an average of <strong>one hydrogen bond per molecule</strong>, making its intermolecular attraction less extensive than water's.</p>
+        </div>
+        <div class="card">
+          <h4>Hydrogen Fluoride <span class="formula">\(HF\)</span></h4>
+          <p>Fluorine is the most electronegative element and has three lone pairs, but only one hydrogen atom per molecule.</p>
+          <p>\(HF\) forms long linear hydrogen-bonded chains \((HF)_n\). Despite having strong individual hydrogen bonds, \(HF\) forms <strong>fewer hydrogen bonds per molecule</strong> overall compared to water.</p>
+        </div>
+      </div>
+
+      <div class="callout key" role="note">
+        <div class="callout-icon" aria-hidden="true">⭐</div>
+        <div class="callout-body">
+          <p class="callout-label">Key insight</p>
+          <p>Water's combination of <strong>two lone pairs</strong> and <strong>two O–H bonds</strong> lets each molecule act as both a double donor and a double acceptor — that's why water beats both \(NH_3\) and \(HF\) in the number of hydrogen bonds per molecule, even though individual O–H⋯O bonds are weaker than F–H⋯F bonds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.3 ============ -->
+    <section class="spec" id="spec-7-3" aria-labelledby="h-7-3">
+      <header>
+        <p class="spec-num">Specification Point 7.3</p>
+        <h2 id="h-7-3">Anomalous Properties of Water Resulting from Hydrogen Bonding</h2>
+      </header>
+      <p class="lead">Water exhibits two major anomalous physical properties directly caused by its extensive hydrogen bonding network 22, 27, 28:
+
+7.3(i) High Melting and Boiling Temperatures
+
+- Observation: Water has anomalously high melting and boiling points (and enthalpy of vaporisation) compared to other Group 6 hydrides (\(H_2S\), \(H_2Se\), \(H_2Te\)) and molecules of comparable molar mass.</p>
+
+      <!-- 7.3(i) -->
+      <section class="sub" id="spec-7-3-i" aria-labelledby="h-7-3-i">
+        <h3 id="h-7-3-i"><span class="sub-tag">7.3(i)</span> High Melting and Boiling Temperatures</h3>
+        <ul class="defs">
+          <li><span class="term">Observation:</span> Water has anomalously high melting and boiling points (and enthalpy of vaporisation) compared to other Group 6 hydrides (\(H_2S\), \(H_2Se\), \(H_2Te\)) and molecules of comparable molar mass.</li>
+          <li><span class="term">Explanation:</span> While \(H_2S\), \(H_2Se\), and \(H_2Te\) are held together primarily by weaker London dispersion forces, liquid water requires a large amount of thermal energy to overcome its extensive network of strong hydrogen bonds.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Group 6 hydrides · Trend break at water</caption>
+            <thead>
+              <tr><th scope="col">Hydride</th><th scope="col">Formula</th><th scope="col">Boiling point</th><th scope="col">Dominant IMF</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compound">Water</td>
+                <td>\(H_2O\)</td>
+                <td><span class="num">100 °C</span></td>
+                <td>Hydrogen bonding</td>
+              </tr>
+              <tr>
+                <td class="compound">Hydrogen sulfide</td>
+                <td>\(H_2S\)</td>
+                <td><span class="num">−60 °C</span></td>
+                <td>London / dipole–dipole</td>
+              </tr>
+              <tr>
+                <td class="compound">Hydrogen selenide</td>
+                <td>\(H_2Se\)</td>
+                <td><span class="num">−42 °C</span></td>
+                <td>London / dipole–dipole</td>
+              </tr>
+              <tr>
+                <td class="compound">Hydrogen telluride</td>
+                <td>\(H_2Te\)</td>
+                <td><span class="num">−2 °C</span></td>
+                <td>London / dipole–dipole</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7.3(ii) -->
+      <section class="sub" id="spec-7-3-ii" aria-labelledby="h-7-3-ii">
+        <h3 id="h-7-3-ii"><span class="sub-tag">7.3(ii)</span> Lower Density of Ice Compared to Liquid Water</h3>
+        <ul class="defs">
+          <li><span class="term">Observation:</span> Ice floats on liquid water because solid ice at \(0^\circ\text{C}\) is less dense than liquid water at \(0^\circ\text{C}\).</li>
+          <li><span class="term">Explanation:</span> In liquid water, hydrogen bonds constantly break and re-form dynamically. When water freezes into ice, the molecules are locked into a fixed, rigid 3D hexagonal ring structure held open by 4 hydrogen bonds per molecule. This arrangement creates an open, cage-like structure with large empty spaces. When ice melts, this open ring framework collapses, allowing water molecules to pack closer together, which increases the liquid's density.</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- ============ 7.4 ============ -->
+    <section class="spec" id="spec-7-4" aria-labelledby="h-7-4">
+      <header>
+        <p class="spec-num">Specification Point 7.4</p>
+        <h2 id="h-7-4">Predicting Hydrogen Bonding in Analogous Molecules</h2>
+      </header>
+      <p class="lead">Hydrogen bonding can be predicted in any compound where hydrogen is bonded to nitrogen or oxygen 21, 22, 33:
+
+- Alcohols (\(R\text{--OH}\)): Form intermolecular hydrogen bonds via the hydroxyl group.</p>
+
+      <ul class="defs">
+        <li><span class="term">Alcohols (\(R\text{--OH}\)):</span> Form intermolecular hydrogen bonds via the hydroxyl group.</li>
+        <li><span class="term">Carboxylic Acids (\(R\text{--COOH}\)):</span> Form hydrogen-bonded dimers in non-polar solvents.</li>
+        <li><span class="term">Amines (\(R\text{--NH}_2\), \(R_2\text{--NH}\)) &amp; Amides (\(R\text{--CONH}_2\)):</span> Form hydrogen bonds via N–H groups and lone pairs on nitrogen.</li>
+        <li><span class="term">Proteins &amp; Biological Macromolecules:</span> Rely on N–H\(\cdots\)O=C hydrogen bonds to maintain secondary structures.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 7.5 ============ -->
+    <section class="spec" id="spec-7-5" aria-labelledby="h-7-5">
+      <header>
+        <p class="spec-num">Specification Point 7.5</p>
+        <h2 id="h-7-5">Intermolecular Forces and Physical Properties</h2>
+      </header>
+
+      <!-- 7.5(i) -->
+      <section class="sub" id="spec-7-5-i" aria-labelledby="h-7-5-i">
+        <h3 id="h-7-5-i"><span class="sub-tag">7.5(i)</span> Boiling Temperatures of Alkanes with Increasing Chain Length</h3>
+        <ul class="defs">
+          <li><span class="term">Trend:</span> Boiling temperatures of unbranched alkanes increase steadily as carbon chain length increases.</li>
+          <li><span class="term">Explanation:</span> As chain length grows, relative molecular mass and the total number of electrons per molecule increase. Larger electron clouds undergo greater fluctuations in electron density, generating stronger instantaneous and induced dipoles. Furthermore, longer straight chains offer a larger surface area of contact between molecules, increasing total London dispersion forces and requiring more energy to separate molecules.</li>
+        </ul>
+      </section>
+
+      <!-- 7.5(ii) -->
+      <section class="sub" id="spec-7-5-ii" aria-labelledby="h-7-5-ii">
+        <h3 id="h-7-5-ii"><span class="sub-tag">7.5(ii)</span> Effect of Branching on Alkane Boiling Temperatures</h3>
+        <ul class="defs">
+          <li><span class="term">Trend:</span> Branched-chain alkanes have lower boiling temperatures than their unbranched structural isomers.</li>
+          <li><span class="term">Explanation:</span> Branching makes molecules more compact and spherical, which reduces the surface area of contact between adjacent molecules. Fewer points of contact weaken the overall London dispersion forces, requiring less thermal energy to overcome. For example, pentane boils at \(309\text{ K}\), 2-methylbutane at \(301\text{ K}\), and 2,2-dimethylpropane at \(283\text{ K}\).</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>C₅H₁₂ isomers · Boiling points fall as branching rises</caption>
+            <thead>
+              <tr><th scope="col">Isomer</th><th scope="col">Structure</th><th scope="col">Boiling point</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="compound">Pentane</td><td>Unbranched chain</td><td><span class="num">309 K</span></td></tr>
+              <tr><td class="compound">2-methylbutane</td><td>One branch</td><td><span class="num">301 K</span></td></tr>
+              <tr><td class="compound">2,2-dimethylpropane</td><td>Two branches (compact)</td><td><span class="num">283 K</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7.5(iii) -->
+      <section class="sub" id="spec-7-5-iii" aria-labelledby="h-7-5-iii">
+        <h3 id="h-7-5-iii"><span class="sub-tag">7.5(iii)</span> Low Volatility (Higher Boiling Points) of Alcohols Compared to Alkanes</h3>
+        <ul class="defs">
+          <li><span class="term">Trend:</span> Alcohols have significantly higher boiling points (lower volatility) than alkanes with similar electron numbers or chain lengths.</li>
+          <li><span class="term">Explanation:</span> Alkanes are non-polar and held together solely by weak London dispersion forces. Alcohols contain the polar –OH group, allowing them to form strong intermolecular hydrogen bonds in addition to London forces. Breaking these extra hydrogen bonds requires substantially higher thermal energy. For instance, propane boils at \(-42^\circ\text{C}\) while propan-1-ol boils at \(97^\circ\text{C}\).</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <caption>C₃ pairs · Same chain length, very different boiling points</caption>
+            <thead>
+              <tr><th scope="col">Compound</th><th scope="col">Formula</th><th scope="col">Boiling point</th><th scope="col">Extra IMF</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="compound">Propane</td><td>\(C_3H_8\)</td><td><span class="num">−42 °C</span></td><td>—</td></tr>
+              <tr><td class="compound">Propan-1-ol</td><td>\(C_3H_7OH\)</td><td><span class="num">97 °C</span></td><td>Hydrogen bonding</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7.5(iv) -->
+      <section class="sub" id="spec-7-5-iv" aria-labelledby="h-7-5-iv">
+        <h3 id="h-7-5-iv"><span class="sub-tag">7.5(iv)</span> Trends in Boiling Temperatures of Hydrogen Halides (\(HF\) to \(HI\))</h3>
+        <ol class="steps">
+          <li><span class="term">Observation:</span> \(HF\) has an anomalously high boiling point (\(293\text{ K}\)). From \(HCl\) to \(HI\), boiling points drop sharply to \(HCl\) (\(188\text{ K}\)) and then rise steadily through \(HBr\) (\(207\text{ K}\)) to \(HI\) (\(238\text{ K}\)).</li>
+          <li>
+            <span class="term">Explanation:</span>
+            <ul>
+              <li><strong>\(HF\) Anomaly:</strong> \(HF\) forms strong intermolecular hydrogen bonds due to the extreme polarity of the H–F bond and small, intense lone pairs on fluorine.</li>
+              <li><strong>\(HCl\) to \(HI\) Trend:</strong> \(HCl\), \(HBr\), and \(HI\) cannot form hydrogen bonds; they experience permanent dipole–dipole forces and London forces. Going from \(HCl\) to \(HI\), electronegativity decreases, so permanent dipole forces weaken. However, the number of electrons increases significantly (\(HCl < HBr < HI\)), strengthening the London dispersion forces enough to overcome the drop in permanent dipole attractions and increase the boiling point.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Hydrogen halides · Boiling point trend</caption>
+            <thead>
+              <tr><th scope="col">Halide</th><th scope="col">Formula</th><th scope="col">Boiling point</th><th scope="col">Dominant IMF</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="compound">Hydrogen fluoride</td><td>\(HF\)</td><td><span class="num">293 K</span></td><td>Hydrogen bonding</td></tr>
+              <tr><td class="compound">Hydrogen chloride</td><td>\(HCl\)</td><td><span class="num">188 K</span></td><td>Dipole–dipole + London</td></tr>
+              <tr><td class="compound">Hydrogen bromide</td><td>\(HBr\)</td><td><span class="num">207 K</span></td><td>Dipole–dipole + London</td></tr>
+              <tr><td class="compound">Hydrogen iodide</td><td>\(HI\)</td><td><span class="num">238 K</span></td><td>Dipole–dipole + London</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ 7.6 ============ -->
+    <section class="spec" id="spec-7-6" aria-labelledby="h-7-6">
+      <header>
+        <p class="spec-num">Specification Point 7.6</p>
+        <h2 id="h-7-6">Factors Influencing Solvent Choice</h2>
+      </header>
+      <p class="lead">Dissolution depends on the balance of intermolecular interactions: a solute dissolves when the solute–solvent attractions are strong enough to overcome both solute–solute and solvent–solvent forces ("like dissolves like").</p>
+
+      <!-- 7.6(i) -->
+      <section class="sub" id="spec-7-6-i" aria-labelledby="h-7-6-i">
+        <h3 id="h-7-6-i"><span class="sub-tag">7.6(i)</span> Water as a Solvent for Ionic Compounds</h3>
+        <ul class="defs">
+          <li><span class="term">Mechanism:</span> Giant ionic lattices are held together by strong electrostatic ionic bonds.</li>
+          <li><span class="term">Hydration:</span> Water is a polar solvent (\(\delta^+\) H, \(\delta^-\) O). When an ionic solid is placed in water, the \(\delta^+\) hydrogen atoms attract negative anions, while \(\delta^-\) oxygen atoms attract positive cations.</li>
+          <li><span class="term">Energetics:</span> The energy released during ion hydration (hydration enthalpy) supplies the energy needed to break apart the ionic lattice (lattice enthalpy).</li>
+        </ul>
+      </section>
+
+      <!-- 7.6(ii) -->
+      <section class="sub" id="spec-7-6-ii" aria-labelledby="h-7-6-ii">
+        <h3 id="h-7-6-ii"><span class="sub-tag">7.6(ii)</span> Water as a Solvent for Simple Alcohols</h3>
+        <ul class="defs">
+          <li><span class="term">Mechanism:</span> Small alcohols (methanol, ethanol, propan-1-ol) are completely soluble in water because their hydroxyl (–OH) groups form hydrogen bonds with water molecules.</li>
+          <li><span class="term">Chain Length Effect:</span> As the non-polar hydrocarbon chain lengthens (e.g., hexanol, octanol), solubility in water decreases markedly. The non-polar alkyl chain cannot form hydrogen bonds with water and disrupts water's hydrogen-bonded network; hydrophobic London forces between long alkyl chains become predominant.</li>
+        </ul>
+      </section>
+
+      <!-- 7.6(iii) -->
+      <section class="sub" id="spec-7-6-iii" aria-labelledby="h-7-6-iii">
+        <h3 id="h-7-6-iii"><span class="sub-tag">7.6(iii)</span> Water as a Poor Solvent for Halogenoalkanes and Non-Polar Compounds</h3>
+        <ul class="defs">
+          <li><span class="term">Explanation:</span> Halogenoalkanes contain polar C–X bonds but lack H–F, H–O, or H–N bonds, meaning they cannot form hydrogen bonds with water.</li>
+          <li><span class="term">Energetics:</span> The permanent dipole–dipole forces formed between halogenoalkanes and water are too weak to break the strong hydrogen bonds between water molecules, rendering halogenoalkanes insoluble or only sparingly soluble in water.</li>
+        </ul>
+      </section>
+
+      <!-- 7.6(iv) -->
+      <section class="sub" id="spec-7-6-iv" aria-labelledby="h-7-6-iv">
+        <h3 id="h-7-6-iv"><span class="sub-tag">7.6(iv)</span> Non-Aqueous Solvents for Non-Polar Compounds</h3>
+        <ul class="defs">
+          <li><span class="term">Explanation:</span> Non-polar solutes (such as alkanes or iodine) readily dissolve in non-polar organic solvents (such as hexane or cyclohexane).</li>
+          <li><span class="term">Interactions:</span> The weak London forces broken between solute molecules and between solvent molecules are replaced by London forces of comparable strength between solute and solvent molecules.</li>
+        </ul>
+
+        <div class="callout key" role="note">
+          <div class="callout-icon" aria-hidden="true">🧪</div>
+          <div class="callout-body">
+            <p class="callout-label">"Like dissolves like"</p>
+            <p>Polar solutes dissolve in polar solvents; non-polar solutes dissolve in non-polar solvents. The deciding factor is whether the new solute–solvent attractions can pay the energetic cost of breaking the existing solute–solute and solvent–solvent interactions.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== Next step callout ===== -->
+    <div class="callout next" role="note">
+      <div class="callout-icon" aria-hidden="true">💡</div>
+      <div class="callout-body">
+        <p class="callout-label">Next Step</p>
+        <p>Next Step: Would you like to practice exam-style questions on Topic 7, or move on to Topic 8 (Redox Chemistry and Groups 1, 2, and 7) next?</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site" role="contentinfo">
+  <p><strong>Topic 7 · Intermolecular Forces</strong> — Edexcel IAL Chemistry Unit 2 revision notes.</p>
+  <p style="margin-top:6px;">Built for readability and accessibility. Math rendered with <a href="https://katex.org" rel="noopener">KaTeX</a>. <a href="#top">Back to top ↑</a></p>
+</footer>
+
+<script>
+  // ---- Mobile nav toggle ----
+  (function(){
+    const btn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.topbar nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  // ---- TOC scrollspy ----
+  (function(){
+    const links = Array.from(document.querySelectorAll('.toc a[href^="#"]'));
+    const map = new Map();
+    links.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      const sec = document.getElementById(id);
+      if (sec) map.set(sec, a);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const a = map.get(e.target);
+        if (!a) return;
+        if (e.isIntersecting) {
+          links.forEach(x => x.removeAttribute('aria-current'));
+          a.setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    map.forEach((_, sec) => obs.observe(sec));
+  })();
+</script>
+
+</body>
+</html>
