@@ -1447,3 +1447,185 @@ main a[class*="underline-offset"] {
     font-size: clamp(1.8rem, 7vw, 2.35rem) !important;
   }
 }
+
+
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM v3 — TABLET / LARGE-SCREEN READABILITY
+   The previous v2 scale still treated tablets too much like desktop layouts.
+   On 10–13" screens, chemistry notes need a visibly larger reading scale.
+   This final layer intentionally overrides earlier topic typography.
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1535px) {
+  :root {
+    --type-body: 1.25rem;       /* 20px */
+    --type-body-lg: 1.35rem;    /* 21.6px */
+    --type-small: 1.05rem;     /* 16.8px */
+    --type-caption: 0.95rem;    /* 15.2px */
+    --type-label: 0.9rem;       /* 14.4px */
+
+    --type-h1: clamp(3.4rem, 4vw, 5rem);
+    --type-h2: clamp(2.35rem, 3vw, 3.25rem);
+    --type-h3: clamp(1.65rem, 2vw, 2.15rem);
+    --type-h4: clamp(1.3rem, 1.5vw, 1.65rem);
+  }
+
+  body {
+    font-size: 1.25rem !important;
+    line-height: 1.68 !important;
+  }
+
+  h1 {
+    font-size: var(--type-h1) !important;
+  }
+
+  h2 {
+    font-size: var(--type-h2) !important;
+  }
+
+  h3 {
+    font-size: var(--type-h3) !important;
+  }
+
+  h4 {
+    font-size: var(--type-h4) !important;
+  }
+
+  .prose-chem,
+  .topic-page .prose-chem {
+    font-size: 1.25rem !important;
+    line-height: 1.68 !important;
+    max-width: 78ch;
+  }
+
+  .prose-chem :is(p, li, dd, dt),
+  .topic-page .prose-chem :is(p, li, dd, dt) {
+    font-size: 1.25rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .prose-chem h2,
+  .topic-page .prose-chem section > header h2 {
+    font-size: var(--type-h2) !important;
+    line-height: 1.12 !important;
+    margin-bottom: 1.1rem;
+  }
+
+  .prose-chem h3,
+  .topic-page .prose-chem h3 {
+    font-size: var(--type-h3) !important;
+    line-height: 1.18 !important;
+    margin-top: 2.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-chem h4,
+  .topic-page .prose-chem h4 {
+    font-size: var(--type-h4) !important;
+    line-height: 1.22 !important;
+  }
+
+  .prose-chem dd,
+  .topic-page .prose-chem dd,
+  .prose-chem .rail-list,
+  .topic-page .prose-chem .rail-list,
+  .spec-list-wrapper,
+  .spec-list-wrapper li {
+    font-size: 1.15rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .prose-chem table,
+  .topic-page .prose-chem table {
+    font-size: 1.05rem !important;
+  }
+
+  .prose-chem th,
+  .topic-page .prose-chem th {
+    font-size: 0.9rem !important;
+  }
+
+  .prose-chem figcaption,
+  .topic-page .prose-chem figcaption,
+  .prose-chem table caption,
+  .topic-page .prose-chem table caption {
+    font-size: 0.95rem !important;
+  }
+
+  .prose-chem aside[role="note"] p,
+  .topic-page .prose-chem aside[role="note"] p {
+    font-size: 1.15rem !important;
+    line-height: 1.58 !important;
+  }
+
+  .prose-chem aside[role="note"] p:first-child,
+  .topic-page .prose-chem aside[role="note"] p:first-child {
+    font-size: 0.9rem !important;
+  }
+
+  header.sticky a,
+  header.sticky button {
+    font-size: 1.05rem !important;
+  }
+
+  .topic-page nav[aria-label="On this page"] a {
+    font-size: 1rem !important;
+  }
+
+  .topic-page nav[aria-label="On this page"] p {
+    font-size: 0.9rem !important;
+  }
+
+  .topic-page .topic-masthead h1 {
+    font-size: clamp(3.25rem, 4.5vw, 5.25rem) !important;
+  }
+
+  .topic-page .topic-masthead p,
+  .topic-page .topic-masthead li,
+  .topic-page .topic-masthead dd {
+    font-size: 1.2rem !important;
+  }
+
+  .diagram-svg .lbl {
+    font-size: 15px !important;
+  }
+
+  .diagram-svg .lbl-s {
+    font-size: 12.5px !important;
+  }
+}
+
+/* Tablet landscape gets the same readable scale even when the device reports
+   a large CSS viewport. Do not let the old 18–19px topic rules win. */
+@media (min-width: 1024px) and (max-height: 900px) and (orientation: landscape) {
+  .topic-page .prose-chem,
+  .topic-page .prose-chem :is(p, li, dd, dt) {
+    font-size: 1.25rem !important;
+  }
+
+  .topic-page .prose-chem section > header h2 {
+    font-size: clamp(2.35rem, 3vw, 3.25rem) !important;
+  }
+}
+
+/* Wide desktop: keep the larger reading scale instead of shrinking back
+   to the old 18–19px range. */
+@media (min-width: 1536px) {
+  .topic-page .prose-chem,
+  .topic-page .prose-chem :is(p, li, dd, dt) {
+    font-size: clamp(1.2rem, 1.08rem + 0.18vw, 1.35rem) !important;
+    line-height: 1.68 !important;
+  }
+
+  .topic-page .prose-chem section > header h2 {
+    font-size: clamp(2.5rem, 2.1rem + 1vw, 3.25rem) !important;
+  }
+
+  .topic-page .prose-chem h3 {
+    font-size: clamp(1.7rem, 1.45rem + 0.55vw, 2.15rem) !important;
+  }
+
+  .topic-page .prose-chem h4 {
+    font-size: clamp(1.3rem, 1.15rem + 0.3vw, 1.65rem) !important;
+  }
+}
