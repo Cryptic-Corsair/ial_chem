@@ -1114,3 +1114,336 @@
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
   .safe-bottom-4 { padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
 }
+
+
+
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM v2 — IAL Chemistry
+   One responsive scale for the entire site.
+   The previous CSS mixed tiny Tailwind utilities with independent topic
+   overrides; this layer deliberately establishes a single readable system.
+   ========================================================================== */
+
+:root {
+  --type-body: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --type-body-lg: clamp(1.08rem, 1rem + 0.24vw, 1.22rem);
+  --type-small: clamp(0.875rem, 0.84rem + 0.12vw, 0.98rem);
+  --type-caption: clamp(0.78rem, 0.74rem + 0.10vw, 0.88rem);
+  --type-label: clamp(0.76rem, 0.72rem + 0.10vw, 0.86rem);
+
+  --type-h1: clamp(2.75rem, 2.1rem + 3vw, 5.25rem);
+  --type-h2: clamp(2rem, 1.55rem + 1.55vw, 3rem);
+  --type-h3: clamp(1.45rem, 1.2rem + 0.75vw, 1.9rem);
+  --type-h4: clamp(1.18rem, 1.05rem + 0.4vw, 1.42rem);
+
+  --measure-reading: 72ch;
+  --measure-wide: 82ch;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: var(--type-body) !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.005em;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+}
+
+h1 {
+  font-size: var(--type-h1) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+}
+
+h2 {
+  font-size: var(--type-h2) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.018em !important;
+}
+
+h3 {
+  font-size: var(--type-h3) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.012em !important;
+}
+
+h4 {
+  font-size: var(--type-h4) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.008em !important;
+}
+
+p,
+li,
+dd,
+dt {
+  font-size: inherit;
+}
+
+.prose-chem,
+.topic-page .prose-chem {
+  font-size: var(--type-body) !important;
+  line-height: 1.72 !important;
+  max-width: var(--measure-reading);
+}
+
+.prose-chem p,
+.prose-chem li {
+  max-width: var(--measure-reading);
+}
+
+.prose-chem h2,
+.topic-page .prose-chem section > header h2 {
+  font-size: var(--type-h2) !important;
+  line-height: 1.14 !important;
+}
+
+.prose-chem h3,
+.topic-page .prose-chem h3 {
+  font-size: var(--type-h3) !important;
+  line-height: 1.2 !important;
+}
+
+.prose-chem h4,
+.topic-page .prose-chem h4 {
+  font-size: var(--type-h4) !important;
+  line-height: 1.25 !important;
+}
+
+.prose-chem :is(p, li, dd, dt),
+.topic-page .prose-chem :is(p, li, dd, dt) {
+  font-size: var(--type-body) !important;
+  line-height: 1.7 !important;
+}
+
+.prose-chem dd,
+.topic-page .prose-chem dd,
+.prose-chem .rail-list,
+.topic-page .prose-chem .rail-list {
+  font-size: var(--type-body) !important;
+  line-height: 1.65 !important;
+}
+
+.prose-chem table,
+.topic-page .prose-chem table {
+  font-size: var(--type-small) !important;
+}
+
+.prose-chem th,
+.topic-page .prose-chem th {
+  font-size: var(--type-label) !important;
+  line-height: 1.35 !important;
+}
+
+.prose-chem figcaption,
+.topic-page .prose-chem figcaption,
+.prose-chem table caption,
+.topic-page .prose-chem table caption {
+  font-size: var(--type-small) !important;
+  line-height: 1.5 !important;
+}
+
+.prose-chem aside[role="note"] p,
+.topic-page .prose-chem aside[role="note"] p {
+  font-size: var(--type-body) !important;
+  line-height: 1.62 !important;
+}
+
+.prose-chem aside[role="note"] p:first-child,
+.topic-page .prose-chem aside[role="note"] p:first-child {
+  font-size: var(--type-label) !important;
+}
+
+/* Navigation and utility text: readable without becoming visually loud. */
+header.sticky a,
+header.sticky button {
+  font-size: var(--type-small) !important;
+}
+
+header.sticky .font-mono {
+  font-size: 0.82rem !important;
+}
+
+.topic-page nav[aria-label="On this page"] {
+  font-size: var(--type-small);
+}
+
+.topic-page nav[aria-label="On this page"] a {
+  font-size: var(--type-small) !important;
+  line-height: 1.45 !important;
+}
+
+.topic-page nav[aria-label="On this page"] p {
+  font-size: var(--type-label) !important;
+}
+
+/* Homepage: make the editorial hierarchy actually visible on large screens. */
+main > section h1 {
+  font-size: clamp(3rem, 2.2rem + 3.4vw, 5.2rem) !important;
+}
+
+main > section h2 {
+  font-size: clamp(2rem, 1.55rem + 1.45vw, 3rem) !important;
+}
+
+main > section h3 {
+  font-size: clamp(1.35rem, 1.15rem + 0.7vw, 1.8rem) !important;
+}
+
+/* Topic cards were especially undersized. */
+.group.relative.flex.flex-col.rounded-sm {
+  padding: clamp(1.15rem, 1rem + 0.35vw, 1.6rem) !important;
+}
+
+.group.relative.flex.flex-col.rounded-sm h3 {
+  font-size: clamp(1.15rem, 1rem + 0.45vw, 1.45rem) !important;
+  line-height: 1.25 !important;
+}
+
+.group.relative.flex.flex-col.rounded-sm p {
+  font-size: var(--type-small) !important;
+  line-height: 1.58 !important;
+}
+
+.group.relative.flex.flex-col.rounded-sm .text-4xl {
+  font-size: clamp(2.4rem, 2rem + 1vw, 3.25rem) !important;
+}
+
+.group.relative.flex.flex-col.rounded-sm [class*="text-[10px]"],
+.group.relative.flex.flex-col.rounded-sm [class*="text-[11px]"] {
+  font-size: var(--type-caption) !important;
+}
+
+/* Homepage feature chips, stats, search and secondary copy. */
+input[type="search"] {
+  font-size: var(--type-body) !important;
+  min-height: 3.15rem;
+}
+
+input[type="search"]::placeholder {
+  font-size: var(--type-small);
+}
+
+main dl {
+  font-size: var(--type-small);
+}
+
+main dl dd.text-2xl {
+  font-size: clamp(1.55rem, 1.35rem + 0.55vw, 2rem) !important;
+}
+
+main .rounded-lg.border.border-border.bg-card p.font-sans.text-sm {
+  font-size: var(--type-small) !important;
+}
+
+main .rounded-lg.border.border-border.bg-card p.font-sans.text-xs {
+  font-size: var(--type-caption) !important;
+}
+
+main a[class*="bg-primary"] {
+  font-size: var(--type-small) !important;
+  min-height: 2.9rem;
+}
+
+main a[class*="underline-offset"] {
+  font-size: var(--type-small) !important;
+}
+
+/* Topic masthead and supporting metadata. */
+.topic-page .topic-masthead {
+  font-size: var(--type-body);
+}
+
+.topic-page .topic-masthead h1 {
+  font-size: clamp(2.65rem, 2rem + 3vw, 5rem) !important;
+  line-height: 1.06 !important;
+}
+
+.topic-page .topic-masthead p,
+.topic-page .topic-masthead li,
+.topic-page .topic-masthead dd {
+  font-size: var(--type-body) !important;
+  line-height: 1.6 !important;
+}
+
+.topic-page .topic-masthead [class*="text-[10px]"],
+.topic-page .topic-masthead [class*="text-[11px]"],
+.topic-page .topic-masthead [class*="text-xs"] {
+  font-size: var(--type-label) !important;
+}
+
+/* Specification list / cards should not collapse into tiny annotation text. */
+.spec-list-wrapper,
+.spec-list-wrapper li {
+  font-size: var(--type-body) !important;
+  line-height: 1.65 !important;
+}
+
+.spec-list-wrapper [class*="text-[10px]"],
+.spec-list-wrapper [class*="text-[11px]"],
+.spec-list-wrapper [class*="text-xs"] {
+  font-size: var(--type-caption) !important;
+}
+
+/* Diagrams contain real educational text; make labels legible on desktop. */
+.diagram-svg .lbl {
+  font-size: 13px !important;
+}
+
+.diagram-svg .lbl-s {
+  font-size: 11px !important;
+}
+
+/* Avoid the old wide-screen jump to 20–21px: 18–19px is the sweet spot
+   for long chemistry reading at desktop distances. */
+@media (min-width: 1280px) {
+  .topic-page .prose-chem {
+    font-size: clamp(1.08rem, 1.02rem + 0.12vw, 1.2rem) !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .topic-page .prose-chem {
+    font-size: 1.2rem !important;
+    max-width: 76ch !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1rem !important;
+  }
+
+  h1 {
+    font-size: clamp(2.35rem, 10vw, 3.1rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 7vw, 2.35rem) !important;
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 5.5vw, 1.65rem) !important;
+  }
+
+  .prose-chem,
+  .topic-page .prose-chem,
+  .prose-chem :is(p, li, dd, dt) {
+    font-size: 1rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .topic-page .prose-chem section > header h2 {
+    font-size: clamp(1.8rem, 7vw, 2.35rem) !important;
+  }
+}
