@@ -288,6 +288,12 @@ export const topic8: Topic = {
           ],
         },
         {
+          kind: "image",
+          src: "/images/t8-polarisation.png",
+          alt: "Diagram showing how small cations like Li+ strongly polarise the nitrate anion electron cloud, weakening N-O bonds, while large cations like Ba2+ barely distort it",
+          caption: "Small cations (high charge density) strongly polarise the anion, weakening the N–O bond. Large cations barely distort it — bonds stay strong.",
+        },
+        {
           kind: "table",
           caption: "Thermal decomposition patterns",
           columns: [

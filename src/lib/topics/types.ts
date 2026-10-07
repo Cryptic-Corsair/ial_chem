@@ -154,6 +154,16 @@ export type Block =
       yes: { label: string; body: string };
       /** The no branch */
       no: { label: string; body: string };
+    }
+  // ───── Image block (for embedded PNG/JPG diagrams) ─────
+  | {
+      kind: "image";
+      /** Path to the image in /public/images/ */
+      src: string;
+      /** Alt text for accessibility */
+      alt: string;
+      /** Visible caption below the image */
+      caption?: string;
     };
 
 export interface Section {

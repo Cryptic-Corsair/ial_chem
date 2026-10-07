@@ -283,6 +283,12 @@ export const topic10: Topic = {
           text: "Oxidising agent: acidified potassium dichromate(VI) (K₂Cr₂O₇ / dilute H₂SO₄). Colour change: orange Cr₂O₇²⁻ reduced to green Cr³⁺.",
         },
         {
+          kind: "image",
+          src: "/images/t10-oxidation-pathways.png",
+          alt: "Flowchart showing oxidation pathways: primary alcohol → aldehyde (distil) → carboxylic acid (reflux); secondary alcohol → ketone; tertiary alcohol → no reaction",
+          caption: "Alcohol oxidation pathways. Distil = remove product as it forms (aldehyde). Reflux = keep reacting (carboxylic acid). Tertiary = no reaction.",
+        },
+        {
           kind: "table",
           caption: "Oxidation pathways for primary, secondary, and tertiary alcohols",
           columns: [

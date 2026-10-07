@@ -596,6 +596,22 @@ export function BlockRenderer({ block }: { block: Block }) {
     case "decision-flow":
       return <DecisionFlowBlock {...block} />;
 
+    case "image":
+      return (
+        <figure className="my-6 overflow-hidden rounded-lg border border-border bg-card shadow-card">
+          <img
+            src={block.src}
+            alt={block.alt}
+            className="w-full h-auto"
+          />
+          {block.caption && (
+            <figcaption className="border-t border-dashed border-border px-5 py-3 text-[13px] leading-relaxed text-muted-foreground">
+              <RichText>{block.caption}</RichText>
+            </figcaption>
+          )}
+        </figure>
+      );
+
     default:
       return null;
   }
