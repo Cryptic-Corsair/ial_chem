@@ -1,7 +1,7 @@
 "use client";
 
 import { RichText, Math as MathExpr } from "./math";
-import { ParagraphOrBullets } from "./paragraph-or-bullets";
+import { ParagraphOrBullets, ForcedBullets } from "./paragraph-or-bullets";
 import type { Block } from "@/lib/topics/types";
 import {
   Lightbulb,
@@ -75,11 +75,11 @@ export function BlockRenderer({ block }: { block: Block }) {
                     <RichText>{item.term}</RichText>
                   </span>
                 </dt>
-                {/* Body on a rail — vertical line instead of bullet dots */}
+                {/* Body on a rail — always split into sentences, each on its own line */}
                 <dd className="ml-4">
                   {item.body && (
                     <div className="rail-list text-[15px] leading-relaxed sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
-                      <ParagraphOrBullets>{item.body}</ParagraphOrBullets>
+                      <ForcedBullets>{item.body}</ForcedBullets>
                     </div>
                   )}
                   {item.children && item.children.length > 0 && (
@@ -123,7 +123,7 @@ export function BlockRenderer({ block }: { block: Block }) {
               <div className="ml-4">
                 {item.body && (
                   <div className="rail-list text-[15px] leading-relaxed sm:text-base" style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
-                    <ParagraphOrBullets>{item.body}</ParagraphOrBullets>
+                    <ForcedBullets>{item.body}</ForcedBullets>
                   </div>
                 )}
                 {item.children && item.children.length > 0 && (

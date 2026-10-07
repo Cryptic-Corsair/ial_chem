@@ -184,7 +184,7 @@ export const topic8: Topic = {
           kind: "definition-list",
           items: [
             { term: "Trend", body: "First and second ionisation energies decrease down Groups 1 and 2." },
-            { term: "Explanation", body: "Atomic radius increases down the group, the number of inner filled electron shells increases (more shielding), and increased distance and shielding outweigh the increase in nuclear charge, weakening the electrostatic attraction between the nucleus and outermost valence electron(s)." },
+            { term: "Explanation", body: "Atomic radius increases down the group. The number of inner filled electron shells increases, leading to increased shielding. Increased distance and shielding outweigh the increase in nuclear charge. This weakens the electrostatic attraction between the nucleus and outermost valence electron(s)." },
           ],
         },
         {
@@ -196,7 +196,7 @@ export const topic8: Topic = {
         },
         {
           kind: "paragraph",
-          text: "Chemical reactivity increases down Groups 1 and 2. These metals react by losing outer valence electrons to form positive ions (\\(M^+\\) or \\(M^{2+}\\)). Because ionisation energies decrease down the group, less energy is required to remove valence electrons, facilitating faster and more vigorous reactions.",
+          text: "Chemical reactivity increases down Groups 1 and 2. These metals react by losing outer valence electrons to form positive ions (\\(M^+\\) or \\(M^{2+}\\)). Because ionisation energies decrease down the group, less energy is required to remove valence electrons. This facilitates faster and more vigorous reactions.",
         },
         {
           kind: "heading",
@@ -284,7 +284,7 @@ export const topic8: Topic = {
           kind: "definition-list",
           items: [
             { term: "Trend", body: "Thermal stability of Group 1 and 2 nitrates and carbonates increases down the group." },
-            { term: "Mechanism", body: "Down the group, cation ionic radius increases while charge stays the same, so charge density decreases. Smaller cations (e.g. \\(Li^+\\), \\(Mg^{2+}\\)) have high charge density and strongly polarise large anions (\\(CO_3^{2-}\\) or \\(NO_3^-\\)), weakening internal C–O or N–O bonds and lowering decomposition temperature." },
+            { term: "Mechanism", body: "Down the group, cation ionic radius increases while charge stays the same, so charge density decreases. Smaller cations (e.g. \\(Li^+\\), \\(Mg^{2+}\\)) have high charge density and strongly polarise large anions (\\(CO_3^{2-}\\) or \\(NO_3^-\\)). This weakens internal C–O or N–O bonds and lowers decomposition temperature." },
           ],
         },
         {
@@ -386,9 +386,9 @@ export const topic8: Topic = {
         {
           kind: "definition-list",
           items: [
-            { term: "Melting & boiling points", body: "Increase down the group. Halogens are non-polar diatomic molecules held by London dispersion forces. Larger molecules (more electrons) have stronger London forces." },
-            { term: "Electronegativity", body: "Decreases down the group. Atomic radius and shielding increase, weakening the nucleus's pull on shared bonding electrons." },
-            { term: "Reactivity & oxidising power", body: "Decreases down the group. Halogens react by gaining an electron (\\(X_2 + 2e^- \\rightarrow 2X^-\\)). Down the group, outer shells are further from the nucleus with greater shielding, making it harder to attract an incoming electron." },
+            { term: "Melting & boiling points", body: "Increase down the group. Halogens are non-polar diatomic molecules held by London dispersion forces. Larger molecules have more electrons, so stronger London forces. More thermal energy is needed to separate the molecules." },
+            { term: "Electronegativity", body: "Decreases down the group. Atomic radius increases and inner electron shielding increases. This weakens the nucleus's pull on shared bonding electrons." },
+            { term: "Reactivity & oxidising power", body: "Decreases down the group. Halogens react by gaining an electron (\\(X_2 + 2e^- \\rightarrow 2X^-\\)). Down the group, outer shells are further from the nucleus with greater shielding. This makes it harder to attract an incoming electron." },
           ],
         },
         {
@@ -519,15 +519,15 @@ export const topic8: Topic = {
         {
           kind: "definition-list",
           items: [
-            { term: "Fluorine (F₂)", body: "Most reactive halogen, highest electronegativity, strongest oxidising agent. Note: \\(AgF\\) is soluble (unlike AgCl, AgBr, AgI), so the silver nitrate test does not work for fluoride." },
-            { term: "Astatine (At₂)", body: "Predicted to be a dark/black solid (trend: darker down the group), least reactive halogen, lowest electronegativity, weakest oxidising agent. \\(AgAt\\) would be insoluble in both dilute and concentrated ammonia." },
+            { term: "Fluorine (F₂)", body: "Most reactive halogen. Highest electronegativity. Strongest oxidising agent. Note: \\(AgF\\) is soluble (unlike AgCl, AgBr, AgI), so the silver nitrate test does not work for fluoride." },
+            { term: "Astatine (At₂)", body: "Predicted to be a dark/black solid (trend: darker down the group). Least reactive halogen. Lowest electronegativity. Weakest oxidising agent. \\(AgAt\\) would be insoluble in both dilute and concentrated ammonia." },
           ],
         },
         {
           kind: "callout",
           tone: "key",
           title: "Key insight",
-          body: "All Group 7 trends can be predicted from the single principle: down the group, atomic radius increases, shielding increases, and the nucleus finds it harder to attract electrons. This explains decreasing electronegativity, decreasing reactivity, increasing boiling points (more electrons → stronger London forces), and increasing reducing power of halide ions.",
+          body: "All Group 7 trends can be predicted from a single principle: down the group, atomic radius increases and shielding increases. The nucleus finds it harder to attract electrons. This explains decreasing electronegativity, decreasing reactivity, increasing boiling points (more electrons → stronger London forces), and increasing reducing power of halide ions.",
         },
       ],
     },

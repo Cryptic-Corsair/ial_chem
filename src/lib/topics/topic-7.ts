@@ -386,7 +386,7 @@ export const topic7: Topic = {
             },
             {
               term: "Explanation",
-              body: "In liquid water, hydrogen bonds constantly break and re-form dynamically. When water freezes into ice, the molecules are locked into a fixed, rigid 3D hexagonal ring structure held open by 4 hydrogen bonds per molecule. This arrangement creates an open, cage-like structure with large empty spaces. When ice melts, this open ring framework collapses, allowing water molecules to pack closer together, which increases the liquid's density.",
+              body: "In liquid water, hydrogen bonds constantly break and re-form dynamically. When water freezes into ice, the molecules are locked into a fixed, rigid 3D hexagonal ring structure. This structure is held open by 4 hydrogen bonds per molecule. The arrangement creates an open, cage-like structure with large empty spaces. When ice melts, this open ring framework collapses. Water molecules pack closer together, which increases the liquid's density.",
             },
           ],
         },
@@ -495,7 +495,7 @@ export const topic7: Topic = {
             },
             {
               term: "Explanation",
-              body: "As chain length grows, relative molecular mass and the total number of electrons per molecule increase. Larger electron clouds undergo greater fluctuations in electron density, generating stronger instantaneous and induced dipoles. Furthermore, longer straight chains offer a larger surface area of contact between molecules, increasing total London dispersion forces and requiring more energy to separate molecules.",
+              body: "As chain length grows, relative molecular mass and the total number of electrons per molecule increase. Larger electron clouds undergo greater fluctuations in electron density. This generates stronger instantaneous and induced dipoles. Furthermore, longer straight chains offer a larger surface area of contact between molecules. This increases total London dispersion forces and requires more energy to separate molecules.",
             },
           ],
         },
@@ -515,7 +515,7 @@ export const topic7: Topic = {
             },
             {
               term: "Explanation",
-              body: "Branching makes molecules more compact and spherical, which reduces the surface area of contact between adjacent molecules. Fewer points of contact weaken the overall London dispersion forces, requiring less thermal energy to overcome. For example, pentane boils at \\(309\\,\\text{K}\\), 2-methylbutane at \\(301\\,\\text{K}\\), and 2,2-dimethylpropane at \\(283\\,\\text{K}\\).",
+              body: "Branching makes molecules more compact and spherical. This reduces the surface area of contact between adjacent molecules. Fewer points of contact weaken the overall London dispersion forces. Less thermal energy is required to overcome them. For example, pentane boils at \\(309\\,\\text{K}\\), 2-methylbutane at \\(301\\,\\text{K}\\), and 2,2-dimethylpropane at \\(283\\,\\text{K}\\).",
             },
           ],
         },
@@ -549,7 +549,7 @@ export const topic7: Topic = {
             },
             {
               term: "Explanation",
-              body: "Alkanes are non-polar and held together solely by weak London dispersion forces. Alcohols contain the polar –OH group, allowing them to form strong intermolecular hydrogen bonds in addition to London forces. Breaking these extra hydrogen bonds requires substantially higher thermal energy. For instance, propane boils at \\(-42^\\circ\\text{C}\\) while propan-1-ol boils at \\(97^\\circ\\text{C}\\).",
+              body: "Alkanes are non-polar and held together solely by weak London dispersion forces. Alcohols contain the polar –OH group. This allows them to form strong intermolecular hydrogen bonds in addition to London forces. Breaking these extra hydrogen bonds requires substantially higher thermal energy. For instance, propane boils at \\(-42^\\circ\\text{C}\\) while propan-1-ol boils at \\(97^\\circ\\text{C}\\).",
             },
           ],
         },

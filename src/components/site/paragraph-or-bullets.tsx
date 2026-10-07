@@ -245,3 +245,28 @@ function ToggleButton({
     </>
   );
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ForcedBullets — always renders as a rail-list (one item per sentence).
+   Used inside definition-list and steps bodies where the content should
+   ALWAYS be broken into separate lines, regardless of the reading mode.
+   No toggle — it's always bullets.
+   ═══════════════════════════════════════════════════════════════════════ */
+export function ForcedBullets({ children }: { children: string }) {
+  const sentences = useMemo(() => splitIntoSentences(children), [children]);
+
+  if (sentences.length <= 1) {
+    // Single sentence — just render it as text (no rail needed for one item)
+    return <span><RenderParts parts={parseInlineMath(children)} /></span>;
+  }
+
+  return (
+    <>
+      {sentences.map((parts, i) => (
+        <div key={i} className={i === 0 ? "" : "mt-2.5"}>
+          <RenderParts parts={parts} />
+        </div>
+      ))}
+    </>
+  );
+}
