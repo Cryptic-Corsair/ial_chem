@@ -45,12 +45,17 @@ export function BlockRenderer({ block }: { block: Block }) {
           id={block.id}
           className={
             block.level === 3
-              ? "mt-8 mb-3 scroll-mt-24 font-display text-lg font-semibold tracking-tight text-balance text-ink sm:text-xl"
-              : "mt-6 mb-2 scroll-mt-24 font-display text-base font-semibold tracking-tight text-balance text-ink sm:text-lg"
+              ? "group mt-8 mb-4 scroll-mt-24 flex items-baseline gap-3 border-b border-line-soft pb-2 font-display text-ink"
+              : "mt-6 mb-2 scroll-mt-24 font-display text-ink"
+          }
+          style={
+            block.level === 3
+              ? { fontSize: "1.25em", lineHeight: 1.2, letterSpacing: "-0.006em" }
+              : { fontSize: "1.05em", lineHeight: 1.25 }
           }
         >
           {block.tag && (
-            <span className="mr-2.5 font-mono text-xs font-semibold italic text-primary align-middle">
+            <span className="flex-shrink-0 font-mono text-[0.7em] font-bold text-accent align-middle">
               {block.tag}
             </span>
           )}
@@ -66,12 +71,12 @@ export function BlockRenderer({ block }: { block: Block }) {
             {block.items.map((item, i) => (
               <div
                 key={i}
-                className={i === 0 ? "" : "mt-3 border-t border-border pt-3"}
+                className={i === 0 ? "" : "mt-3 border-t border-line-soft pt-3"}
               >
                 {/* Term with a bullet dot — like a heading marker */}
                 <dt className="mb-1.5 flex items-baseline gap-2.5">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                  <span className="font-sans text-[0.875rem] font-semibold text-ink">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                  <span className="font-sans font-semibold text-ink" style={{ fontSize: "0.875em" }}>
                     <RichText>{item.term}</RichText>
                   </span>
                 </dt>
@@ -103,7 +108,7 @@ export function BlockRenderer({ block }: { block: Block }) {
         <div className="my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5">
           <ol className="space-y-5">
           {block.title && (
-            <p className="mb-2 font-sans text-[0.8125rem] font-semibold uppercase tracking-wide text-muted-foreground">
+            <p className="mb-2 font-sans font-semibold uppercase tracking-wide text-muted-foreground" style={{ fontSize: "0.8em" }}>
               {block.title}
             </p>
           )}
@@ -112,11 +117,11 @@ export function BlockRenderer({ block }: { block: Block }) {
               key={i}
               className="relative pl-10"
             >
-              <span className="absolute left-0 top-0 grid h-7 w-7 place-items-center rounded-full border border-primary/30 bg-primary-soft font-sans text-[0.6875rem] font-bold text-primary">
+              <span className="absolute left-0 top-0 grid h-7 w-7 place-items-center rounded-full border border-primary-line bg-primary-soft font-sans font-bold text-primary" style={{ fontSize: "0.7em" }}>
                 {i + 1}
               </span>
               {item.term && (
-                <p className="mb-1.5 font-sans text-[0.8125rem] font-semibold text-ink">
+                <p className="mb-1.5 font-sans font-semibold text-ink" style={{ fontSize: "0.8em" }}>
                   <RichText>{item.term}</RichText>
                 </p>
               )}
@@ -250,21 +255,22 @@ export function BlockRenderer({ block }: { block: Block }) {
       return (
         <aside
           role="note"
-          className={`my-4 flex flex-col gap-2.5 rounded-sm border-l-2 ${config.border} ${config.bg} p-3.5 shadow-card sm:flex-row sm:gap-3.5 sm:p-4`}
+          className={`my-4 flex flex-col gap-2.5 rounded-lg border-l-2 ${config.border} ${config.bg} p-3.5 shadow-card sm:flex-row sm:gap-3.5 sm:p-4`}
         >
           <span
-            className={`grid h-7 w-7 flex-shrink-0 place-items-center rounded-sm ${config.iconBg} shadow-card`}
+            className={`grid h-7 w-7 flex-shrink-0 place-items-center rounded-md ${config.iconBg} shadow-card`}
             aria-hidden="true"
           >
             <Icon className="h-3.5 w-3.5" />
           </span>
           <div className="min-w-0 flex-1">
             <p
-              className={`mb-1 font-display text-[0.8125rem] font-semibold italic ${config.label}`}
+              className={`mb-1 font-sans font-bold uppercase tracking-wide ${config.label}`}
+              style={{ fontSize: "0.7em" }}
             >
               <RichText>{block.title}</RichText>
             </p>
-            <p className="text-[0.875rem] leading-relaxed text-ink/90 sm:text-[0.9375rem]">
+            <p className="leading-relaxed text-ink/90" style={{ fontSize: "0.9em" }}>
               <RichText>{block.body}</RichText>
             </p>
           </div>
@@ -455,24 +461,40 @@ export function BlockRenderer({ block }: { block: Block }) {
         </aside>
       );
 
-    case "equation":
+    case "equation": {
+      // Parse leading number from label (e.g. "1. Water treatment" → {num: "1", title: "Water treatment"})
+      const eqMatch = block.label?.match(/^(\d+)\.\s*(.+)$/);
+      const eqNum = eqMatch?.[1];
+      const eqTitle = eqMatch?.[2] ?? block.label;
       return (
-        <figure className="my-4 overflow-x-auto rounded-sm border border-border bg-card px-4 py-3 text-center shadow-card sm:px-5 sm:py-4">
-          {block.label && (
-            <p className="mb-2 font-sans text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-              {block.label}
-            </p>
-          )}
-          <div className="text-[0.9375rem] leading-snug sm:text-[1rem]">
-            <MathExpr display>{block.math}</MathExpr>
+        <figure className="equation-card group relative my-3 overflow-x-auto rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-raised">
+          {/* Left accent rail — copper for visual character */}
+          <span className="absolute inset-y-0 left-0 w-1 bg-accent/60" aria-hidden="true" />
+          <div className="px-4 py-3.5 sm:px-5 sm:py-4">
+            {block.label && (
+              <header className="mb-2.5 flex items-center gap-2.5 border-b border-line-soft pb-2">
+                {eqNum && (
+                  <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-accent-soft font-sans text-[0.75rem] font-bold text-accent-deep">
+                    {eqNum}
+                  </span>
+                )}
+                <h4 className="font-sans text-[0.875rem] font-semibold uppercase tracking-[0.08em] text-ink sm:text-[0.9375rem]">
+                  {eqTitle}
+                </h4>
+              </header>
+            )}
+            <div className="text-left text-[0.9375rem] leading-relaxed sm:text-[1rem]" style={{ overflowX: "auto" }}>
+              <MathExpr display>{block.math}</MathExpr>
+            </div>
+            {block.caption && (
+              <figcaption className="mt-2.5 border-t border-line-soft pt-2 text-[0.8125rem] leading-relaxed text-ink-2 sm:text-[0.875rem]">
+                {block.caption}
+              </figcaption>
+            )}
           </div>
-          {block.caption && (
-            <figcaption className="mt-2 text-[0.8125rem] italic leading-relaxed text-muted-foreground">
-              {block.caption}
-            </figcaption>
-          )}
         </figure>
       );
+    }
 
     case "compare": {
       const cols = block.columns.length;

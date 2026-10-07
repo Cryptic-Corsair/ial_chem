@@ -454,7 +454,8 @@
   /* inherits all tokens from :root */
 }
 
-/* Topic page body text — same Outfit as the rest of the site */
+/* Topic page body text — same Outfit as the rest of the site.
+   Fluid sizing: 16px on phone → 17px base → 18px tablet → 19px desktop → 20px wide */
 .topic-page .prose-chem {
   font-family: var(--font-sans);
   font-size: 17px;
@@ -466,6 +467,21 @@
 @media (max-width: 640px) {
   .topic-page .prose-chem {
     font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .topic-page .prose-chem {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .topic-page .prose-chem {
+    font-size: 18.5px;
+  }
+}
+@media (min-width: 1280px) {
+  .topic-page .prose-chem {
+    font-size: 19px;
   }
 }
 /* Topic page headings use DM Serif Display (already set globally on h1–h4) */
@@ -511,100 +527,79 @@
   margin-bottom: 0.5rem;
 }
 
-/* Definition-list term labels. Reference kv dt: 0.85rem */
+/* Definition-list term labels. Uses em to scale with body text */
 .topic-page .prose-chem dt span:last-child {
-  font-size: 0.85rem !important;
+  font-size: 0.85em !important;
   font-weight: 600;
 }
 
-/* Definition-list body text. Reference kv dd: 0.85rem */
+/* Definition-list body text */
 .topic-page .prose-chem dd {
-  font-size: 0.875rem;
+  font-size: 0.875em;
   line-height: 1.62;
 }
-@media (min-width: 768px) {
-  .topic-page .prose-chem dd {
-    font-size: 0.9375rem;
-  }
-}
 
-/* Rail list items. Reference sub-list: 0.875rem-ish */
+/* Rail list items */
 .topic-page .rail-list,
 .topic-page .prose-chem .rail-list {
-  font-size: 0.875rem;
+  font-size: 0.875em;
   line-height: 1.62;
 }
-@media (min-width: 768px) {
-  .topic-page .rail-list,
-  .topic-page .prose-chem .rail-list {
-    font-size: 0.9375rem;
-  }
-}
 
-/* Table cells. Reference table: 0.89rem */
+/* Table cells */
 .topic-page .prose-chem table {
-  font-size: 0.875rem !important;
-}
-@media (min-width: 768px) {
-  .topic-page .prose-chem table {
-    font-size: 0.89rem !important;
-  }
+  font-size: 0.875em !important;
 }
 .topic-page .prose-chem th {
-  font-size: 0.73rem !important;  /* matches reference thead th */
+  font-size: 0.73em !important;
   letter-spacing: 0.09em;
   font-weight: 700;
 }
 .topic-page .prose-chem td {
-  padding: 0.875rem 1.125rem;     /* matches reference th,td */
+  padding: 0.6em 0.8em;
 }
 
-/* Table captions. Reference caption: 0.82rem */
+/* Table captions */
 .topic-page .prose-chem table caption {
-  font-size: 0.82rem !important;
-  padding: 0.875rem 1.25rem;
+  font-size: 0.8em !important;
+  padding: 0.6em 0.9em;
 }
 
-/* Image captions. Reference figcaption: 0.8rem */
+/* Image captions */
 .topic-page .prose-chem figcaption {
-  font-size: 0.8rem !important;
+  font-size: 0.8em !important;
   line-height: 1.55;
-  padding: 0.75rem 1.25rem;
+  padding: 0.6em 0.9em;
 }
 
-/* Callout text. Reference callout body: inherits body */
+/* Callout text */
 .topic-page .prose-chem aside[role="note"] p {
-  font-size: 0.9375rem !important;
+  font-size: 0.9em !important;
   line-height: 1.62;
 }
-@media (min-width: 768px) {
-  .topic-page .prose-chem aside[role="note"] p {
-    font-size: 1rem !important;
-  }
-}
 
-/* Callout labels. Reference next-label: 0.7rem */
+/* Callout labels */
 .topic-page .prose-chem aside[role="note"] p:first-child {
-  font-size: 0.7rem !important;
+  font-size: 0.7em !important;
   letter-spacing: 0.12em;
   font-weight: 700;
 }
 
-/* At-a-glance strip. Reference kv dt/dd: 0.85rem */
+/* At-a-glance strip */
 .topic-page .at-a-glance-grid dt {
-  font-size: 0.74rem !important;  /* matches reference glass h2 */
+  font-size: 0.74em !important;
   letter-spacing: 0.12em;
   font-weight: 600;
 }
 .topic-page .at-a-glance-grid dd {
-  font-size: 0.85rem !important;
+  font-size: 0.85em !important;
   line-height: 1.55;
 }
 
-/* Equation captions. Reference figcaption: 0.8rem */
+/* Equation captions */
 .topic-page .prose-chem figure figcaption,
 .topic-page .prose-chem figure p[class*="italic"] {
-  font-size: 0.8rem !important;
+  font-size: 0.8em !important;
   line-height: 1.55;
 }
 
@@ -612,25 +607,25 @@
 .topic-page .prose-chem figure .katex-display,
 .topic-page .prose-chem .katex-display {
   font-size: 1em !important;
-  margin: 0.4em 0 !important;
+  margin: 0.3em 0 !important;
 }
 .topic-page .prose-chem figure .katex,
 .topic-page .prose-chem .katex {
   font-size: 1em !important;
 }
 
-/* Fact-box. Reference fam p: 0.89rem */
+/* Fact-box */
 .topic-page .prose-chem aside[aria-label],
 .topic-page .prose-chem .fact-box {
-  font-size: 0.875rem !important;
+  font-size: 0.875em !important;
 }
 .topic-page .prose-chem aside[aria-label] dt,
 .topic-page .prose-chem .fact-box dt {
-  font-size: 0.85rem !important;
+  font-size: 0.85em !important;
 }
 .topic-page .prose-chem aside[aria-label] dd,
 .topic-page .prose-chem .fact-box dd {
-  font-size: 0.85rem !important;
+  font-size: 0.85em !important;
   line-height: 1.55;
 }
 
@@ -687,29 +682,72 @@
 /* Objectives panel */
 .topic-page .prose-chem aside[aria-label="What you'll learn"] li,
 .topic-page .prose-chem aside[aria-label="In this topic"] li {
-  font-size: 0.9375rem !important;
+  font-size: 0.9em !important;
   line-height: 1.62;
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.3em;
 }
 .topic-page .prose-chem aside[aria-label="What you'll learn"] h3,
 .topic-page .prose-chem aside[aria-label="In this topic"] h3 {
-  font-size: 1.24rem !important;
-  margin-bottom: 0.625rem;
+  font-size: 1.24em !important;
+  margin-bottom: 0.5em;
 }
 
 /* Key takeaways panel */
 .topic-page .prose-chem aside[aria-label="Key takeaways"] h3 {
-  font-size: 1.5rem !important;
+  font-size: 1.5em !important;
 }
 .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-  font-size: 0.875rem !important;
+  font-size: 0.875em !important;
   line-height: 1.55;
-  padding: 0.75rem;
+  padding: 0.6em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   EQUATION GRID — consecutive equation cards lay out side-by-side
+   on wide screens. On phone they stack vertically.
+   ═══════════════════════════════════════════════════════════════════ */
+.equation-grid {
+  grid-template-columns: 1fr;
 }
 @media (min-width: 768px) {
-  .topic-page .prose-chem aside[aria-label="Key takeaways"] li {
-    font-size: 0.9375rem !important;
+  /* Tablet portrait: 2 columns if equations are short, else 1 */
+  .equation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+@media (min-width: 1024px) {
+  /* Tablet landscape / desktop: 2 columns (3 is too tight for chemistry equations) */
+  .equation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  /* Wide desktop: 3 columns for comparison-style equation groups */
+  .equation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* If only 2 equations in the group, cap at 2 columns even on wide screens */
+.equation-grid:has(> .equation-card:nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* Make equation cards fill their grid cell height */
+.equation-grid .equation-card {
+  height: 100%;
+  margin: 0 !important;
+}
+.equation-grid .equation-card figure {
+  margin: 0;
+}
+
+/* KaTeX inside equation cards — left-align, not centered */
+.equation-card .katex-display {
+  text-align: left !important;
+  margin: 0 !important;
+}
+.equation-card .katex {
+  text-align: left !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -718,10 +756,11 @@
    Breakpoint map:
    <640px  phone portrait    — single column, no sidebars, FAB nav
    640px  sm                 — minor padding/type bumps
-   768px  md                 — tablet portrait: 2-col (sidebar + content)
-   1024px lg                 — tablet landscape / small desktop: 3-col
-   1280px xl                 — desktop: 3-col with wider sidebars
-   1536px 2xl                — wide desktop: 3-col with max-width
+   768px  md                 — tablet portrait: 2-col equation grid
+   1024px lg                 — tablet landscape / small desktop
+   1280px xl                 — desktop: 3-col equation grid
+   1536px 2xl                — wide desktop: larger body type
+   1920px                     — extra-wide: even larger body type
 
    Orientation overrides:
    landscape phone (height ≤ 500px): compact hero, smaller topic number
@@ -799,9 +838,9 @@
   .topic-page .xl\:grid-cols-\[260px_minmax\(0\,1fr\)_260px\] {
     grid-template-columns: 280px minmax(0, 1fr) 280px !important;
   }
-  /* Slightly larger body type for wide screens (matches reference feel) */
+  /* Larger body type for wide screens */
   .topic-page .prose-chem {
-    font-size: 18px !important;
+    font-size: 20px !important;
   }
 }
 
@@ -815,7 +854,7 @@
     grid-template-columns: 300px minmax(0, 1fr) 300px !important;
   }
   .topic-page .prose-chem {
-    font-size: 19px !important;
+    font-size: 21px !important;
     max-width: 78ch !important;
   }
 }

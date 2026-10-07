@@ -214,7 +214,7 @@ export default async function TopicPage({
           (visible on all breakpoints). The at-a-glance info is inline in
           the hero. Content gets the full width for maximum readability.
       */}
-      <div className="mx-auto w-full max-w-[820px] flex-1 px-4 py-6 sm:px-6 sm:py-8 lg:py-10 xl:max-w-[900px] 2xl:max-w-[960px]">
+      <div className="mx-auto w-full max-w-[820px] flex-1 px-4 py-6 sm:px-6 sm:py-8 md:max-w-[920px] lg:max-w-[1080px] lg:py-10 xl:max-w-[1180px] 2xl:max-w-[1280px]">
 
           {/* Center: content */}
           <main id="main" className="min-w-0">
@@ -249,9 +249,35 @@ export default async function TopicPage({
                         </h2>
                       </header>
 
-                      {section.blocks.map((block, i) => (
-                        <BlockRenderer key={i} block={block} />
-                      ))}
+                      {(() => {
+                        // Group consecutive equation blocks into grids so they
+                        // lay out side-by-side on wide screens instead of stacking
+                        // vertically. Other block types pass through unchanged.
+                        const groups: { type: "single" | "equation-grid"; blocks: typeof section.blocks }[] = [];
+                        for (const block of section.blocks) {
+                          const last = groups[groups.length - 1];
+                          if (block.kind === "equation") {
+                            if (last?.type === "equation-grid") {
+                              last.blocks.push(block);
+                            } else {
+                              groups.push({ type: "equation-grid", blocks: [block] });
+                            }
+                          } else {
+                            groups.push({ type: "single", blocks: [block] });
+                          }
+                        }
+                        return groups.map((group, gi) =>
+                          group.type === "equation-grid" && group.blocks.length > 1 ? (
+                            <div key={gi} className="equation-grid my-3 grid gap-3 sm:gap-4">
+                              {group.blocks.map((block, bi) => (
+                                <BlockRenderer key={bi} block={block} />
+                              ))}
+                            </div>
+                          ) : (
+                            <BlockRenderer key={gi} block={group.blocks[0]} />
+                          )
+                        );
+                      })()}
                     </section>
                   ))}
                 </>
