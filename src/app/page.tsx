@@ -40,8 +40,8 @@ export default function Home() {
                   <span>Edexcel IAL</span>
                 </div>
                 <h1
-                  className="font-display text-ink"
-                  style={{ fontSize: "clamp(2.3rem, 5.4vw, 3.5rem)", lineHeight: 1.2, letterSpacing: "-0.018em" }}
+                  className="text-ink"
+                  style={{ fontSize: "var(--text-5xl)", lineHeight: 1.2, letterSpacing: "-0.018em" }}
                 >
                   Chemistry,
                   <br />
@@ -49,7 +49,7 @@ export default function Home() {
                 </h1>
                 <p
                   className="mt-5 max-w-xl text-ink/75"
-                  style={{ fontSize: "1.11rem", lineHeight: 1.62 }}
+                  style={{ fontSize: "var(--text-lg)", lineHeight: 1.62 }}
                 >
                   Every specification point in Units I and II, written out
                   step by step — with worked examples, diagrams, key-takeaway

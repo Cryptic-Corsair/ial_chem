@@ -110,7 +110,7 @@ export default async function TopicPage({
 
             <div className="min-w-0 lg:border-l lg:border-ink/15 lg:pl-10">
               {/* Metadata line — small caps, editorial */}
-              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[0.74rem] uppercase tracking-[0.13em] text-muted-foreground">
+              <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans uppercase tracking-[0.13em] text-muted-foreground" style={{ fontSize: "var(--text-xs)" }}>
                 <span className="text-primary">Topic {String(topic.number).padStart(2, "0")}</span>
                 <span className="h-3 w-px bg-border" aria-hidden="true" />
                 <span>Unit {topic.unit === 1 ? "I" : "II"}</span>
@@ -144,14 +144,14 @@ export default async function TopicPage({
               </div>
 
               <h1
-                className="font-display text-balance text-ink"
-                style={{ fontSize: "clamp(2.3rem, 5.4vw, 3.5rem)", letterSpacing: "-0.018em", lineHeight: 1.2 }}
+                className="text-balance text-ink"
+                style={{ fontSize: "var(--text-5xl)", letterSpacing: "-0.018em", lineHeight: 1.2 }}
               >
                 <RichText>{topic.title}</RichText>
               </h1>
               <p
                 className="mt-4 max-w-2xl text-ink/75"
-                style={{ fontSize: "1.11rem", lineHeight: 1.62 }}
+                style={{ fontSize: "var(--text-lg)", lineHeight: 1.62 }}
               >
                 <RichText>{topic.intro}</RichText>
               </p>
@@ -162,10 +162,10 @@ export default async function TopicPage({
                 <dl className="at-a-glance-grid mt-6 grid grid-cols-1 gap-x-6 gap-y-4 rounded-2xl border border-border bg-card p-5 shadow-card sm:grid-cols-2 sm:p-6 lg:grid-cols-4">
                   {topic.atAGlance.map((item, i) => (
                     <div key={i} className="border-t border-dashed border-border pt-3 sm:border-t-0 sm:pt-0">
-                      <dt className="font-sans text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                      <dt className="font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                         {item.label}
                       </dt>
-                      <dd className="mt-1 text-[0.85rem] leading-[1.55] text-ink/80">
+                      <dd className="mt-1 leading-relaxed text-ink/80">
                         {item.value}
                       </dd>
                     </div>
@@ -214,7 +214,7 @@ export default async function TopicPage({
           (visible on all breakpoints). The at-a-glance info is inline in
           the hero. Content gets the full width for maximum readability.
       */}
-      <div className="mx-auto w-full max-w-[820px] flex-1 px-4 py-6 sm:px-6 sm:py-8 md:max-w-[920px] lg:max-w-[1080px] lg:py-10 xl:max-w-[1180px] 2xl:max-w-[1280px]">
+      <div className="mx-auto w-full max-w-[720px] flex-1 px-5 py-8 sm:px-6 md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1000px] 2xl:max-w-[1080px]">
 
           {/* Center: content */}
           <main id="main" className="min-w-0">
@@ -233,17 +233,16 @@ export default async function TopicPage({
                           spec-num with a horizontal line before it, h2 title, dek subtitle,
                           all in a border-bottom container. */}
                       <header className="mb-6 border-b border-border pb-4">
-                        <div
-                          className="mb-3 flex items-center gap-2.5 font-sans text-[0.73rem] font-semibold uppercase tracking-[0.14em] text-primary"
-                          style={{ gap: "9px" }}
-                        >
+                        <div className="mb-3 flex items-center gap-2.5">
                           <span className="inline-block h-0.5 w-[22px] rounded bg-primary" aria-hidden="true" />
-                          <span>Specification Point {section.code}</span>
+                          <span className="font-semibold uppercase tracking-[0.14em] text-primary" style={{ fontSize: "var(--text-xs)" }}>
+                            Specification Point {section.code}
+                          </span>
                         </div>
                         <h2
                           id={`${section.id}-title`}
-                          className="font-display text-ink"
-                          style={{ fontSize: "clamp(1.6rem, 3.3vw, 2.15rem)", lineHeight: 1.2, letterSpacing: "-0.012em" }}
+                          className="text-ink"
+                          style={{ fontSize: "var(--text-3xl)", lineHeight: 1.2, letterSpacing: "-0.012em" }}
                         >
                           <RichText>{section.title}</RichText>
                         </h2>

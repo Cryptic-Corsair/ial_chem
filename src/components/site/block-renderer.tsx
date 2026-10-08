@@ -28,7 +28,7 @@ export function BlockRenderer({ block }: { block: Block }) {
     // ─────────────────────────────────────────────────────────────────────
     case "lead":
       return (
-        <div className="lead-block mb-4 border-l-2 border-primary/60 bg-card px-4 py-3 font-serif text-[0.9375rem] leading-relaxed text-ink/85 shadow-card sm:px-5 sm:py-4 sm:text-base">
+        <div className="lead-block mb-5 border-l-2 border-primary/60 bg-card px-5 py-4 text-ink/85 shadow-card sm:px-6 sm:py-5" style={{ fontSize: "var(--text-lg)" }}>
           <ParagraphOrBullets>{block.text}</ParagraphOrBullets>
         </div>
       );
@@ -45,17 +45,12 @@ export function BlockRenderer({ block }: { block: Block }) {
           id={block.id}
           className={
             block.level === 3
-              ? "group mt-8 mb-4 scroll-mt-24 flex items-baseline gap-3 border-b border-line-soft pb-2 font-display text-ink"
-              : "mt-6 mb-2 scroll-mt-24 font-display text-ink"
-          }
-          style={
-            block.level === 3
-              ? { fontSize: "1.25em", lineHeight: 1.2, letterSpacing: "-0.006em" }
-              : { fontSize: "1.05em", lineHeight: 1.25 }
+              ? "mt-8 mb-4 scroll-mt-24 flex items-baseline gap-3 border-b border-line-soft pb-2"
+              : "mt-6 mb-3 scroll-mt-24"
           }
         >
           {block.tag && (
-            <span className="flex-shrink-0 font-mono text-[0.7em] font-bold text-accent align-middle">
+            <span className="font-mono text-xs font-bold text-accent">
               {block.tag}
             </span>
           )}
@@ -66,29 +61,27 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "definition-list":
       return (
-        <div className="my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5">
+        <div className="my-5 rounded-lg border border-border bg-card p-5 shadow-card sm:p-6">
           <dl>
             {block.items.map((item, i) => (
               <div
                 key={i}
-                className={i === 0 ? "" : "mt-3 border-t border-line-soft pt-3"}
+                className={i === 0 ? "" : "mt-4 border-t border-line-soft pt-4"}
               >
-                {/* Term with a bullet dot — like a heading marker */}
-                <dt className="mb-1.5 flex items-baseline gap-2.5">
+                <dt className="mb-2 flex items-baseline gap-2.5">
                   <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                  <span className="font-sans font-semibold text-ink" style={{ fontSize: "0.875em" }}>
+                  <span className="font-semibold text-ink" style={{ fontSize: "var(--text-sm)" }}>
                     <RichText>{item.term}</RichText>
                   </span>
                 </dt>
-                {/* Body on a rail — always split into sentences, each on its own line */}
                 <dd className="ml-4">
                   {item.body && (
-                    <div className="rail-list " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                    <div className="rail-list" style={{ color: "var(--ink-2)" }}>
                       <ForcedBullets>{item.body}</ForcedBullets>
                     </div>
                   )}
                   {item.children && item.children.length > 0 && (
-                    <ul className="rail-list mt-2 " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                    <ul className="rail-list mt-2" style={{ color: "var(--ink-2)" }}>
                       {item.children.map((c, j) => (
                         <li key={j}>
                           <RichText>{c}</RichText>
@@ -105,34 +98,31 @@ export function BlockRenderer({ block }: { block: Block }) {
 
     case "steps":
       return (
-        <div className="my-4 rounded-lg border border-border bg-card p-4 shadow-card sm:p-5">
+        <div className="my-5 rounded-lg border border-border bg-card p-5 shadow-card sm:p-6">
           <ol className="space-y-5">
           {block.title && (
-            <p className="mb-2 font-sans font-semibold uppercase tracking-wide text-muted-foreground" style={{ fontSize: "0.8em" }}>
+            <p className="mb-2 font-semibold uppercase tracking-wide text-muted-foreground" style={{ fontSize: "var(--text-xs)" }}>
               {block.title}
             </p>
           )}
           {block.items.map((item, i) => (
-            <li
-              key={i}
-              className="relative pl-10"
-            >
-              <span className="absolute left-0 top-0 grid h-7 w-7 place-items-center rounded-full border border-primary-line bg-primary-soft font-sans font-bold text-primary" style={{ fontSize: "0.7em" }}>
+            <li key={i} className="relative pl-11">
+              <span className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full border border-primary-line bg-primary-soft font-bold text-primary" style={{ fontSize: "var(--text-xs)" }}>
                 {i + 1}
               </span>
               {item.term && (
-                <p className="mb-1.5 font-sans font-semibold text-ink" style={{ fontSize: "0.8em" }}>
+                <p className="mb-2 font-semibold text-ink" style={{ fontSize: "var(--text-sm)" }}>
                   <RichText>{item.term}</RichText>
                 </p>
               )}
               <div className="ml-3">
                 {item.body && (
-                  <div className="rail-list " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                  <div className="rail-list" style={{ color: "var(--ink-2)" }}>
                     <ForcedBullets>{item.body}</ForcedBullets>
                   </div>
                 )}
                 {item.children && item.children.length > 0 && (
-                  <ul className="rail-list mt-2 " style={{ color: "var(--ink-2, var(--muted-foreground))" }}>
+                  <ul className="rail-list mt-2" style={{ color: "var(--ink-2)" }}>
                     {item.children.map((c, j) => (
                       <li key={j}>
                         <RichText>{c}</RichText>
@@ -255,22 +245,22 @@ export function BlockRenderer({ block }: { block: Block }) {
       return (
         <aside
           role="note"
-          className={`my-4 flex flex-col gap-2.5 rounded-lg border-l-2 ${config.border} ${config.bg} p-3.5 shadow-card sm:flex-row sm:gap-3.5 sm:p-4`}
+          className={`my-5 flex flex-col gap-3 rounded-lg border-l-2 ${config.border} ${config.bg} p-4 shadow-card sm:flex-row sm:gap-4 sm:p-5`}
         >
           <span
-            className={`grid h-7 w-7 flex-shrink-0 place-items-center rounded-md ${config.iconBg} shadow-card`}
+            className={`grid h-8 w-8 flex-shrink-0 place-items-center rounded-md ${config.iconBg}`}
             aria-hidden="true"
           >
-            <Icon className="h-3.5 w-3.5" />
+            <Icon className="h-4 w-4" />
           </span>
           <div className="min-w-0 flex-1">
             <p
-              className={`mb-1 font-sans font-bold uppercase tracking-wide ${config.label}`}
-              style={{ fontSize: "0.7em" }}
+              className={`mb-1.5 font-bold uppercase tracking-wide ${config.label}`}
+              style={{ fontSize: "var(--text-xs)" }}
             >
               <RichText>{block.title}</RichText>
             </p>
-            <p className="leading-relaxed text-ink/90" style={{ fontSize: "0.9em" }}>
+            <p className="leading-relaxed text-ink/90" style={{ fontSize: "var(--text-base)" }}>
               <RichText>{block.body}</RichText>
             </p>
           </div>
@@ -467,27 +457,26 @@ export function BlockRenderer({ block }: { block: Block }) {
       const eqNum = eqMatch?.[1];
       const eqTitle = eqMatch?.[2] ?? block.label;
       return (
-        <figure className="equation-card group relative my-3 overflow-x-auto rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-raised">
-          {/* Left accent rail — copper for visual character */}
+        <figure className="equation-card group relative my-4 overflow-x-auto rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-raised">
           <span className="absolute inset-y-0 left-0 w-1 bg-accent/60" aria-hidden="true" />
-          <div className="px-4 py-3.5 sm:px-5 sm:py-4">
+          <div className="px-5 py-4 sm:px-6 sm:py-5">
             {block.label && (
-              <header className="mb-2.5 flex items-center gap-2.5 border-b border-line-soft pb-2">
+              <header className="mb-3 flex items-center gap-2.5 border-b border-line-soft pb-2.5">
                 {eqNum && (
-                  <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-accent-soft font-sans text-[0.75rem] font-bold text-accent-deep">
+                  <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-accent-soft font-bold text-accent-deep" style={{ fontSize: "var(--text-xs)" }}>
                     {eqNum}
                   </span>
                 )}
-                <h4 className="font-sans text-[0.875rem] font-semibold uppercase tracking-[0.08em] text-ink sm:text-[0.9375rem]">
+                <h4 className="font-semibold uppercase tracking-wide text-ink" style={{ fontSize: "var(--text-sm)" }}>
                   {eqTitle}
                 </h4>
               </header>
             )}
-            <div className="text-left text-[0.9375rem] leading-relaxed sm:text-[1rem]" style={{ overflowX: "auto" }}>
+            <div className="text-left leading-relaxed" style={{ fontSize: "var(--text-base)" }}>
               <MathExpr display>{block.math}</MathExpr>
             </div>
             {block.caption && (
-              <figcaption className="mt-2.5 border-t border-line-soft pt-2 text-[0.8125rem] leading-relaxed text-ink-2 sm:text-[0.875rem]">
+              <figcaption className="mt-3 border-t border-line-soft pt-2.5 leading-relaxed text-ink-2" style={{ fontSize: "var(--text-sm)" }}>
                 {block.caption}
               </figcaption>
             )}
